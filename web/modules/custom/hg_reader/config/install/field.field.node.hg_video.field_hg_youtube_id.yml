@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_hg_youtube_id
+    - node.type.hg_video
+id: node.hg_video.field_hg_youtube_id
+field_name: field_hg_youtube_id
+entity_type: node
+bundle: hg_video
+label: 'YouTube ID'
+description: "Enter the YouTube ID.<br>The ID can be found by clicking on the <strong>share</strong> link below the display of your video on youtube.com. The series of letters and numbers after \"http://youtu.be/\" is the ID for your video.<br>\r\n<strong>Your website may not be configured</strong> to display YouTube videos. Check with your webmaster to confirm."
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,11 @@
+.d2h-files-diff {
+  table-layout: fixed;
+}
+
+.d2h-code-side-line {
+  width: 100%;
+}
+
+.d2h-code-line-ctn {
+  vertical-align: revert;
+}

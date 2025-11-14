@@ -1,0 +1,314 @@
+<?php
+
+/**
+ * @file
+ * Provides a views area plugin which generates active filters.
+ */
+
+declare(strict_types=1);
+
+use Drupal\active_filters\ActiveFilter\ActiveFilter;
+use Drupal\active_filters\ActiveFilter\ActiveFilterBase;
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Template\Attribute;
+use Drupal\views\ViewExecutable;
+
+/**
+ * Implements hook_help().
+ */
+function active_filters_help(
+  string $route_name,
+  RouteMatchInterface $route_match,
+): string {
+  $output = '';
+  if ($route_name === 'help.page.active_filters') {
+    $output .= '<h3>' . t('About') . '</h3>';
+    $output .= '<p>' . t('Active filters provides a views area plugin which generates active filters from exposed filter selections. Active filters can be cleared individually or all at once.') . '</p>';
+    // phpcs:ignore Drupal.Arrays.Array.LongLineDeclaration
+    $output .= '<p>' . t('For a full description of the module and configuration instructions visit the <a href=":project" target="_blank">project page</a> or consult the <a href=":readme" target="_blank">README.md</a> in the module directory.', [':project' => 'https://www.drupal.org/project/active_filters', ':readme' => 'https://git.drupalcode.org/project/active_filters/-/blob/1.0.x/README.md']) . '</p>';
+    $output .= '<p>' . t('Submit bug reports, feature suggestions or track changes in the <a href=":queue" target="_blank">issue queue</a>.', [':queue' => 'https://www.drupal.org/project/issues/active_filters']) . '</p>';
+  }
+  return $output;
+}
+
+/**
+ * Implements hook_views_data_alter().
+ */
+function active_filters_views_data_alter(array &$data): void {
+  $data['views']['active_filters'] = [
+    'title' => t('Active Filters'),
+    'help' => t('Displays currently selected exposed filters.'),
+    'area' => [
+      'id' => 'active_filters',
+    ],
+  ];
+}
+
+/**
+ * Implements hook_theme().
+ */
+function active_filters_theme(): array {
+  return [
+    'active_filters' => [
+      'variables' => [
+        'title' => '',
+        'clear_text' => '',
+        'active_filters' => [],
+        'configuration' => [],
+        'view' => NULL,
+      ],
+    ],
+    'active_filters_grouped' => [
+      'variables' => [
+        'title' => '',
+        'clear_text' => '',
+        'active_filters' => [],
+        'configuration' => [],
+        'view' => NULL,
+      ],
+    ],
+    'active_filter' => [
+      'variables' => [
+        'label' => '',
+        'active_filter' => NULL,
+      ],
+    ],
+    'active_filter_group' => [
+      'variables' => [
+        'label' => '',
+        'group' => NULL,
+      ],
+    ],
+  ];
+}
+
+/**
+ * Implements hook_theme_suggestions_alter().
+ */
+function active_filters_theme_suggestions_alter(
+  array &$suggestions,
+  array $variables,
+  string $hook,
+): void {
+  if (\in_array($hook, ['active_filters', 'active_filters_grouped'], TRUE)) {
+    $view = $variables['view'];
+    assert($view instanceof ViewExecutable);
+
+    $suggestions[] = "{$hook}__{$view->id()}";
+    $suggestions[] = "{$hook}__{$view->id()}__$view->current_display";
+  }
+
+  if (\in_array($hook, ['active_filter', 'active_filter_group'], TRUE)) {
+    $active_filter = $variables['active_filter'] ?? $variables['group'];
+    assert($active_filter instanceof ActiveFilterBase);
+
+    $view = $active_filter->getView();
+    $name = $active_filter->getName();
+    $value = $active_filter instanceof ActiveFilter
+      ? $active_filter->getValue()
+      : '';
+
+    $suggestions[] = "{$hook}__{$view->id()}";
+    $suggestions[] = "{$hook}__{$view->id()}__$view->current_display";
+    $suggestions[] = "{$hook}__$name";
+    if ($value) {
+      $suggestions[] = "{$hook}__{$name}__$value";
+    }
+    $suggestions[] = "{$hook}__{$view->id()}__$name";
+    $suggestions[] = "{$hook}__{$view->id()}__{$view->current_display}__$name";
+    if ($value) {
+      $suggestions[] = "{$hook}__{$view->id()}__{$name}__$value";
+      $suggestions[] = "{$hook}__{$view->id()}__{$view->current_display}__{$name}__$value";
+    }
+  }
+}
+
+// Parameter names are present, but on a separate line so the array shape can
+// be defined.
+// phpcs:disable Drupal.Commenting.FunctionComment.MissingParamName
+// phpcs:disable Drupal.Commenting.FunctionComment.ParamCommentIndentation
+// phpcs:disable Drupal.Files.LineLength.TooLong
+
+/**
+ * Prepares variables for active filters templates.
+ *
+ * Default template: active-filters.html.twig.
+ *
+ * This function adds \Drupal\Core\Template\Attribute objects with default
+ * values based on the active filter's configuration.
+ *
+ * @param array{
+ *   active_filters: array<int, array<string, string|string[]>>,
+ *   attributes: array<string, string|string[]>|\Drupal\Core\Template\Attribute,
+ *   title: Drupal\Component\Render\MarkupInterface|string,
+ *   title_attributes: array<string, string|string[]>|\Drupal\Core\Template\Attribute,
+ *   clear_text: Drupal\Component\Render\MarkupInterface|string,
+ *   clear_attributes: array<string, string|string[]>|\Drupal\Core\Template\Attribute,
+ *   configuration: mixed[],
+ *   view: \Drupal\views\ViewExecutable,
+ * } &$variables
+ *   An associative array containing:
+ *   - active_filters: All active filter render arrays.
+ *   - attributes: HTML attributes for the container element.
+ *   - title: The title text.
+ *   - title_attributes: HTML attributes for the title element.
+ *   - clear_text: The clear all button text.
+ *   - clear_attributes: HTML attributes for the clear button.
+ *   - configuration: The active filter configuration.
+ *   - view: The view object for the active filters.
+ */
+function template_preprocess_active_filters(array &$variables): void {
+  $variables['attributes'] = new Attribute(['data-active-filters' => '']);
+  if ($variables['configuration']['clear_text']) {
+    $variables['attributes']->setAttribute('data-active-filters-clearable', '');
+  }
+
+  $variables['title_attributes'] = new Attribute();
+  if ($variables['configuration']['hide_title']) {
+    $variables['title_attributes']->addClass('visually-hidden');
+  }
+
+  $variables['clear_attributes'] = new Attribute([
+    'data-active-filters-clear-all' => '',
+  ]);
+
+  unset(
+    $variables['content_attributes'],
+    $variables['title_prefix'],
+    $variables['title_suffix'],
+  );
+}
+
+/**
+ * Prepares variables for grouped active filters templates.
+ *
+ * Default template: active-filters-grouped.html.twig.
+ *
+ * This function adds \Drupal\Core\Template\Attribute objects with default
+ * values based on the active filter's configuration.
+ *
+ * @param array{
+ *   active_filters: array<int, array{label: string[], active_filters: string[]}>,
+ *   attributes: array<string, string|string[]>|\Drupal\Core\Template\Attribute,
+ *   title: Drupal\Component\Render\MarkupInterface|string,
+ *   title_attributes: array<string, string|string[]>|\Drupal\Core\Template\Attribute,
+ *   clear_text: Drupal\Component\Render\MarkupInterface|string,
+ *   clear_attributes: array<string, string|string[]>|\Drupal\Core\Template\Attribute,
+ *   configuration: mixed[],
+ *   view: \Drupal\views\ViewExecutable,
+ * } &$variables
+ *   An associative array containing:
+ *   - active_filters: All active filter render arrays.
+ *   - attributes: HTML attributes for the container element.
+ *   - title: The title text.
+ *   - title_attributes: HTML attributes for the title element.
+ *   - clear_text: The clear all button text.
+ *   - clear_attributes: HTML attributes for the clear button.
+ *   - configuration: The active filter configuration.
+ *   - view: The view object for the active filters.
+ */
+function template_preprocess_active_filters_grouped(array &$variables): void {
+  // The type of the active_filters key changes, but the called preprocess does
+  // not interact with the array key.
+  // @phpstan-ignore-next-line
+  template_preprocess_active_filters($variables);
+  assert($variables['attributes'] instanceof Attribute);
+  $variables['attributes']->setAttribute('data-active-filters-grouped', '');
+}
+
+/**
+ * Prepares variables for active filter templates.
+ *
+ * Default template: active-filter.html.twig.
+ *
+ * This function adds \Drupal\Core\Template\Attribute objects with default
+ * values based on the active filter's configuration.
+ *
+ * @param array{
+ *   label: Drupal\Component\Render\MarkupInterface|string,
+ *   attributes: array<string, string|string[]>|\Drupal\Core\Template\Attribute,
+ *   wrapper_attributes: array<string, string|string[]>|\Drupal\Core\Template\Attribute,
+ *   active_filter: \Drupal\active_filters\ActiveFilter\ActiveFilter,
+ * } &$variables
+ *   An associative array containing:
+ *   - label: The active filter value label.
+ *   - attributes: HTML attributes for the active filter.
+ *   - wrapper_attributes: HTML attributes for the container element.
+ *   - active_filter: The active filter value object.
+ */
+function template_preprocess_active_filter(array &$variables): void {
+  $active_filter = $variables['active_filter'];
+  $filter_label = $active_filter->getFilter()->options['expose']['label'] ?:
+    $active_filter->getFilter()->options['group_info']['label'];
+  $filter_value = $active_filter->getLabel();
+
+  $variables['attributes'] = new Attribute([
+    'data-active-filter-name' => $active_filter->getName(),
+    'data-active-filter-value' => $active_filter->getValue(),
+    'aria-label' => t('Filter @filter has value @value', [
+      '@filter' => $filter_label,
+      '@value' => $filter_value,
+    ]),
+  ]);
+  if ($active_filter->isRemovable()) {
+    $variables['attributes']->setAttribute('data-active-filter-removable', '');
+    $variables['attributes']->setAttribute('aria-label', (string) t('Remove filter @filter value @value', [
+      '@filter' => $filter_label,
+      '@value' => $filter_value,
+    ]));
+  }
+  else {
+    $variables['attributes']->setAttribute('disabled', '');
+    $variables['attributes']->setAttribute('aria-disabled', 'true');
+  }
+
+  $variables['wrapper_attributes'] = new Attribute();
+
+  unset(
+    $variables['content_attributes'],
+    $variables['title_attributes'],
+    $variables['title_prefix'],
+    $variables['title_suffix'],
+  );
+}
+
+/**
+ * Prepares variables for active filter group label templates.
+ *
+ * Default template: active-filter-group.html.twig.
+ *
+ * This function adds \Drupal\Core\Template\Attribute objects with default
+ * values based on the active filter's configuration.
+ *
+ * @param array{
+ *   label: Drupal\Component\Render\MarkupInterface|string,
+ *   attributes: array<string, string|string[]>|\Drupal\Core\Template\Attribute,
+ *   wrapper_attributes: array<string, string|string[]>|\Drupal\Core\Template\Attribute,
+ *   group: \Drupal\active_filters\ActiveFilter\ActiveFilterGroup,
+ * } &$variables
+ *   An associative array containing:
+ *   - label: The active filter value label.
+ *   - attributes: HTML attributes for the active filter.
+ *   - wrapper_attributes: HTML attributes for the container element.
+ *   - group: The active filter group value object.
+ */
+function template_preprocess_active_filter_group(
+  array &$variables,
+): void {
+  $group = $variables['group'];
+  $variables['wrapper_attributes'] = new Attribute();
+  $variables['attributes'] = new Attribute([
+    'data-active-filter-name' => $group->getName(),
+  ]);
+
+  unset(
+    $variables['content_attributes'],
+    $variables['title_attributes'],
+    $variables['title_prefix'],
+    $variables['title_suffix'],
+  );
+}
+
+// phpcs:enable Drupal.Commenting.FunctionComment.MissingParamName
+// phpcs:enable Drupal.Commenting.FunctionComment.ParamCommentIndentation
+// phpcs:enable Drupal.Files.LineLength.TooLong

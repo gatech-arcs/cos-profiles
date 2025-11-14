@@ -1,0 +1,4 @@
+services:
+  typography_filter.manager:
+    class: Drupal\typography_filter\Services\TypographyFilterManager
+    arguments: ['@language_manager']

@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - hg_reader
+name: 'Mercury profile'
+type: hg_profile
+description: 'A short description of a person, that may also include identifying information such as names, job titles, departmental affiliations, and contact details.'
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: false

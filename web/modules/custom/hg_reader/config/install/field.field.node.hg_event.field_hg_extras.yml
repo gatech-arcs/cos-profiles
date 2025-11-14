@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_hg_extras
+    - node.type.hg_event
+  module:
+    - options
+id: node.hg_event.field_hg_extras
+field_name: field_hg_extras
+entity_type: node
+bundle: hg_event
+label: Extras
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

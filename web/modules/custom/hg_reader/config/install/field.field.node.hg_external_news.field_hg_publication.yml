@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_hg_publication
+    - node.type.hg_external_news
+id: node.hg_external_news.field_hg_publication
+field_name: field_hg_publication
+entity_type: node
+bundle: hg_external_news
+label: Publication
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

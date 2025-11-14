@@ -1,0 +1,22 @@
+name: Mercury Reader
+description: Client-side integration for Mercury
+package: GT
+type: module
+core_version_requirement: ^10.3 || ^11
+version: "5.0.0"
+project: 'hg_reader'
+project status url: https://comm.gatech.edu/release_histories/hg_reader/4.x
+configure: hg_reader.settings
+dependencies:
+  - drupal:datetime
+  - drupal:datetime_range
+  - drupal:field
+  - drupal:field_group
+  - drupal:media
+  - drupal:media_library
+  - drupal:taxonomy
+  - drupal:telephone
+  - drupal:twig_field_value
+  - drupal:twig_tweak
+libraries:
+   - 'hg_reader/global-styling'

@@ -1,0 +1,28 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_hg_news_room_topics
+    - node.type.hg_news
+    - taxonomy.vocabulary.hg_news_room_topics
+id: node.hg_news.field_hg_news_room_topics
+field_name: field_hg_news_room_topics
+entity_type: node
+bundle: hg_news
+label: 'News room topics'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      hg_news_room_topics: hg_news_room_topics
+    sort:
+      field: name
+      direction: asc
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

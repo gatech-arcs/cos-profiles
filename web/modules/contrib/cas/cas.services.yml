@@ -1,0 +1,53 @@
+services:
+  _defaults:
+    autoconfigure: true
+    autowire: true
+  cas.forced_auth_subscriber:
+    class: Drupal\cas\Subscriber\CasForcedAuthSubscriber
+  cas.redirect_logged_in_users_subscriber:
+    class: Drupal\cas\Subscriber\CasRedirectLoggedInUsersSubscriber
+  cas.gateway_subscriber:
+    class: Drupal\cas\Subscriber\CasGatewayAuthSubscriber
+  cas.helper:
+    class: Drupal\cas\Service\CasHelper
+  cas.redirector:
+    class: Drupal\cas\Service\CasRedirector
+  cas.validator:
+    class: Drupal\cas\Service\CasValidator
+  cas.user_manager:
+    class: Drupal\cas\Service\CasUserManager
+  cas.logout:
+    class: Drupal\cas\Service\CasLogout
+  cas.proxy_helper:
+    class: Drupal\cas\Service\CasProxyHelper
+  cas.route_enhancer:
+    class: Drupal\cas\Routing\CasRouteEnhancer
+    tags:
+      - { name: route_enhancer }
+  cas.page_cache_response_policy.deny_cas:
+    class: Drupal\cas\PageCache\DenyCas
+    public: false
+    tags:
+      - { name: page_cache_response_policy }
+  cas.auto_assign_roles_subscriber:
+    class: Drupal\cas\Subscriber\CasAutoAssignRolesSubscriber
+  cas.route_subscriber:
+    class: Drupal\cas\Subscriber\CasRouteSubscriber
+  cas.cas_user_access_checker:
+    class: Drupal\cas\Access\CasUserAccessCheck
+    tags:
+      - { name: access_check, applies_to: _cas_user_access }
+  cas.login_redirect.subscriber:
+    class: Drupal\cas\Subscriber\CasLoginRedirectSubscriber
+  cas.admin_approval_registration.subscriber:
+    class: Drupal\cas\Subscriber\CasAdminApprovalRegistrationSubscriber
+
+  # Autowiring aliases.
+  Drupal\cas\Service\CasHelper: '@cas.helper'
+  Drupal\cas\Service\CasLogout: '@cas.logout'
+  Drupal\cas\Service\CasProxyHelper: '@cas.proxy_helper'
+  Drupal\cas\Service\CasRedirector: '@cas.redirector'
+  Drupal\cas\Service\CasUserManager: '@cas.user_manager'
+  Drupal\cas\Service\CasValidator: '@cas.validator'
+  Drupal\externalauth\AuthmapInterface: '@externalauth.authmap'
+  Drupal\externalauth\ExternalAuthInterface: '@externalauth.externalauth'

@@ -1,0 +1,56 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.hg_boilerplate.body
+    - field.field.node.hg_boilerplate.field_hg_importer
+    - field.field.node.hg_boilerplate.field_hg_source_updated
+    - field.field.node.hg_boilerplate.field_hg_id
+    - node.type.hg_boilerplate
+  module:
+    - text
+    - user
+id: node.hg_boilerplate.default
+targetEntityType: node
+bundle: hg_boilerplate
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_hg_importer:
+    weight: 113
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
+    region: content
+  field_hg_source_updated:
+    weight: 115
+    label: above
+    settings:
+      date_format: medium
+      custom_date_format: ''
+      timezone: ''
+    third_party_settings: {  }
+    type: timestamp
+    region: content
+  field_hg_id:
+    weight: 114
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
+    region: content
+  links:
+    weight: 100
+    region: content
+hidden: {  }

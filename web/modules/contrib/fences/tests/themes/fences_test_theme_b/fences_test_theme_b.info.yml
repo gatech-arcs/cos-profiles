@@ -1,0 +1,10 @@
+name: Fences Test Theme B
+description: A theme with a field.html.twig file.
+type: theme
+core_version_requirement: ^9 || ^10 || ^11
+base theme: false
+
+# Information added by Drupal.org packaging script on 2025-03-11
+version: '3.0.7'
+project: 'fences'
+datestamp: 1741683610

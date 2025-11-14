@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - hg_reader
+name: 'Mercury event'
+type: hg_event
+description: 'A planned public or social occasion. A performance, a seminar, a deadline, an occurrence, a happening, a proceeding, an incident, an affair, a circumstance, an occasion, a phenomenon, a function, or gathering. One of the two <strong>main types of content in Mercury</strong> (along with news).'
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: false

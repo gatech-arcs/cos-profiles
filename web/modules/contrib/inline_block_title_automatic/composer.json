@@ -1,0 +1,32 @@
+{
+    "name": "drupal/inline_block_title_automatic",
+    "description": "Automatically add titles to inline blocks.",
+    "type": "drupal-module",
+    "license": "GPL-2.0-or-later",
+    "support": {
+        "issues": "https://www.drupal.org/project/issues/inline_block_title_automatic",
+        "source": "https://git.drupalcode.org/project/inline_block_title_automatic"
+    },
+    "minimum-stability": "dev",
+    "require":{
+        "php": "^8.1",
+        "drupal/core": "^10.2 || ^11"
+    },
+    "require-dev": {
+        "jangregor/phpstan-prophecy": "dev-master",
+        "mglaman/phpstan-drupal": "^1.2.10",
+        "phpstan/extension-installer": "^1.2",
+        "phpstan/phpstan": "^1.11",
+        "phpstan/phpstan-deprecation-rules": "*",
+        "phpstan/phpstan-phpunit": "1.4.x-dev",
+        "phpstan/phpstan-strict-rules": "^1@stable",
+        "previousnext/coding-standard": "1.1.0"
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "phpstan/extension-installer": true
+        }
+    }
+}

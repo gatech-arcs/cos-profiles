@@ -1,0 +1,7 @@
+'show automatic anchor links':
+  title: 'Show automatic anchor links'
+  description: 'A user role with this permission will see helpful permalinks to automatic anchors.'
+'administer automatic anchors':
+  title: 'Administer automatic anchors'
+  description: 'Configure the settings for the Automatic Anchors module.'
+  restrict access: true

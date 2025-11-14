@@ -1,0 +1,12 @@
+name: CKEditor 5 Responsive Table
+type: module
+description: CKEditor 5 custom Responsive Table plugin
+package: CKEditor
+core_version_requirement: ^9 || ^10 || ^11
+dependencies:
+  - drupal:ckeditor5
+
+# Information added by Drupal.org packaging script on 2025-09-30
+version: '1.0.7'
+project: 'ckeditor_responsive_table'
+datestamp: 1759258869

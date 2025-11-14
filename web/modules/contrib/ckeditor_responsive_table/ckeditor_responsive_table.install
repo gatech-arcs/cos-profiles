@@ -1,0 +1,14 @@
+<?php
+
+/**
+ * Implements hook_update_10001().
+ */
+function ckeditor_responsive_table_update_10002() {
+  $config_factory = \Drupal::configFactory();
+  $config = $config_factory->getEditable('ckeditor_responsive_table.settings');
+  $config->set('fail_class', 'tabled--stacked');
+  $config->set('caption_side', 'top');
+  $config->set('large_character_threshold', '50');
+  $config->set('small_character_threshold', '8');
+  $config->save(TRUE);
+}

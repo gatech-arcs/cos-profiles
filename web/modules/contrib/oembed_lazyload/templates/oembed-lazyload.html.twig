@@ -1,0 +1,27 @@
+{#
+/**
+ * @file
+ * Default theme implementation of a an oembed lazyload container.
+ *
+ * Available variables:
+ * - provider: A string containing the oembed provider name.
+ * - thumbnail: The thumbnail element.
+ * - button: The button element.
+ * - iframe: The iframe element.
+ *
+ * @see template_preprocess_oembed_lazyload()
+ *
+ * @ingroup themeable
+ */
+#}
+
+{%
+  set classes = [
+    'oembed-lazyload',
+    'oembed-lazyload--' ~ provider|clean_class
+  ]
+%}
+<div {{ attributes.addClass(classes) }} data-strategy="{{ strategy|clean_class }}">
+  {{ placeholder }}
+  {{ iframe }}
+</div>

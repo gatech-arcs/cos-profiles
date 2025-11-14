@@ -1,0 +1,28 @@
+{
+    "name": "gtsciences/gt_people",
+    "description": "GT People Profiles",
+    "type": "drupal-recipe",
+    "license": "GPL-2.0-or-later",
+    "keywords": [
+        "Drupal",
+        "Georgia Tech",
+        "Profiles",
+        "Paragraphs",
+        "drupal recipe",
+        "recipe"
+    ],
+    "require": {
+        "drupal/core": ">=11.2",
+
+        "drupal/address": "^2.0",
+        "drupal/geocoder": "^4.28",
+        "drupal/geofield": "^1.64",
+        "drupal/geofield_map": "^11.0",
+        "drupal/pathauto": "^1.13",
+        "drupal/twig_tweak": "^3.4",
+
+        "drupal/paragraphs": "^1.17",
+        "drupal/inline_entity_form": "^3.0",
+        "drupal/entity_reference_revisions": "^1.10"
+    }
+}

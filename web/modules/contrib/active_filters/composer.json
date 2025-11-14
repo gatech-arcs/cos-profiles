@@ -1,0 +1,26 @@
+{
+    "name": "drupal/active_filters",
+    "type": "drupal-module",
+    "license": "GPL-2.0-or-later",
+    "description": "Provides a views area plugin which generates active filters from exposed filter selections.",
+    "homepage": "https://www.drupal.org/project/active_filters",
+    "authors": [
+        {
+            "name": "Benjamin Baird",
+            "homepage": "https://www.drupal.org/u/benabaird"
+        }
+    ],
+    "support": {
+        "issues": "https://www.drupal.org/project/issues/active_filters",
+        "source": "https://git.drupalcode.org/project/active_filters"
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://packages.drupal.org/8"
+        }
+    ],
+    "require": {
+        "php": "^8.2"
+    }
+}

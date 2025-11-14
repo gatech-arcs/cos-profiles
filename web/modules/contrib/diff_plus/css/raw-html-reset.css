@@ -1,0 +1,14 @@
+[class^="d2h"],
+[class^="d2h"]::before,
+[class^="d2h"]::after,
+[class^="d2h"] *,
+[class^="d2h"] *::before,
+[class^="d2h"] *::after,
+[class^="hljs"],
+[class^="hljs"]::before,
+[class^="hljs"]::after,
+[class^="hljs"] *,
+[class^="hljs"] *::before,
+[class^="hljs"] *::after {
+  all: revert;
+}

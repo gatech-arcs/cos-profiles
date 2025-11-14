@@ -1,0 +1,58 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+
+  csp.nonce:
+    class: Drupal\csp\Nonce
+  Drupal\csp\Nonce: '@csp.nonce'
+
+  csp.policy_helper:
+    class: Drupal\csp\PolicyHelper
+  Drupal\csp\PolicyHelper: '@csp.policy_helper'
+
+  csp.nonce_builder:
+    class: Drupal\csp\NonceBuilder
+  Drupal\csp\NonceBuilder: '@csp.nonce_builder'
+
+  csp.library_policy_builder:
+    class: Drupal\csp\LibraryPolicyBuilder
+    arguments:
+      $cache: '@cache.default'
+  Drupal\csp\LibraryPolicyBuilder: '@csp.library_policy_builder'
+
+  plugin.manager.csp_reporting_handler:
+    class: Drupal\csp\ReportingHandlerPluginManager
+    parent: default_plugin_manager
+  Drupal\csp\ReportingHandlerPluginManager: '@plugin.manager.csp_reporting_handler'
+
+  csp.response_listener:
+    class: Drupal\csp\EventSubscriber\ResponseCspSubscriber
+
+  csp.settings_csp_subscriber:
+    class: Drupal\csp\EventSubscriber\SettingsCspSubscriber
+
+  csp.libraries_csp_subscriber:
+    class: Drupal\csp\EventSubscriber\LibrariesCspSubscriber
+
+  csp.reporting_csp_subscriber:
+    class: Drupal\csp\EventSubscriber\ReportingCspSubscriber
+
+  csp.core_csp_subscriber:
+    class: Drupal\csp\EventSubscriber\CoreCspSubscriber
+
+  csp.theme_hook_csp_subscriber:
+    class: Drupal\csp\EventSubscriber\ThemeHookCspSubscriber
+
+  csp.render_element_attached_csp_subscriber:
+    class: Drupal\csp\EventSubscriber\RenderElementAttachedCspSubscriber
+
+  logger.channel.csp:
+    parent: logger.channel_base
+    arguments: ['csp']
+
+  html_response.attachments_processor.csp:
+    public: false
+    class: Drupal\csp\Render\CspResponseAttachmentsProcessor
+    decorates: html_response.attachments_processor
+    arguments: ['@html_response.attachments_processor.csp.inner']

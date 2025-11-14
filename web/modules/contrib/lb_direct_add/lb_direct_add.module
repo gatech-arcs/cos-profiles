@@ -1,0 +1,17 @@
+<?php
+
+/**
+ * @file
+ * Contains lb_direct_add.module.
+ */
+
+use Drupal\lb_direct_add\LayoutBuilder;
+
+/**
+ * Implements hook_element_info_alter().
+ *
+ * Adds a pre-render class for layout builder.
+ */
+function lb_direct_add_element_info_alter(array &$types) {
+  $types['layout_builder']['#pre_render'][] = LayoutBuilder::class . '::preRender';
+}

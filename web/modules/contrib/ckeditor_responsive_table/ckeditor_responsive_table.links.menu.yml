@@ -1,0 +1,5 @@
+ckeditor_responsive_table.form:
+  title: 'CKEditor Responsive Table settings'
+  description: 'Configure settings for the CKEditor Responsive Table module.'
+  route_name: ckeditor_responsive_table.form
+  parent: 'system.admin_config_content'

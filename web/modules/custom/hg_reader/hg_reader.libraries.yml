@@ -1,0 +1,28 @@
+hg_reader:
+  version: 1.x
+  css:
+    theme:
+      css/hg-reader.css: {},
+      css/news.css: {},
+      css/external-news.css: {},
+      css/events.css: {},
+      css/img-modal.css: {}
+  js:
+    js/hg_reader.js: {},
+  dependencies:
+    - core/jquery
+    - core/jquery.once
+    - core/drupalSettings
+
+fastselect:
+  version: 0.7.3
+  css:
+    theme:
+      css/hg_reader.admin.css: {}
+      css/fastselect.min.css: {}
+  js:
+    js/hg_reader.js: {}
+    js/fastselect.standalone.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupalSettings

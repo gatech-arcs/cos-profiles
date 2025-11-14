@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies: {  }
+id: test_preset
+label: Test preset
+description: 'Test'
+field_tag: div
+field_classes: 'field-class'
+field_items_wrapper_tag: address
+field_items_wrapper_classes: 'field-items-wrapper-class'
+field_item_tag: p
+field_item_classes: 'field-item-class'
+label_tag: details
+label_classes: 'label-class'

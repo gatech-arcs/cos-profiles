@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_hg_location
+    - node.type.hg_news
+id: node.hg_news.field_hg_location
+field_name: field_hg_location
+entity_type: node
+bundle: hg_news
+label: Location
+description: 'The location to which your story is relevant. E.g. Atlanta, GA (preferred default value)'
+required: false
+translatable: false
+default_value:
+  -
+    value: 'Atlanta, GA'
+default_value_callback: ''
+settings: {  }
+field_type: string

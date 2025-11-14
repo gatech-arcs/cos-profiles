@@ -1,0 +1,36 @@
+/* GT Image CSS */
+#gt-image-wrapper img {
+  width: 100% !important;
+}
+
+.cutline,
+.cutline p {
+  font-size: .83rem;
+  line-height: 1.1;
+  color: var(--gt-dark-gray);
+  margin-bottom: 1rem;
+}
+
+/* Flashing */
+#gt-image-wrapper a img:hover {
+  opacity: 1;
+  -webkit-animation: flash 1.5s;
+  animation: flash 1.5s;
+}
+@-webkit-keyframes flash {
+  0% {
+    opacity: .4;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes flash {
+  0% {
+    opacity: .4;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+

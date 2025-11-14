@@ -1,0 +1,5 @@
+entity.fences_preset.overview:
+  title: Fences Presets
+  parent: fences.overview
+  description: 'List of presets to be used for Fences field display settings.'
+  route_name: entity.fences_preset.collection

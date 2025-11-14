@@ -1,0 +1,17 @@
+{
+    "name": "drupal/diff_plus",
+    "description": "Extended functionality for the Diff module",
+    "type": "drupal-module",
+    "license": "GPL-2.0-or-later",
+    "support": {
+        "issues": "https://www.drupal.org/project/issues/diff_plus",
+        "source": "https://git.drupalcode.org/project/diff_plus"
+    },
+    "require":{
+        "caxy/php-htmldiff": "^0.1.14",
+        "drupal/core": "^10.1 || ^11",
+        "drupal/diff": "^1.0 || ^2.0",
+        "ext-dom": "*",
+        "php": ">=8.1"
+    }
+}

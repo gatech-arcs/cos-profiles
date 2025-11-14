@@ -1,0 +1,23 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_gtppl_title_custom_html
+    - node.type.gt_people
+  module:
+    - text
+id: node.gt_people.field_gtppl_title_custom_html
+field_name: field_gtppl_title_custom_html
+entity_type: node
+bundle: gt_people
+label: 'Title (custom, html)'
+description: "512 character limit, but valid embedded HTML links for references are allowed, e.g.\r\n\r\nAssistant Dean for Information Technology in the <a href=\"https://cos.gatech.edu\">College of Sciences</a>; Associate Vice President for Research Computing in the <a href=\"https://research.gatech.edu\">Office of the Executive Vice President for Research</a>; and Senior Academic Professional in the <a href=\"https://math.gatech.edu\">School of Mathematics</a>"
+required: false
+translatable: false
+default_value:
+  -
+    value: ' '
+    format: basic_html
+default_value_callback: ''
+settings: {  }
+field_type: text

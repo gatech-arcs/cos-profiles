@@ -1,0 +1,33 @@
+<div class="oembed-lazyload-youtube-settings">
+  <p class="oembed-lazyload-youtube-settings__title">{{ 'YouTube settings'|t }}</p>
+  <div class="oembed-lazyload-youtube-settings__settings">
+    {% if autoplay %}
+      <p class="oembed-lazyload-youtube-settings__setting">YouTube videos will attempt to auto-play.</p>
+    {% else %}
+      <p class="oembed-lazyload-youtube-settings__setting">YouTube videos will not attempt to auto-play.</p>
+    {% endif %}
+    {% if modestbranding %}
+      <p class="oembed-lazyload-youtube-settings__setting">YouTube branding will not be visible on videos.</p>
+    {% else %}
+      <p class="oembed-lazyload-youtube-settings__setting">YouTube branding will be visible on videos.</p>
+    {% endif %}
+    {% if enablejsapi %}
+      <p class="oembed-lazyload-youtube-settings__setting">The video will be controllable via the YouTube IFrame API.</p>
+      {% if origin %}
+        <p class="oembed-lazyload-youtube-settings__setting">Access to the IFrame API will be limited to the oembed iframe domain.</p>
+      {% else %}
+        <p class="oembed-lazyload-youtube-settings__setting">Access to the IFrame API will not be limited to the oembed iframe domain.</p>
+      {% endif %}
+    {% else %}
+      <p class="oembed-lazyload-youtube-settings__setting">The video will not be controllable via the YouTube IFrame API.</p>
+    {% endif %}
+    {% if hideinfo %}
+      <p class="oembed-lazyload-youtube-settings__setting">The video will attempt to hide the video title and uploader prior to playing. <strong>This is a deprecated player parameter and may not work for every account, and may cease to work at any time!</strong></p>
+    {% endif %}
+    {% if rel %}
+      <p class="oembed-lazyload-youtube-settings__setting">Only related videos from the same channel as the current video will be shown.</p>
+    {% else  %}
+      <p class="oembed-lazyload-youtube-settings__setting">Related videos from other channels may be shown.</p>
+    {% endif %}
+  </div>
+</div>

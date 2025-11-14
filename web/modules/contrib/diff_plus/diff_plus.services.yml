@@ -1,0 +1,39 @@
+services:
+  diff_plus.library_info_alter:
+    class: Drupal\diff_plus\LibraryInfoAlter
+    internal: true
+    arguments:
+      - "@config.factory"
+      - "@current_user"
+      - "@user.data"
+
+  theme.negotiator.diff_plus_raw_html:
+    class: Drupal\diff_plus\Theme\RawHtmlThemeNegotiator
+    arguments:
+      - "@theme_handler"
+    tags:
+      - { name: theme_negotiator, priority: 0 }
+
+  theme.negotiator.diff_plus_visual_inline_html5:
+    class: Drupal\diff_plus\Theme\VisualInlineHtml5ThemeNegotiator
+    arguments:
+      - "@theme_handler"
+    tags:
+      - { name: theme_negotiator, priority: 0 }
+
+  diff_plus.controller_alter:
+    class: Drupal\diff_plus\EventSubscriber\DiffControllerAlterSubscriber
+    arguments:
+      - "@current_route_match"
+      - "@entity_type.manager"
+      - "@config.factory"
+      - "@user.data"
+      - "@current_user"
+      - "@request_stack"
+    calls:
+      - [
+          setModerationInformation,
+          ["@?content_moderation.moderation_information"],
+        ]
+    tags:
+      - { name: event_subscriber }

@@ -1,0 +1,12 @@
+name: oEmbed lazy load YouTube enhancer
+description: Enhances the user experience of lazy loaded YouTube content.
+type: module
+core_version_requirement: ^10.3 || ^11.0
+package: Media
+dependencies:
+  - oembed_lazyload:oembed_lazyload
+
+# Information added by Drupal.org packaging script on 2024-09-13
+version: '2.0.5'
+project: 'oembed_lazyload'
+datestamp: 1726188376

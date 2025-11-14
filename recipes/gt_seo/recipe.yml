@@ -1,0 +1,44 @@
+name: 'Georgia Tech SEO and Social baseline configs'
+type: 'Administration'
+description: 'Georgia Tech SEO and Social baseline configs'
+
+install:
+  - google_tag
+  - klaro
+  - matomo
+  - menu_link_attributes
+  - metatag
+  - seo_checklist
+  - simple_sitemap
+  - yoast_seo
+
+config:
+  strict: false
+  import:
+    google_tag: '*'
+    klaro: '*'
+    matomo: '*'
+    menu_link_attributes: '*'
+    metatag: '*'
+    seo_checklist: '*'
+    simple_sitemap: '*'
+    yoast_seo: '*'
+
+  actions:
+    klaro.settings:
+      simpleConfigUpdate:
+        auto_decorate_final_html: true
+        library.group_by_purpose: true
+        library.cookie_expires_after_days: 30
+    klaro.texts:
+      simpleConfigUpdate:
+        consentModal.privacyPolicy.url: 'internal:/privacy-policy'
+    menu_link_attributes.config:
+      simpleConfigUpdate:
+        attributes.rel:
+          label: Relationship
+          description: 'The "rel" attribute specifies the relationship between the current document and the linked document.'
+    user.role.anonymous:
+      grantPermission: 'use klaro'
+    user.role.authenticated:
+      grantPermission: 'use klaro'

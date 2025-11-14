@@ -1,0 +1,12 @@
+name: GT-SSO
+type: Users
+description: Drupal recipe for Single Sign On with Georgia Tech's CAS v6
+
+install:
+  - cas
+  - cas_attributes
+  - externalauth
+
+config:
+  import:
+    cas: '*'

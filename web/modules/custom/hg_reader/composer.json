@@ -1,0 +1,14 @@
+{
+    "name": "gtsciences/hg_reader",
+    "description": "Provides the hg_reader for Georgia Tech's Mercury syndication service",
+    "type": "drupal-custom-module",
+    "license": "GPL-2.0-or-later",
+    "lifecycle": "stable",
+    "require": {
+        "drupal/field_group": "^4.0@dev",
+        "drupal/metatag": "^2.1",
+        "drupal/pathauto": "^1.13",
+        "drupal/twig_field_value": "^2.0",
+        "drupal/twig_tweak": "^3.4"
+    }
+}

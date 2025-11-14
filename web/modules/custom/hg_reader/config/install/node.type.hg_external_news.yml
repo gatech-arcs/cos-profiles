@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - hg_reader
+name: 'Mercury external news'
+type: hg_external_news
+description: 'Used to post media references from sources outside of Georgia Tech. The Mercury Reader module will transform its title to link to the original article.'
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: false

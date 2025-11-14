@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_hg_mobile_phone
+    - node.type.hg_profile
+  module:
+    - telephone
+id: node.hg_profile.field_hg_mobile_phone
+field_name: field_hg_mobile_phone
+entity_type: node
+bundle: hg_profile
+label: 'Mobile phone'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: telephone

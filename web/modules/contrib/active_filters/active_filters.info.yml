@@ -1,0 +1,14 @@
+name: Active Filters
+description: 'Provides a views area plugin which generates active filters from exposed filter selections.'
+type: module
+core_version_requirement: ^10.3 || ^11
+php: 8.2
+package: Views
+
+dependencies:
+  - 'drupal:views'
+
+# Information added by Drupal.org packaging script on 2025-06-20
+version: '1.0.4'
+project: 'active_filters'
+datestamp: 1750455794

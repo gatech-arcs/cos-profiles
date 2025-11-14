@@ -1,0 +1,11 @@
+langcode: en
+status: true
+dependencies: { }
+id: node__hg_news
+label: 'Content: Mercury news'
+tags:
+  og_image: '[node:field_hg_media:0:entity:field_media_hg_image:0:large:url]'
+  og_image_secure_url: '[node:field_hg_media:0:entity:field_media_hg_image:0:large:url]'
+  og_image_url: '[node:field_hg_media:0:entity:field_media_hg_image:0:large:url]'
+  twitter_cards_image: '[node:field_hg_media:0:entity:field_media_hg_image:0:large:url]'
+  twitter_cards_image_alt: '[node:field_hg_media:0:entity:field_media_hg_image:0:large:url]'

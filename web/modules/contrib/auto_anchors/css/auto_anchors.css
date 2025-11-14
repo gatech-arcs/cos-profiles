@@ -1,0 +1,17 @@
+.auto-anchor {
+  color: inherit;
+  opacity: 35%;
+  text-decoration: none;
+  display: inline;
+  clear: none;
+}
+
+.auto-anchor:hover {
+  color: inherit;
+  opacity: 100%;
+  text-decoration: none;
+}
+
+.auto-anchor::before {
+  content:"\00a0";
+}

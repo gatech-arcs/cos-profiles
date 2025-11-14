@@ -1,0 +1,26 @@
+hg_reader.settings_tab:
+  route_name: entity.hg_reader_importer.settings
+  title: Settings
+  base_route: entity.hg_reader_importer.settings
+
+hg_reader.view:
+  route_name: entity.hg_reader_importer.canonical
+  base_route: entity.hg_reader_importer.canonical
+  title: View
+
+hg_reader.page_edit:
+  route_name: entity.hg_reader_importer.edit_form
+  base_route: entity.hg_reader_importer.canonical
+  title: Edit
+
+hg_reader.delete_confirm:
+  route_name:  entity.hg_reader_importer.delete_form
+  base_route:  entity.hg_reader_importer.canonical
+  title: Delete
+  weight: 10
+
+hg_reader.delete_nodes_confirm:
+  route_name:  entity.hg_reader_importer.delete_nodes_form
+  base_route:  entity.hg_reader_importer.canonical
+  title: Delete nodes
+  weight: 10

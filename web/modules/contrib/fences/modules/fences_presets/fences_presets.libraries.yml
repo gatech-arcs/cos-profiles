@@ -1,0 +1,6 @@
+fences_preset_selector:
+  js:
+    js/preset_selector.js: {}
+  dependencies:
+    - core/drupalSettings
+    - core/once

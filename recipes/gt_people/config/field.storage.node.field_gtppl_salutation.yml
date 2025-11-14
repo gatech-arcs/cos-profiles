@@ -1,0 +1,95 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_gtppl_salutation
+field_name: field_gtppl_salutation
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: mr
+      label: Mr
+    -
+      value: mrs
+      label: Mrs
+    -
+      value: miss
+      label: Miss
+    -
+      value: ms
+      label: Ms
+    -
+      value: dr
+      label: Dr
+    -
+      value: admiral
+      label: Admiral
+    -
+      value: ambassador
+      label: Ambassador
+    -
+      value: brother
+      label: Brother
+    -
+      value: capt
+      label: Capt
+    -
+      value: col
+      label: Col
+    -
+      value: father
+      label: Father
+    -
+      value: general
+      label: General
+    -
+      value: judge
+      label: Judge
+    -
+      value: lt
+      label: Lt
+    -
+      value: lt-col
+      label: 'Lt Col'
+    -
+      value: major
+      label: Major
+    -
+      value: minister
+      label: Minister
+    -
+      value: professor
+      label: Professor
+    -
+      value: rabbi
+      label: Rabbi
+    -
+      value: rev
+      label: Rev
+    -
+      value: rev-dr
+      label: 'Rev Dr'
+    -
+      value: sgt
+      label: Sgt
+    -
+      value: sir
+      label: Sir
+    -
+      value: sister
+      label: Sister
+    -
+      value: the-honorable
+      label: 'The Honorable'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

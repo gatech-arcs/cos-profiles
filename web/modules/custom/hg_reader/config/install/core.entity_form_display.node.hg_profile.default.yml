@@ -1,0 +1,435 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.hg_profile.body
+    - field.field.node.hg_profile.field_hg_alternate_job_title
+    - field.field.node.hg_profile.field_hg_city
+    - field.field.node.hg_profile.field_hg_classification
+    - field.field.node.hg_profile.field_hg_college_school
+    - field.field.node.hg_profile.field_hg_degree
+    - field.field.node.hg_profile.field_hg_department
+    - field.field.node.hg_profile.field_hg_expertise
+    - field.field.node.hg_profile.field_hg_fax_number
+    - field.field.node.hg_profile.field_hg_first_name
+    - field.field.node.hg_profile.field_hg_id
+    - field.field.node.hg_profile.field_hg_importer
+    - field.field.node.hg_profile.field_hg_job_title
+    - field.field.node.hg_profile.field_hg_last_name
+    - field.field.node.hg_profile.field_hg_linkedin
+    - field.field.node.hg_profile.field_hg_middle_name
+    - field.field.node.hg_profile.field_hg_mobile_phone
+    - field.field.node.hg_profile.field_hg_nickname
+    - field.field.node.hg_profile.field_hg_phone_number
+    - field.field.node.hg_profile.field_hg_primary_email
+    - field.field.node.hg_profile.field_hg_recent_appearances
+    - field.field.node.hg_profile.field_hg_related_files
+    - field.field.node.hg_profile.field_hg_related_links
+    - field.field.node.hg_profile.field_hg_research
+    - field.field.node.hg_profile.field_hg_secondary_email
+    - field.field.node.hg_profile.field_hg_source_updated
+    - field.field.node.hg_profile.field_hg_specialty
+    - field.field.node.hg_profile.field_hg_state
+    - field.field.node.hg_profile.field_hg_street_address
+    - field.field.node.hg_profile.field_hg_summary
+    - field.field.node.hg_profile.field_hg_teaching
+    - field.field.node.hg_profile.field_hg_twitter
+    - field.field.node.hg_profile.field_hg_url
+    - field.field.node.hg_profile.field_hg_zip_code
+    - node.type.hg_profile
+  module:
+    - field_group
+    - file
+    - link
+    - media_library
+    - path
+    - telephone
+    - text
+third_party_settings:
+  field_group:
+    group_hg_name:
+      children:
+        - field_hg_first_name
+        - field_hg_middle_name
+        - field_hg_last_name
+        - field_hg_nickname
+      label: Name
+      region: content
+      parent_name: ''
+      weight: 6
+      format_type: details
+      format_settings:
+        classes: ''
+        id: ''
+        open: false
+        required_fields: true
+    group_contact:
+      children:
+        - field_hg_phone_number
+        - field_hg_mobile_phone
+        - field_hg_primary_email
+        - field_hg_secondary_email
+        - field_hg_fax_number
+        - field_hg_url
+        - field_hg_street_address
+        - field_hg_city
+        - field_hg_state
+        - field_hg_zip_code
+      label: Contact
+      region: content
+      parent_name: ''
+      weight: 19
+      format_type: details
+      format_settings:
+        classes: ''
+        id: ''
+        open: false
+        required_fields: true
+    group_social_media:
+      children:
+        - field_hg_linkedin
+        - field_hg_twitter
+      label: 'Social Media'
+      region: content
+      parent_name: ''
+      weight: 20
+      format_type: fieldset
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        description: ''
+        required_fields: true
+id: node.hg_profile.default
+targetEntityType: node
+bundle: hg_profile
+mode: default
+content:
+  body:
+    type: text_textarea_with_summary
+    weight: 11
+    region: content
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+      show_summary: false
+    third_party_settings: {  }
+  created:
+    type: datetime_timestamp
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_hg_alternate_job_title:
+    type: string_textfield
+    weight: 18
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_hg_city:
+    type: string_textfield
+    weight: 21
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_hg_classification:
+    type: options_select
+    weight: 9
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_hg_college_school:
+    type: string_textfield
+    weight: 7
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_hg_degree:
+    type: options_select
+    weight: 12
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_hg_department:
+    type: string_textfield
+    weight: 8
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_hg_expertise:
+    type: entity_reference_autocomplete
+    weight: 14
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_hg_fax_number:
+    type: telephone_default
+    weight: 18
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_hg_first_name:
+    type: string_textfield
+    weight: 8
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_hg_id:
+    type: number
+    weight: 26
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_hg_importer:
+    type: number
+    weight: 25
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_hg_job_title:
+    type: string_textfield
+    weight: 17
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_hg_last_name:
+    type: string_textfield
+    weight: 10
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_hg_linkedin:
+    type: link_default
+    weight: 21
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_hg_media:
+    type: media_library_widget
+    weight: 21
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+  field_hg_middle_name:
+    type: string_textfield
+    weight: 9
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_hg_mobile_phone:
+    type: telephone_default
+    weight: 15
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_hg_nickname:
+    type: string_textfield
+    weight: 11
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_hg_phone_number:
+    type: telephone_default
+    weight: 13
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_hg_primary_email:
+    type: email_default
+    weight: 16
+    region: content
+    settings:
+      placeholder: ''
+      size: 60
+    third_party_settings: {  }
+  field_hg_recent_appearances:
+    type: entity_reference_autocomplete
+    weight: 22
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_hg_related_files:
+    type: file_generic
+    weight: 24
+    region: content
+    settings:
+      progress_indicator: throbber
+    third_party_settings: {  }
+  field_hg_related_links:
+    type: link_default
+    weight: 23
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_hg_research:
+    type: text_textarea
+    weight: 16
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_hg_secondary_email:
+    type: email_default
+    weight: 17
+    region: content
+    settings:
+      placeholder: ''
+      size: 60
+    third_party_settings: {  }
+  field_hg_source_updated:
+    type: datetime_timestamp
+    weight: 27
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_hg_specialty:
+    type: string_textfield
+    weight: 13
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_hg_state:
+    type: options_select
+    weight: 22
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_hg_street_address:
+    type: string_textfield
+    weight: 20
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_hg_summary:
+    type: text_textarea
+    weight: 10
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_hg_teaching:
+    type: text_textarea
+    weight: 15
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_hg_twitter:
+    type: link_default
+    weight: 23
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_hg_url:
+    type: link_default
+    weight: 19
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_hg_zip_code:
+    type: string_textfield
+    weight: 23
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 28
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  promote:
+    type: boolean_checkbox
+    weight: 3
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 5
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  sticky:
+    type: boolean_checkbox
+    weight: 4
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 1
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  url_redirects:
+    weight: 29
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }

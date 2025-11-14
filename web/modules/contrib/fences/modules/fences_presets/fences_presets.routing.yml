@@ -1,0 +1,31 @@
+entity.fences_preset.collection:
+  path: '/admin/config/user-interface/fences/presets'
+  defaults:
+    _entity_list: 'fences_preset'
+    _title: 'Fences Preset configuration'
+  requirements:
+    _permission: 'administer fences_preset'
+
+entity.fences_preset.add_form:
+  path: '/admin/config/user-interface/fences/presets/add'
+  defaults:
+    _entity_form: 'fences_preset.add'
+    _title: 'Add a Fences Preset'
+  requirements:
+    _permission: 'administer fences_preset'
+
+entity.fences_preset.edit_form:
+  path: '/admin/config/user-interface/fences/presets/{fences_preset}'
+  defaults:
+    _entity_form: 'fences_preset.edit'
+    _title: 'Edit a Fences Preset'
+  requirements:
+    _permission: 'administer fences_preset'
+
+entity.fences_preset.delete_form:
+  path: '/admin/config/user-interface/fences/presets/{fences_preset}/delete'
+  defaults:
+    _entity_form: 'fences_preset.delete'
+    _title: 'Delete a Fences Preset'
+  requirements:
+    _permission: 'administer fences_preset'

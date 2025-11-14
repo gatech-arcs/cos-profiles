@@ -1,0 +1,11 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - hg_reader
+name: 'Hg - Keywords'
+vid: hg_keywords
+description: 'Free tagging terms from Mercury'
+hierarchy: 0
+weight: 0

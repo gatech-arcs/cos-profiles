@@ -1,0 +1,24 @@
+{# HG Boilerplate Template #}
+{% set classes = [
+  'row',
+  'mercury',
+  'boilerplate',
+  'mb-5',
+  'clearfix',
+] %}
+
+{# Attached Style Sheet #}
+{{ attach_library('hg_reader/hg_reader') }}
+
+{# Content #}
+<article{{ attributes.setAttribute('id', 'mercury').addClass(classes) }}>
+  {# Set Main Container #}
+  <div class="col">
+    {# Description #}
+    {% if content.body is not empty %}
+      <div class="content">
+        {{ content.body }}
+      </div>
+    {% endif %}
+  </div>
+</article>

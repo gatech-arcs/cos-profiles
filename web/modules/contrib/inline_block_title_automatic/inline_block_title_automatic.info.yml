@@ -1,0 +1,12 @@
+name: Inline Block Title Automatic
+description: 'Remove the choice to define titles for block_content entities in layout builder.'
+core_version_requirement: ^10.2 || ^11
+php: 8.1
+type: module
+dependencies:
+  - drupal:layout_builder
+
+# Information added by Drupal.org packaging script on 2024-08-22
+version: '2.0.0'
+project: 'inline_block_title_automatic'
+datestamp: 1724286245

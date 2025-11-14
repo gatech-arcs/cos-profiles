@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_hg_summary_sentence
+    - node.type.hg_news
+id: node.hg_news.field_hg_summary_sentence
+field_name: field_hg_summary_sentence
+entity_type: node
+bundle: hg_news
+label: 'Summary sentence'
+description: 'Required: A single-sentence summary of this story (which adds information not given in Title). Mercury consumers may wish to use this in short news lists. Limited to 255 characters (and less than that is highly recommended)! Use only 10 to 12 words at most. This often displays below the title, so don’t be repetitive.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,19 @@
+uuid: 625c87ff-b614-412f-9a5b-55c8be6a8b43
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_honors
+    - paragraphs.paragraphs_type.degree
+id: paragraph.degree.field_honors
+field_name: field_honors
+entity_type: paragraph
+bundle: degree
+label: Honors
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

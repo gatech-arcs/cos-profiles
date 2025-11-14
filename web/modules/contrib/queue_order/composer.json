@@ -1,0 +1,15 @@
+{
+    "name": "drupal/queue_order",
+    "description": "Provide basic functionality to control queue order execution",
+    "type": "drupal-module",
+    "license": "GPL-2.0-or-later",
+    "authors": [
+        {
+            "name": "Oleh Vehera",
+            "email": "voleger@3260314.no-reply.drupal.org"
+        }
+    ],
+    "conflict": {
+        "drush/drush": "<12"
+    }
+}

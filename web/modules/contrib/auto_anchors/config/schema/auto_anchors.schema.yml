@@ -1,0 +1,16 @@
+auto_anchors.settings:
+  type: config_object
+  label: 'Automatic anchors settings'
+  mapping:
+    root_elements:
+      type: string
+      label: 'Root elements'
+    anchor_elements:
+      type: string
+      label: 'Anchor elements'
+    link_content:
+      type: string
+      label: 'Link content'
+    exclude_admin_pages:
+      type: boolean
+      label: 'Exclude admin pages'

@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_hg_source_updated
+    - node.type.hg_event
+id: node.hg_event.field_hg_source_updated
+field_name: field_hg_source_updated
+entity_type: node
+bundle: hg_event
+label: 'Source updated'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: timestamp

@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_gtppl_gtaccount
+    - node.type.gt_people
+id: node.gt_people.field_gtppl_gtaccount
+field_name: field_gtppl_gtaccount
+entity_type: node
+bundle: gt_people
+label: 'GT Account'
+description: 'Primary GT Account (may not exist for external user profiles)'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

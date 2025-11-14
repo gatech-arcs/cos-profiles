@@ -1,0 +1,6 @@
+services:
+  ckeditor_heading_size.allowed_html_override:
+    class: Drupal\ckeditor_heading_size\Config\AllowedHtmlOverride
+    arguments: ['@config.factory']
+    tags:
+      - { name: config.factory.override, priority: 5 }

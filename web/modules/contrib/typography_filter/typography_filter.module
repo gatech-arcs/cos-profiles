@@ -1,0 +1,19 @@
+<?php
+
+/**
+ * @file
+ * Typography Filter module hooks.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function typography_filter_help($route_name, RouteMatchInterface $route_match) {
+  if ($route_name === 'help.page.typography_filter') {
+    $output = '<h3>' . t('About') . '</h3>';
+    $output .= '<p>' . t('This module intent to provide a text filter to automatically improve typography of your content. It relies on the <a href=":link">JoliTypo</a> PHP library.', [':link' => 'https://github.com/jolicode/JoliTypo']) . '</p>';
+    return $output;
+  }
+}

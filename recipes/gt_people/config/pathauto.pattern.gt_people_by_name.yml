@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: gt_people_by_name
+label: 'GT People by Name'
+type: 'canonical_entities:node'
+pattern: '/people/[node:title]'
+selection_criteria:
+  ab020363-4b1a-42af-931a-391d2231bc35:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: ab020363-4b1a-42af-931a-391d2231bc35
+    context_mapping:
+      node: node
+    bundles:
+      gt_people: gt_people
+selection_logic: and
+weight: -5
+relationships: {  }

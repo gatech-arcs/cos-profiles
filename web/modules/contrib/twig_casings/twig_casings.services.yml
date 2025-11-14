@@ -1,0 +1,5 @@
+services:
+  twig_casings.twig_extension:
+    class: 'Drupal\twig_casings\Twig\CasingExtension'
+    tags:
+      - { name: twig.extension }

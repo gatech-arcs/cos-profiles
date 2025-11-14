@@ -1,0 +1,10 @@
+name: 'Automatic Anchors'
+type: module
+description: 'Automatically generates HTML ids for use as anchors on specified elements.'
+core_version_requirement: ^10.1 || ^11
+configure: auto_anchors.settings
+
+# Information added by Drupal.org packaging script on 2024-12-09
+version: '3.0.0-beta1'
+project: 'auto_anchors'
+datestamp: 1733786108

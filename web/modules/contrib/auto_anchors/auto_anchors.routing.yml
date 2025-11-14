@@ -1,0 +1,9 @@
+auto_anchors.settings:
+  path: '/admin/config/auto_anchors/settings'
+  defaults:
+    _form: '\Drupal\auto_anchors\Form\SettingsForm'
+    _title: 'Automatic Anchors Settings'
+  requirements:
+    _permission: 'administer automatic anchors'
+  options:
+    _admin_route: TRUE

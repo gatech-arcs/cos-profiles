@@ -1,0 +1,22 @@
+field.formatter.third_party.oembed_lazyload_youtube:
+  type: mapping
+  label: 'YouTube specific settings for the oembed lazyload formatter'
+  mapping:
+    autoplay:
+      type: boolean
+      label: 'If enabled, the player will attempt to auto-play'
+    modestbranding:
+      type: boolean
+      label: 'If enabled, the player will not show a YouTube logo'
+    enablejsapi:
+      type: boolean
+      label: 'If enabled, the player can be controlled via the YouTube IFrame API'
+    origin:
+      type: boolean
+      label: 'If enabled, IFrame API access will only be granted to the oembed iframe host'
+    hideinfo:
+      type: boolean
+      label: 'Warning!  This is a deprecated parameter!  If enabled, video title and uploader will not be visible'
+    rel:
+      type: boolean
+      label: 'If enabled, only videos from the same channel as the current video will be shown in the related videos'

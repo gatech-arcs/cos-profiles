@@ -1,0 +1,183 @@
+#diff-plus-ui.diff-plus-ui {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 50px;
+}
+
+#diff-plus-ui .form-item__label {
+  margin-top: 0;
+  font-weight: bold;
+}
+
+#diff-plus-ui .dropbutton-wrapper {
+  width: 100%;
+}
+
+#diff-plus-ui .dropbutton {
+  position: relative;
+  width: 100%;
+}
+
+#diff-plus-ui .dropbutton-widget {
+  width: 100%;
+  padding-inline-end: 0;
+}
+
+#diff-plus-ui .diff-controls__item {
+  padding: 0;
+}
+
+#diff-plus-ui .diff-controls__item:first-of-type {
+  margin-top: 0;
+}
+
+#diff-plus-ui .diff-controls__item:last-of-type {
+  margin-bottom: 0;
+}
+
+#diff-plus-ui .diff-plus-ui__settings {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+#diff-plus-ui .diff-plus-ui__settings-toggle {
+  width: 32px;
+  height: 32px;
+  margin-left: auto;
+  padding: 0;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+#diff-plus-ui .diff-plus-ui__settings-panel {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  visibility: hidden;
+  min-width: 240px;
+  padding: 20px;
+  transition:
+    0.1s opacity linear,
+    0.1s visibility linear;
+  opacity: 0;
+  border: 1px solid lightgray;
+  background: white;
+}
+
+#diff-plus-ui .diff-plus-ui__settings-panel::before {
+  position: absolute;
+  top: -11px;
+  right: 3px;
+  width: 20px;
+  height: 20px;
+  content: "";
+  transform: rotateZ(45deg);
+  border-width: 1px;
+  border-style: solid;
+  border-color: lightgray transparent transparent lightgray;
+  background: #fff;
+}
+
+#diff-plus-ui
+  .diff-plus-ui__settings-toggle[aria-expanded="true"]
+  + .diff-plus-ui__settings-panel {
+  visibility: visible;
+  opacity: 1;
+}
+
+#diff-plus-ui .diff-plus-ui__revisions {
+  display: flex;
+  flex-flow: row wrap;
+  margin-right: 32px;
+  margin-bottom: 30px;
+  gap: 30px;
+}
+
+#diff-plus-ui .diff-plus-ui__from-revision,
+#diff-plus-ui .diff-plus-ui__to-revision {
+  flex: 1 1 0;
+}
+
+#diff-plus-ui .diff-plus-ui__metadata {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 240px;
+}
+
+#diff-plus-ui .diff-plus-ui__metadata-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+#diff-plus-ui .diff-plus-ui__metadata-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+}
+#diff-plus-ui .diff-plus-ui__metadata-authoring {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5px;
+}
+#diff-plus-ui .diff-plus-ui__metadata-authored-by {
+  display: block;
+}
+#diff-plus-ui .diff-plus-ui__metadata-authored-on {
+  display: block;
+}
+#diff-plus-ui .diff-plus-ui__navigation {
+  display: flex;
+}
+#diff-plus-ui .diff-plus-ui__previous-revision-placeholder {
+  flex: 1;
+  margin-right: auto;
+}
+
+#diff-plus-ui .diff-plus-ui__choose-new-range-placeholder {
+  flex: 1;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+#diff-plus-ui .diff-plus-ui__next-revision-placeholder {
+  flex: 1;
+  margin-left: auto;
+}
+
+#diff-plus-ui .diff-plus-ui__previous-revision,
+#diff-plus-ui .diff-plus-ui__next-revision,
+#diff-plus-ui .diff-plus-ui__choose-new-range {
+  padding: 5px 10px;
+  text-decoration: none;
+  color: #000;
+  border: 1px solid darkgrey;
+  border-radius: 10px;
+  background: lightgray;
+  font-weight: 600;
+}
+
+#diff-plus-ui
+  .diff-plus-ui__previous-revision:hover
+  .diff-plus-ui__navigation-text,
+#diff-plus-ui .diff-plus-ui__next-revision:hover .diff-plus-ui__navigation-text,
+#diff-plus-ui
+  .diff-plus-ui__choose-new-range:hover
+  .diff-plus-ui__navigation-text {
+  text-decoration: underline;
+  text-underline-offset: 0.3em;
+}
+
+#diff-plus-ui .diff-plus-ui__previous-revision::before {
+  margin-right: 5px;
+  content: "<";
+}
+
+#diff-plus-ui .diff-plus-ui__next-revision::after {
+  margin-left: 5px;
+  content: ">";
+}

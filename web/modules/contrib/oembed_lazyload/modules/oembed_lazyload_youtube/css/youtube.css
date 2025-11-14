@@ -1,0 +1,108 @@
+.oembed-lazyload--youtube .oembed-lazyload__button {
+  padding: 0;
+  cursor: pointer;
+  border: none;
+}
+
+.oembed-lazyload--youtube .oembed-lazyload__picture {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.oembed-lazyload--youtube .oembed-lazyload__img {
+  object-fit: cover;
+  object-position: center;
+  height: 100%;
+  width: 100%;
+}
+
+.oembed-lazyload--youtube .oembed-lazyload__yt-icon {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 68px;
+  height: 48px;
+  margin-left: -34px;
+  margin-top: -24px;
+}
+
+.oembed-lazyload--youtube .oembed-lazyload__yt-spinner {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -50px;
+  margin-top: -50px;
+}
+
+.oembed-lazyload--youtube .oembed_lazyload__yt-icon-fill {
+  fill: #212121;
+  fill-opacity: .8;
+  transition: fill .1s cubic-bezier(0.4,0,1,1),fill-opacity .1s cubic-bezier(0.4,0,1,1);
+}
+
+.oembed-lazyload--youtube .oembed-lazyload__button:active .oembed_lazyload__yt-icon-fill,
+.oembed-lazyload--youtube .oembed-lazyload__button:focus .oembed_lazyload__yt-icon-fill,
+.oembed-lazyload--youtube .oembed-lazyload__button:hover .oembed_lazyload__yt-icon-fill {
+  fill: red;
+  fill-opacity: 1;
+}
+
+@keyframes svg-animation {
+  0% {
+    transform: rotateZ(0deg);
+  }
+  100% {
+    transform: rotateZ(360deg)
+  }
+}
+
+@keyframes circle-animation {
+  0%,
+  25% {
+    stroke-dashoffset: 280;
+    transform: rotate(0);
+  }
+
+  50%,
+  75% {
+    stroke-dashoffset: 75;
+    transform: rotate(45deg);
+  }
+
+  100% {
+    stroke-dashoffset: 280;
+    transform: rotate(360deg);
+  }
+}
+
+.oembed-lazyload--youtube .oembed-lazyload__button--loading .oembed-lazyload__yt-icon {
+  display: none;
+}
+
+.oembed-lazyload--youtube .oembed-lazyload__button .oembed-lazyload__yt-spinner {
+  display: none;
+}
+
+.oembed-lazyload--youtube .oembed-lazyload__button--loading .oembed-lazyload__yt-spinner {
+  display: inline-block;
+}
+
+.oembed-lazyload--youtube .oembed-lazyload__yt-spinner {
+  animation: 2s linear infinite svg-animation;
+  max-width: 100px;
+}
+
+.oembed-lazyload--youtube .oembed-lazyload__yt-spinner circle {
+     animation: 1.4s ease-in-out infinite both circle-animation;
+     display: block;
+     fill: transparent;
+     stroke: #ddd;
+     stroke-linecap: round;
+     stroke-dasharray: 283;
+     stroke-dashoffset: 280;
+     stroke-width: 6px;
+     transform-origin: 50% 50%;
+   }

@@ -1,0 +1,73 @@
+{# Mercury External News Template #}
+
+{# Attached Style Sheet #}
+{{ attach_library('hg_reader/hg_reader') }}
+
+{# Set Content CSS Classes #}
+{% set classes = [
+    'label',
+    'content',
+    'external-news',
+    'pt-1',
+    'pb-1',
+] %}
+
+{# Set Div Wrapper ID #}
+<div{{ attributes.setAttribute('id', 'mercury').addClass(classes) }}>
+    {# Set Row Container #}
+    <div class="row mb-5">
+        {# Set Main Container #}
+        <div class="col">
+        {# Dateline #}
+            {% if content.field_hg_dateline|render is not empty %}
+                {# label #}
+                <div{{ attributes.addClass('dateline', classes).removeClass('content', 'link' , 'article-url') }}>
+                   {# <h3> {{ content.field_hg_dateline['#title'] }} </h3> #}
+                    {{ node.field_hg_dateline.value|date('M d, Y') }}
+                </div>
+            {% endif %}
+        {# Description #}
+            {% if content.body|render is not empty %}
+                <div{{ attributes.addClass('description', classes).removeClass('label', 'dateline') }}>
+                    {{ content.body[0] }}
+                </div>
+            {% endif %}
+            {# Article URL #}
+            <div class="ex-news-details"> 
+            {% if content.field_hg_article_url|render is not empty %}
+                {# label #}
+                <div{{ attributes.addClass('article-url', classes).removeClass('pb-1', 'pt-1') .removeAttribute('id') }}>
+                    <h3>{{ content.field_hg_article_url['#title'] }}</h3>
+                    {{ content.field_hg_article_url[0] }}
+                </div>
+            {% endif %}
+            {# Publication #}
+            {% if content.field_hg_publication|render is not empty %}
+                {# label #}
+                <div{{ attributes.addClass('publication', classes).removeClass('pb-1', 'pt-1') }}>
+                    <h3>{{ content.field_hg_publication['#title'] }}</h3>
+                    {{ node.field_hg_publication.value }}
+                </div>
+            {% endif %}
+            </div>
+
+            {# Related Files #}
+            {% if content.field_hg_related_files|render is not empty %}
+                {# label #}
+                <div{{ attributes.addClass('related-files', classes).removeClass('content', 'publication', 'pb-1', 'pt-1') }}>
+                    <h3>{{ content.field_hg_related_files['#title'] }}</h3>
+                     <div class="related-files-items">
+                        {% for key, item in content.field_hg_related_files %}
+                             {% if key >= 0 %}
+                                {{ item }}
+                            {% endif %}
+                        {% endfor %}
+                        </div>
+                </div>
+            {% endif %}
+        </div>
+        {# End Main Container #}
+    </div>
+    {# End Row  #}
+</div>
+{# End Mercury External News Template   #}

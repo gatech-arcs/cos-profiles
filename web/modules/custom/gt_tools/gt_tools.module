@@ -1,0 +1,39 @@
+<?php
+
+function gt_tools_installed() {
+  // This is a dummy function the GT theme uses to check whether the module is
+  // installed. This is necessary because we live in fundamentally broken world
+  // and are forced to engage in bullshit workarounds.
+  return TRUE;
+}
+
+function gt_tools_theme() {
+  $blocks = [
+    'gt_footer_contact' => [
+        'template' => 'gt-footer-contact',
+        'variables' => [],
+    ],
+    'gt_footer_logo' => [
+        'template' => 'gt-footer-logo',
+        'variables' => [],
+    ],
+  ];
+
+  return $blocks;
+}
+
+function gt_tools_preprocess_gt_footer_logo(&$variables, $hook) {
+    $variables['logo_path'] = \Drupal::service('file_url_generator')->generateAbsoluteString(\Drupal::service('extension.path.resolver')->getPath('module', 'gt_tools') . '/images/gt-logo.svg');
+    $variables['cas_login'] = theme_get_setting('cas_login');
+}
+
+function gt_tools_preprocess_gt_footer_contact(&$variables, $hook) {
+    $variables['contact_title'] = theme_get_setting('contact_title');
+    $variables['contact_address'] = theme_get_setting('contact_address');
+    $variables['contact_address_2'] = theme_get_setting('contact_address_2');
+    $variables['contact_city'] = theme_get_setting('contact_city');
+    $variables['contact_state'] = theme_get_setting('contact_state');
+    $variables['contact_zip_code'] = theme_get_setting('contact_zip_code');
+    $variables['contact_telephone'] = theme_get_setting('contact_telephone');
+    $variables['contact_map_url'] = theme_get_setting('contact_map_url');
+}

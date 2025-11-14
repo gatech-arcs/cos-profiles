@@ -1,0 +1,11 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - hg_reader
+name: 'Hg - News categories'
+vid: hg_categories
+description: 'News categories from Mercury'
+hierarchy: 0
+weight: 0

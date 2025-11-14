@@ -1,0 +1,10 @@
+services:
+  active_filters.factory:
+    class: Drupal\active_filters\ActiveFilter\ActiveFilterFactory
+    autowire: true
+  Drupal\active_filters\ActiveFilter\ActiveFilterFactoryInterface: '@active_filters.factory'
+
+  active_filters.builder:
+    class: Drupal\active_filters\ActiveFilter\RenderArrayBuilder
+    autowire: true
+  Drupal\active_filters\ActiveFilter\RenderArrayBuilderInterface: '@active_filters.builder'

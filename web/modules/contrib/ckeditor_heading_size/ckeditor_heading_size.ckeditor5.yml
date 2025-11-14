@@ -1,0 +1,11 @@
+ckeditor_heading_size_plugin:
+  ckeditor5:
+    plugins:
+      - ckeditorHeadingSize.HeadingSize
+  drupal:
+    label: Heading Size
+    library: ckeditor_heading_size/plugin
+    elements: false
+    conditions:
+      plugins:
+        - ckeditor5_heading

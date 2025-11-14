@@ -1,0 +1,29 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.hg_video.body
+    - field.field.node.hg_video.field_hg_youtube_id
+    - node.type.hg_video
+  module:
+    - text
+    - user
+id: node.hg_video.teaser
+targetEntityType: node
+bundle: hg_video
+mode: teaser
+content:
+  body:
+    label: hidden
+    type: text_summary_or_trimmed
+    weight: 101
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    region: content
+hidden:
+  field_hg_youtube_id: true

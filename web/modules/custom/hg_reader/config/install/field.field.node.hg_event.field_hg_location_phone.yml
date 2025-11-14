@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_hg_location_phone
+    - node.type.hg_event
+  module:
+    - telephone
+id: node.hg_event.field_hg_location_phone
+field_name: field_hg_location_phone
+entity_type: node
+bundle: hg_event
+label: 'Location phone'
+description: '(xxx) xxx-xxxx'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: telephone

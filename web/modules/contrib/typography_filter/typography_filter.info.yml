@@ -1,0 +1,10 @@
+name: Typography Filter
+description: A text filter to improve typography.
+type: module
+package: 'Input filters'
+core_version_requirement: ^10 || ^11
+
+# Information added by Drupal.org packaging script on 2025-10-05
+version: '2.0.0'
+project: 'typography_filter'
+datestamp: 1759667239

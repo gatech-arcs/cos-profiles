@@ -1,0 +1,10 @@
+name: Queue Order
+type: module
+description: Provide basic functionality to control queue order execution
+package: Queues
+core_version_requirement: ">=10"
+
+# Information added by Drupal.org packaging script on 2024-10-09
+version: '2.1.5'
+project: 'queue_order'
+datestamp: 1728467802

@@ -1,0 +1,10 @@
+uuid: 41b285d1-a8be-420e-9bee-058fdab36040
+langcode: en
+status: true
+dependencies: {  }
+id: degree
+label: Degree
+icon_uuid: null
+icon_default: null
+description: 'A single academic degree with institution, year, and honors.'
+behavior_plugins: {  }

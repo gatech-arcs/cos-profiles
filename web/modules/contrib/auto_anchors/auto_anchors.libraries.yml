@@ -1,0 +1,10 @@
+auto_anchors:
+  version: 1.x
+  js:
+    js/auto_anchors.js: {}
+  css:
+    theme:
+      css/auto_anchors.css: {}
+  dependencies:
+    - core/jquery
+    - core/drupalSettings

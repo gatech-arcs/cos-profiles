@@ -1,0 +1,23 @@
+{#
+/**
+ * @file
+ * Default template implementation for a single active filter.
+ *
+ * Available variables:
+ * @var Drupal\Component\Render\MarkupInterface|string label
+ *   The active filter value label.
+ * @var \Drupal\Core\Template\Attribute attributes
+ *   HTML attributes for the active filter.
+ * @var \Drupal\Core\Template\Attribute wrapper_attributes
+ *   HTML attributes for the container element.
+ * @var \Drupal\active_filters\ActiveFilter\ActiveFilter active_filter
+ *   The active filter value object.
+ *
+ * @see template_preprocess_active_filter()
+ *
+ * @ingroup themeable
+ */
+#}
+<dd{{ wrapper_attributes.addClass('active-filters__item') }}>
+  <button{{ attributes.addClass('active-filters__button') }}>{{ label }}</button>
+</dd>

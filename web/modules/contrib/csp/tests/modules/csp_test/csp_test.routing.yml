@@ -1,0 +1,39 @@
+csp_test.test_page_no_nonce:
+  path: '/csp-test/no-settings-nonce'
+  defaults:
+    _title: 'Test nonce page'
+    _controller: '\Drupal\csp_test\Controller\TestPageController::testSettingsNoNonce'
+  requirements:
+    _access: 'TRUE'
+
+csp_test.test_page_nonce:
+  path: '/csp-test/settings-nonce'
+  defaults:
+    _title: 'Test nonce page'
+    _controller: '\Drupal\csp_test\Controller\TestPageController::testSettingsNonce'
+  requirements:
+    _access: 'TRUE'
+
+csp_test.test_page_element_directives:
+  path: '/csp-test/element-directives'
+  defaults:
+    _title: 'Test element directives page'
+    _controller: '\Drupal\csp_test\Controller\TestPageController::testElementDirectives'
+  requirements:
+    _access: 'TRUE'
+
+csp_test.test_page_element_nonce:
+  path: '/csp-test/element-nonce'
+  defaults:
+    _title: 'Test element nonce page'
+    _controller: '\Drupal\csp_test\Controller\TestPageController::testElementNonce'
+  requirements:
+    _access: 'TRUE'
+
+csp_test.test_page_element_hash:
+  path: '/csp-test/element-hash'
+  defaults:
+    _title: 'Test element hash page'
+    _controller: '\Drupal\csp_test\Controller\TestPageController::testElementHash'
+  requirements:
+    _access: 'TRUE'

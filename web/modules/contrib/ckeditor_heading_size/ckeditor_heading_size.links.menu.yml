@@ -1,0 +1,6 @@
+ckeditor_heading_size.admin_config:
+  title: 'CKEditor Heading Size'
+  description: 'Configure CKEditor Heading Size.'
+  parent: system.admin_config_content
+  route_name: ckeditor_heading_size.settings_form
+  weight: 10

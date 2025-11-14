@@ -1,0 +1,26 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_hg_related_files
+    - node.type.hg_external_news
+  module:
+    - file
+id: node.hg_external_news.field_hg_related_files
+field_name: field_hg_related_files
+entity_type: node
+bundle: hg_external_news
+label: 'Related files'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  file_directory: 'hg_attachments/[date:custom:Y]-[date:custom:m]'
+  file_extensions: 'doc docx jpg jpeg gif odp ods odt pdf png pps ppt svg txt xls'
+  max_filesize: '2 MB'
+  description_field: false
+  handler: 'default:file'
+  handler_settings: {  }
+field_type: file

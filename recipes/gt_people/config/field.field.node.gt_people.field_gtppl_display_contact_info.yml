@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_gtppl_display_contact_info
+    - node.type.gt_people
+id: node.gt_people.field_gtppl_display_contact_info
+field_name: field_gtppl_display_contact_info
+entity_type: node
+bundle: gt_people
+label: 'Display Contact Information'
+description: 'If checked, your personal contact information (phone, email, office) will be displayed publicly. If unchecked, generic contact information for your school will be shown instead.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

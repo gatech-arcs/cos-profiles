@@ -1,0 +1,247 @@
+# Schema for the configuration files of the csp module.
+
+csp.settings:
+  type: config_object
+  label: 'Content Security Policy Settings'
+  constraints:
+    FullyValidatable: ~
+  mapping:
+    report-only:
+      type: csp_policy
+      label: 'Report-Only Policy'
+    enforce:
+      type: csp_policy
+      label: 'Enforce Policy'
+
+csp_policy:
+  type: mapping
+  label: 'Policy'
+  constraints:
+    FullyValidatable: ~
+  mapping:
+    enable:
+      type: boolean
+      label: 'Enable'
+    directives:
+      type: sequence
+      label: 'Directives'
+      sequence:
+        type: csp_directive.[%key]
+    reporting:
+      type: mapping
+      label: 'Reporting'
+      mapping:
+        plugin:
+          type: string
+          label: 'Plugin ID'
+          constraints:
+            PluginExists:
+              manager: plugin.manager.csp_reporting_handler
+              interface: \Drupal\csp\Plugin\ReportingHandlerInterface
+        options:
+          type: csp_reporting_handler.[%parent.plugin]
+          label: 'Reporting Plugin Options'
+          requiredKey: false
+
+csp_directive_source_list:
+  type: mapping
+  constraints:
+    FullyValidatable: ~
+  mapping:
+    base:
+      type: string
+      label: 'Base'
+      constraints:
+        Choice:
+          - ''
+          - self
+          - none
+          - any
+    flags:
+      type: sequence
+      label: 'Flags'
+      requiredKey: false
+      sequence:
+        type: string
+        constraints:
+          Choice:
+            - report-sample
+            - inline-speculation-rules
+            - unsafe-hashes
+            - unsafe-inline
+            - unsafe-eval
+            - wasm-unsafe-eval
+            - unsafe-allow-redirects
+    sources:
+      type: sequence
+      label: 'Sources'
+      requiredKey: false
+      sequence:
+        type: string
+        constraints:
+          CspSource:
+            allowNonce: false
+
+csp_directive.default-src:
+  type: csp_directive_source_list
+  label: default-src
+csp_directive.child-src:
+  type: csp_directive_source_list
+  label: child-src
+csp_directive.connect-src:
+  type: csp_directive_source_list
+  label: connect-src
+csp_directive.font-src:
+  type: csp_directive_source_list
+  label: font-src
+csp_directive.frame-src:
+  type: csp_directive_source_list
+  label: frame-src
+csp_directive.img-src:
+  type: csp_directive_source_list
+  label: img-src
+csp_directive.manifest-src:
+  type: csp_directive_source_list
+  label: manifest-src
+csp_directive.media-src:
+  type: csp_directive_source_list
+  label: media-src
+csp_directive.object-src:
+  type: csp_directive_source_list
+  label: object-src
+csp_directive.prefetch-src:
+  type: csp_directive_source_list
+  label: prefetch-src
+csp_directive.script-src:
+  type: csp_directive_source_list
+  label: script-src
+csp_directive.script-src-attr:
+  type: csp_directive_source_list
+  label: script-src-attr
+csp_directive.script-src-elem:
+  type: csp_directive_source_list
+  label: script-src-elem
+csp_directive.style-src:
+  type: csp_directive_source_list
+  label: style-src
+csp_directive.style-src-attr:
+  type: csp_directive_source_list
+  label: style-src-attr
+csp_directive.style-src-elem:
+  type: csp_directive_source_list
+  label: style-src-elem
+csp_directive.webrtc:
+  type: string
+  label: webrtc
+  constraints:
+    Choice:
+      - allow
+      - block
+csp_directive.worker-src:
+  type: csp_directive_source_list
+  label: worker-src
+csp_directive.base-uri:
+  type: csp_directive_source_list
+  label: base-uri
+csp_directive.sandbox:
+  type: sequence
+  label: sandbox
+  sequence:
+    type: string
+    constraints:
+      Choice:
+        - allow-downloads
+        - allow-forms
+        - allow-modals
+        - allow-orientation-lock
+        - allow-pointer-lock
+        - allow-popups
+        - allow-popups-to-escape-sandbox
+        - allow-presentation
+        - allow-same-origin
+        - allow-scripts
+        - allow-top-navigation
+        - allow-top-navigation-by-user-activation
+        - allow-top-navigation-to-custom-protocols
+csp_directive.form-action:
+  type: csp_directive_source_list
+  label: form-action
+# frame-ancestors does not support unsafe flags
+# @see https://www.w3.org/TR/CSP/#grammardef-ancestor-source-list
+csp_directive.frame-ancestors:
+  type: csp_directive_source_list
+  label: frame-ancestors
+csp_directive.block-all-mixed-content:
+  type: boolean
+  label: block-all-mixed-content
+csp_directive.upgrade-insecure-requests:
+  type: boolean
+  label: upgrade-insecure-requests
+csp_directive.trusted-types:
+  type: mapping
+  label: trusted-types
+  constraints:
+    FullyValidatable: ~
+  mapping:
+    base:
+      type: string
+      label: Base
+      constraints:
+        Choice:
+          - ''
+          - none
+          - any
+    allow-duplicates:
+      type: boolean
+      label: Allow Duplicates
+    policy-names:
+      type: sequence
+      label: Trusted Types Policy Names
+      sequence:
+        type: string
+        constraints:
+          Regex:
+            pattern: <^[a-z0-9#=_/@.%-]+$>i
+            message: '%value is not a valid trusted types policy name'
+csp_directive.require-trusted-types-for:
+  type: sequence
+  label: require-trusted-types-for
+  sequence:
+    type: string
+    constraints:
+      Choice:
+        - 'script'
+
+csp_reporting_handler.none:
+  type: mapping
+  label: 'None'
+  constraints:
+    FullyValidatable: ~
+csp_reporting_handler.report-uri-com:
+  type: mapping
+  label: 'Report URI'
+  constraints:
+    FullyValidatable: ~
+  mapping:
+    subdomain:
+      type: string
+      label: 'Subdomain'
+      constraints:
+        NotBlank: []
+        Regex:
+          # Custom domains must be 4-30 characters, but generated domains are 32.
+          pattern: <^([a-z\d]{4,30}|[a-z\d]{32})$>i
+          message: Subdomain must be 4-30 alphanumeric characters.
+    wizard:
+      type: boolean
+      label: 'Wizard'
+      requiredKey: false
+csp_reporting_handler.uri:
+  type: mapping
+  label: 'URI'
+  constraints:
+    FullyValidatable: ~
+  mapping:
+    uri:
+      type: uri
+      label: 'URI'

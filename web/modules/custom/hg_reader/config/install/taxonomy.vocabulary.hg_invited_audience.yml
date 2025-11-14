@@ -1,0 +1,11 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - hg_reader
+name: 'Hg - Invited audience'
+vid: hg_invited_audience
+description: 'Invited audience(s) for Mercury events'
+hierarchy: 0
+weight: 0

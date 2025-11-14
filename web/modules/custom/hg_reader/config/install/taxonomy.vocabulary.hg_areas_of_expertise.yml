@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - hg_reader
+name: 'Hg - Areas of expertise'
+vid: hg_areas_of_expertise
+description: 'Areas of expertise for Mercury profiles'
+weight: 0

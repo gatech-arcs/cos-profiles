@@ -1,0 +1,5 @@
+.cspell-project-words.txt export-ignore
+.eslintignore export-ignore
+.gitlab-ci.yml export-ignore
+phpcs.xml.dist export-ignore
+phpstan.neon export-ignore

@@ -1,0 +1,21 @@
+uuid: fe1bd5b6-d914-4fb7-9078-409e71169e1c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_honorary
+    - paragraphs.paragraphs_type.degree
+id: paragraph.degree.field_honorary
+field_name: field_honorary
+entity_type: paragraph
+bundle: degree
+label: Honorary
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

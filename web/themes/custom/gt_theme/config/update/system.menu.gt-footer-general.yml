@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+id: gt-footer-general
+label: 'GT official links: general (required)'
+description: 'GT official links: general (required)'
+locked: true

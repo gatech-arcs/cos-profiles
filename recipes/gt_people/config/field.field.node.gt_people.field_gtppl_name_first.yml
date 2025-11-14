@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_gtppl_name_first
+    - node.type.gt_people
+id: node.gt_people.field_gtppl_name_first
+field_name: field_gtppl_name_first
+entity_type: node
+bundle: gt_people
+label: 'Name - First'
+description: 'Plain text first name for sorting'
+required: false
+translatable: false
+default_value: {}
+default_value_callback: ''
+settings: {}
+field_type: string

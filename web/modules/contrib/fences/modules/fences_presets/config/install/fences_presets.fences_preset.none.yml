@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies: {  }
+id: none
+label: None
+description: 'Only label text and field value, no field markup at all.'
+field_tag: none
+field_classes: ''
+field_items_wrapper_tag: none
+field_items_wrapper_classes: ''
+field_item_tag: none
+field_item_classes: ''
+label_tag: none
+label_classes: ''

@@ -1,0 +1,8 @@
+direct_add:
+  css:
+    theme:
+      css/lb-direct-add.css: {}
+  js:
+    js/lb-direct-add.js: {}
+  dependencies:
+    - core/once

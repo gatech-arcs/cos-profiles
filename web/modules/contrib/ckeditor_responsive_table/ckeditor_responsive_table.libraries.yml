@@ -1,0 +1,32 @@
+# This adds the plugin JavaScript to the page.
+# cSpell:ignore
+
+responsive_table:
+  js:
+    js/build/responsiveTable.js: { preprocess: false, minified: true }
+  css:
+    theme:
+      css/responsiveTableStyles.css: { }
+  dependencies:
+    - core/ckeditor5
+    - core/ckeditor5.table
+
+responsive_table_display:
+  js:
+    js/tabledInit.js: { }
+  css:
+    base:
+      vendor/tabled/css/styles.css: { }
+  dependencies:
+    - ckeditor_responsive_table/tabled
+
+tabled:
+  js:
+    vendor/tabled/js/tabled.min.js: { minified: true }
+
+## Loaded in the text format configuration form to provide styling for the icon
+## used in toolbar config.
+admin.responsive_table:
+  css:
+    theme:
+      css/responsiveTable.admin.css: { }

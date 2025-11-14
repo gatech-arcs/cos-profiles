@@ -1,0 +1,31 @@
+views.area.active_filters:
+  type: views_area
+  label: Active Filters
+  mapping:
+    title:
+      type: required_label
+      label: Heading Text
+    hide_title:
+      type: boolean
+      label: Visually hide heading
+    grouped:
+      type: boolean
+      label: Group active filters by exposed filter
+    clear_text:
+      type: label
+      label: Clear All Button Text
+    filters:
+      type: sequence
+      label: Advanced configuration for exposed filters
+      sequence:
+        type: mapping
+        mapping:
+          enable:
+            type: boolean
+            label: Generate active filters
+          removable:
+            type: boolean
+            label: Active filters can be removed individually
+          rewrite:
+            type: text
+            label: Rewrite active filter values

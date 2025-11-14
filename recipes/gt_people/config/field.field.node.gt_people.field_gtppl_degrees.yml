@@ -1,0 +1,30 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_gtppl_degrees
+    - node.type.gt_people
+    - paragraphs.paragraphs_type.degree
+  module:
+    - entity_reference_revisions
+id: node.gt_people.field_gtppl_degrees
+field_name: field_gtppl_degrees
+entity_type: node
+bundle: gt_people
+label: Degrees
+description: 'List of academic degrees.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      degree: degree
+    negate: 0
+    target_bundles_drag_drop:
+      degree:
+        enabled: true
+        weight: 2
+field_type: entity_reference_revisions

@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - hg_reader
+name: 'Mercury video'
+type: hg_video
+description: 'Link to a recording of moving visual images, entered so it can be attached to other Mercury content (such as News stories).'
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: false

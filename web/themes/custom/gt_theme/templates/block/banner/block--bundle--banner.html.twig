@@ -1,0 +1,79 @@
+{# GT Banner #}
+
+{# Attach the library #}
+{{ attach_library('gt/banner') }}
+
+{# Preprocess #}
+{% set body = (content.body) %}
+{% set color = 'btn btn-style-' ~ color_button %}
+{% set link_url = (content.field_link.0['#url']) %}
+{% set link_text = (content.field_link.0['#title']) %}
+{% set image = (content.field_image) %}
+{% set image_alt = (content.field_image.0['#item'].alt ) %}
+{% set image_path = (content.field_image['#items'].entity.uri.value) ? (file_url(content.field_image['#items'].entity.uri.value)) : '' %}
+{% set image_style = (content.field_image_style.0) %}
+
+{# Content #}
+<div{{ attributes }}>
+  {# Content with Image #}
+  {% if image.0['#item'].entity.uri.value %}
+    <div class="banner-wrapper {{ color_background }}">
+      <div class="row g-0 align-items-center">
+        <div class="banner-text-wrapper {{ color_background }} col-md-12 col-lg-7 order-1 order-lg-1 p-5">
+          {# Title #}
+          {{ title_prefix }}
+          {% if label %}
+            <h2 class="display-4">{{ label }}</h2>
+          {% endif %}
+          {{ title_suffix }}
+          {# Body #}
+          {% if body %}
+            {{ body }}
+          {% endif %}
+          {# Link #}
+          {% for item in content.field_link %}
+            {% if item['#title'] %}
+              <a href="{{ item['#url'] }}" class="btn btn-secondary"
+                aria-label="{{ item['#title'] }}"
+                role="button">{{ item['#title'] }}</a>
+            {% endif %}
+          {% endfor %}
+        </div>
+        <div class="banner-image d-flex align-items-center col-md-12 col-lg-5 p-0 order-2 order-lg-2">
+          <div role="img" aria-label="{{ image_alt }}">
+            <img class="{{ image_style }} card-img-top" src="{{ image_path }}" loading="eager" alt="{{ image_alt }}">
+          </div>
+        </div>
+      </div>
+    </div>
+    {# Content without Image #}
+  {% else %}
+    <div class="p-5 banner-no-image {{ color_background }} py-5">
+      <div class="row">
+        <div class="col-12 col-md-5">
+          {# Title #}
+          {{ title_prefix }}
+          {% if label %}
+            <h2 class="display-4">{{ label }}</h2>
+          {% endif %}
+          {{ title_suffix }}
+        </div>
+        <div class="col-12 col-md-7">
+          {# Body #}
+          {% if body %}
+            {{ body }}
+          {% endif %}
+          {# Link #}
+          {% for item in content.field_link %}
+            {% if item['#title'] %}
+              <a href="{{ item['#url'] }}" class="btn btn-secondary"
+                aria-label="{{ item['#title'] }}"
+                role="button">{{ item['#title'] }}</a>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+</div>{# End Attribtes #}
+

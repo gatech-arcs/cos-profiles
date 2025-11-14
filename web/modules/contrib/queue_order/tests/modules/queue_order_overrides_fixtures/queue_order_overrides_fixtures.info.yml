@@ -1,0 +1,12 @@
+name: Queue Order Definitions Override Test
+type: module
+description: Provides testing override definitions for Queue Order module
+package: Testing
+core_version_requirement: ">=10"
+dependencies:
+  - queue_order:queue_order_definition_fixtures
+
+# Information added by Drupal.org packaging script on 2024-10-09
+version: '2.1.5'
+project: 'queue_order'
+datestamp: 1728467802

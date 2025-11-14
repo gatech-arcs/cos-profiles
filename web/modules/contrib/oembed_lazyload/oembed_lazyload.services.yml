@@ -1,0 +1,17 @@
+services:
+  oembed_lazyload:
+    class: \Drupal\oembed_lazyload\ProviderEnhancerManager
+    parent: default_plugin_manager
+
+  oembed_lazyload.iframe_url_helper:
+    class: Drupal\oembed_lazyload\IframeUrlHelper
+    arguments: ['@private_key']
+
+  oembed_lazyload.iframe_access_checker:
+    class: Drupal\oembed_lazyload\Access\OembedLazyloadIframeAccessCheck
+    arguments: ['@oembed_lazyload.iframe_url_helper', '@request_stack']
+
+  oembed_lazyload.route_subscriber:
+    class: Drupal\oembed_lazyload\Routing\RouteSubscriber
+    tags:
+      - { name: event_subscriber }

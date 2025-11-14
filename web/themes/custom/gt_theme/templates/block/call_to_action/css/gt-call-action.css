@@ -1,0 +1,229 @@
+/* CSS Style Sheet for call to action */
+.call-to-action .text-left,
+.call-to-action .text-left p {
+  text-align: left;
+}
+
+.call-to-action .text-center,
+.call-to-action .text-center p {
+  text-align: center;
+}
+
+.call-to-action .text-right,
+.call-to-action .text-right p {
+  text-align: right;
+}
+
+.call-to-action .float-start img {
+  padding: 0 2rem 0 0;
+}
+
+.call-to-action .float-end img {
+  padding: 0 0 0 2rem;
+}
+
+.call-to-action {
+  padding: 3rem 2rem;
+}
+
+.call-to-action .card-footer {
+  padding: 0;
+  background-color: transparent;
+  border: 0;
+}
+
+/* Colors */
+/* Black */
+.call-to-action.gt-black {
+  background: var(--gt-black);
+}
+
+.call-to-action .btn.btn-primary-gold {
+  background: var(--gt-gold);
+  border-color: transparent;
+  color: var(--gt-black);
+}
+
+.call-to-action .btn.btn-primary-gold:hover {
+  background: var(--gt-white);
+  color: var(--gt-black);
+  text-decoration: none;
+}
+
+.call-to-action .gt-text-black h2,
+.call-to-action .gt-text-black h3,
+.call-to-action .gt-text-black h4,
+.call-to-action .gt-text-black h5,
+.call-to-action .gt-text-black h6,
+.call-to-action .gt-text-black dl,
+.call-to-action .gt-text-black ol,
+.call-to-action .gt-text-black ul,
+.call-to-action .gt-text-black p,
+.call-to-action .gt-text-black .p {
+  color: var(--gt-black);
+}
+
+/* White */
+.call-to-action.gt-white {
+  background: var(--gt-white) !important;
+}
+
+.call-to-action .btn.btn-primary-black {
+  background: var(--gt-black) !important;
+  color: var(--gt-white) !important;
+}
+
+.call-to-action .btn.btn-primary-black:hover {
+  background: var(--gt-gold) !important;
+  color: var(--gt-black) !important;
+}
+
+.call-to-action .gt-text-white h2,
+.call-to-action .gt-text-white h3,
+.call-to-action .gt-text-white h4,
+.call-to-action .gt-text-white h5,
+.call-to-action .gt-text-white h6,
+.call-to-action .gt-text-white dl,
+.call-to-action .gt-text-white ol,
+.call-to-action .gt-text-white ul,
+.call-to-action .gt-text-white p,
+.call-to-action .gt-text-white .p,
+.call-to-action .gt-text-white {
+  color: var(--gt-white);
+}
+
+.call-to-action .gt-white h2,
+.call-to-action .gt-white h3,
+.call-to-action .gt-white h4,
+.call-to-action .gt-white h5,
+.call-to-action .gt-white h6 {
+  color: var(--gt-md-gold);
+}
+
+/* Blue */
+.call-to-action.gt-blue {
+  background: var(--gt-navy);
+  color: var(--gt-white);
+}
+
+.call-to-action.gt-blue .btn.btn-primary-gold {
+  background: var(--gt-gold);
+  color: var(--gt-black);
+}
+
+.call-to-action.gt-blue .btn.btn-primary-gold:hover {
+  background: var(--gt-white);
+  color: var(--gt-black);
+}
+
+.call-to-action .gt-text-blue h2,
+.call-to-action .gt-text-blue h3,
+.call-to-action .gt-text-blue h4,
+.call-to-action .gt-text-blue h5,
+.call-to-action .gt-text-blue h6,
+.call-to-action .gt-text-blue dl,
+.call-to-action .gt-text-blue ol,
+.call-to-action .gt-text-blue ul,
+.call-to-action .gt-text-blue p,
+.call-to-action .gt-text-blue .p {
+  color: var(--gt-white);
+}
+
+/* Gold */
+.call-to-action.gt-gold {
+  background: var(--gt-gold);
+}
+
+.call-to-action.gt-gold .btn.btn-primary-black {
+  background: var(--gt-black) !important;
+  color: var(--gt-white);
+}
+
+.call-to-action.gt-gold .btn.btn-primary-black:hover {
+  background: var(--gt-white) !important;
+  color: var(--gt-black) !important;
+}
+
+.call-to-action .gt-text-gold h2,
+.call-to-action .gt-text-gold h3,
+.call-to-action .gt-text-gold h4,
+.call-to-action .gt-text-gold h5,
+.call-to-action .gt-text-gold h6,
+.call-to-action .gt-text-gold dl,
+.call-to-action .gt-text-gold ol,
+.call-to-action .gt-text-gold ul,
+.call-to-action .gt-text-gold p,
+.call-to-action .gt-text-gold .p {
+  color: var(--gt-gold);
+}
+
+/* Gray */
+.call-to-action.gt-warm-gray {
+  background: var(--gt-warm-gray-medium);
+}
+
+.call-to-action .gt-warm-gray .btn.btn-primary-warm-gray {
+  background: var(--gt-warm-gray);
+  color: var(--gt-black);
+}
+
+.call-to-action .gt-warm-gray .btn.btn-primary-warm-gray:hover {
+  background: var(--gt-warm-gray-medium);
+  color: var(--gt-black);
+}
+
+.call-to-action .gt-text-warm-gray h2,
+.call-to-action .gt-text-warm-gray h3,
+.call-to-action .gt-text-warm-gray h4,
+.call-to-action .gt-text-warm-gray h5,
+.call-to-action .gt-text-warm-gray h6,
+.call-to-action .gt-text-warm-gray dl,
+.call-to-action .gt-text-warm-gray ol,
+.call-to-action .gt-text-warm-gray ul,
+.call-to-action .gt-text-warm-gray p,
+.call-to-action .gt-text-warm-gray .p {
+  color: var(--gt-warm-gray);
+}
+
+
+.call-to-action .video-embed-field-responsive-video::after {
+  margin: 0 0 2rem;
+}
+
+/* transparent */
+.call-to-action.gt-transparent {
+  padding: 0;
+}
+
+.call-to-action .gt-transparent h2,
+.call-to-action .gt-transparent h3,
+.call-to-action .gt-transparent h4,
+.call-to-action .gt-transparent h5,
+.call-to-action .gt-transparent h6 {
+  color: var(--gt-md-gold);
+}
+
+.call-to-action .video-embed-field-responsive-video {
+  margin: 0 2rem;
+}
+
+/* Remove top margin if in banner area */
+#gt-banner .call-to-action .my-3 {
+  margin-top: 0 !important;
+}
+
+/* banner region specific styling */
+#gt-banner .call-to-action .gt-transparent {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+@media only screen and (max-width: 576px) {
+  .call-to-action .w-50 {
+    width: 100% !important;
+    padding: 0 !important;
+  }
+  .call-to-action .w-50 img {
+    width: 100% !important;
+  }
+}

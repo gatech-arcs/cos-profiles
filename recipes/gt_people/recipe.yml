@@ -1,0 +1,104 @@
+name: GT People with Degree Component
+type: 'Content type'
+description: Drupal recipe for the GT People content type, including a 'Degree' Paragraph component.
+
+recipes:
+  - core/recipes/basic_html_format_editor
+  - core/recipes/image_media_type
+
+install:
+  - address
+  - ckeditor5
+  - geocoder
+  - geofield
+  - geofield_map
+  - image
+  - node
+  - pathauto
+  - telephone
+  - twig_tweak
+  # Modules from Degree Component
+  - paragraphs
+  - inline_entity_form
+  - entity_reference_revisions
+
+config:
+  strict:
+    # Storages from GT People
+    - field.storage.media.field_media_image
+    - field.storage.node.field_gtppl_awards
+    - field.storage.node.field_gtppl_bio_summary
+    - field.storage.node.field_gtppl_biography
+    - field.storage.node.field_gtppl_bldg
+    - field.storage.node.field_gtppl_bldg_room
+    - field.storage.node.field_gtppl_bldg_url_map
+    - field.storage.node.field_gtppl_education
+    - field.storage.node.field_gtppl_email
+    - field.storage.node.field_gtppl_fax
+    - field.storage.node.field_gtppl_gtaccount
+    - field.storage.node.field_gtppl_image
+    - field.storage.node.field_gtppl_image_local
+    - field.storage.node.field_gtppl_image_url
+    - field.storage.node.field_gtppl_img_headshot
+    - field.storage.node.field_gtppl_img_portrait
+    - field.storage.node.field_gtppl_instruct_faculty
+    - field.storage.node.field_gtppl_phone
+    - field.storage.node.field_gtppl_pronouns
+    - field.storage.node.field_gtppl_publications
+    - field.storage.node.field_gtppl_research_group
+    - field.storage.node.field_gtppl_research_group_url
+    - field.storage.node.field_gtppl_research_history
+    - field.storage.node.field_gtppl_research_keywords
+    - field.storage.node.field_gtppl_research_summary
+    - field.storage.node.field_gtppl_roles
+    - field.storage.node.field_gtppl_salutation
+    - field.storage.node.field_gtppl_title_custom
+    - field.storage.node.field_gtppl_title_custom_html
+    - field.storage.node.field_gtppl_title_custom_short
+    - field.storage.node.field_gtppl_title_official
+    - field.storage.node.field_gtppl_url_cv_resume
+    - field.storage.node.field_gtppl_url_gscholar
+    - field.storage.node.field_gtppl_url_orcid
+    - field.storage.node.field_gtppl_url_personal
+    - field.storage.node.field_gtppl_url_publons
+    - field.storage.node.field_gtppl_url_pubmed
+    - field.storage.node.field_gtppl_url_researcherid
+    - field.storage.node.field_gtppl_url_researchgate
+    - field.storage.node.field_gtppl_url_scopus
+    - field.storage.node.field_gtppl_degrees
+
+    - field.storage.paragraph.field_degree
+    - field.storage.paragraph.field_honorary
+    - field.storage.paragraph.field_honors
+    - field.storage.paragraph.field_institution
+    - field.storage.paragraph.field_location
+    - field.storage.paragraph.field_year
+    - field.storage.paragraph.field_with_honors
+
+  import:
+    address: '*'
+    geocoder: '*'
+    geofield: '*'
+    pathauto: '*'
+    node:
+      - core.entity_view_mode.node.full
+      - core.entity_view_mode.node.teaser
+      - field.storage.node.body
+      - system.action.node_delete_action
+      - system.action.node_publish_action
+      - system.action.node_save_action
+      - system.action.node_unpublish_action
+    system:
+      - system.menu.main
+      
+  actions:
+    user.role.anonymous:
+      grantPermission: 'access content'
+    user.role.gt_people_editor:
+      createIfNotExists:
+        label: 'GT People Editor'
+      grantPermissions:
+        - 'create GT People content'
+        - 'delete GT People revisions'
+        - 'delete any GT People content'
+        - 'edit any GT People content'

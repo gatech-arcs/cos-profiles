@@ -1,0 +1,15 @@
+diff_plus.user_settings:
+  path: "/admin/config/content/diff_plus/settings"
+  defaults:
+    _form: '\Drupal\diff_plus\Form\DiffPlusUserSettingsForm'
+    _title: "Personalized settings for Diff Plus"
+  requirements:
+    _permission: "personalize diff plus settings"
+
+diff_plus.default_settings:
+  path: "/admin/config/content/diff_plus/settings/default"
+  defaults:
+    _form: '\Drupal\diff_plus\Form\DiffPlusDefaultSettingsForm'
+    _title: "Default settings for Diff Plus"
+  requirements:
+    _permission: "administer site configuration"

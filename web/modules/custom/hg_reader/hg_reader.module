@@ -1,0 +1,222 @@
+<?php
+/**
+ * Georgia Institute of Technology Mercury Feed Reader
+ * Often imitated; never surpassed.
+ *
+ * @author Office of Communications and Marketing <web@comm.gatech.edu>
+ */
+
+define('READER_VERSION', '5.0.0');
+define('HG_IMAGE_NOT_FOUND', 113741);
+
+use Drupal\hg_reader\Entity\HgImporter;
+use Drupal\hg_reader\Controller\HgImporterController;
+use Drupal\Core\Form\FormStateInterface;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+
+/**
+ * Implementation of hook_cron. Imports nodes from all importers if current time
+ * minus last run is greater than frequency for that importer.
+ */
+function hg_reader_cron() {
+  /**
+   * PROCESS IMPORTERS
+   */
+  $importers = HgImporter::get_all_importers();
+  $controller = new HgImporterController;
+
+  // Loop through all importers.
+  foreach ($importers as $importer) {
+    // If current time - last_run > frequency, process the importer.
+    // TODO: first->getValue can probably be replaced with some other method.
+    $last_run = $importer->get('last_run')->first()->getValue()['value'];
+    $frequency = $importer->get('frequency')->first()->getValue()['value'];
+    if ((time() - $last_run) > $frequency) {
+      $controller->process_importer($importer);
+    }
+  }
+}
+
+function hg_reader_page_attachments(array &$page) {
+  $node = \Drupal::routeMatch()->getParameter('node');
+  if (is_object($node) && strpos($node->getType(), 'hg_') == 0) {
+    $settings = [
+      'nid' => $node->get('nid')->getString(),
+    ];
+    $page['#attached']['library'][] = 'hg_reader/hg_reader';
+    $page['#attached']['drupalSettings']['hg_reader'] = $settings;
+  }
+}
+
+/**
+ * Implementation of hook_theme.
+ * @return array Array of theme templates. Again, RTFM.
+ */
+function hg_reader_theme() {
+  // account for changed machine names
+  return [
+    'node__hg_boilerplate' => [
+      'template' => 'node--hg-boilerplate',
+      'base hook' => 'node',
+    ],
+    'node__hg_event__full' => [
+      'template' => 'node--hg-event--full',
+      'base hook' => 'node',
+    ],
+    'node__hg_event__teaser' => [
+      'template' => 'node--hg-event--teaser',
+      'base hook' => 'node',
+    ],
+    'node__hg_external_news__full' => [
+      'template' => 'node--hg-external-news--full',
+      'base hook' => 'node',
+    ],
+    'node__hg_image' => [
+      'template' => 'node--hg-image',
+      'base hook' => 'node',
+    ],
+    'node__hg_feature' => [
+      'template' => 'node--hg-feature',
+      'base hook' => 'node',
+    ],
+    'node__hg_news__full' => [
+      'template' => 'node--hg-news--full',
+      'base hook' => 'node',
+    ],
+    'node__hg_news__teaser' => [
+      'template' => 'node--hg-news--teaser',
+      'base hook' => 'node',
+    ],
+    'node__hg_profile' => [
+      'template' => 'node--hg-profile',
+      'base hook' => 'node',
+    ],
+    'node__hg_video' => [
+      'template' => 'node--hg-video',
+      'base hook' => 'node',
+    ],
+    'field__field_hg_keywords' => [
+      'base hook' => 'field',
+    ],
+    'field__field_hg_youtube_id' => [
+      'base hook' => 'field',
+    ],
+    'field__node__field_hg_images' => [
+      'base hook' => 'field',
+    ],
+    'field__node__field_hg_media' => [
+      'base_hook' => 'field',
+    ],
+    'field__node__field_hg_categories' => [
+      'base hook' => 'field',
+    ],
+    'field__node__field_hg_core_research_areas' => [
+      'base hook' => 'field',
+    ],
+    'field__node__field_hg_event_categories' => [
+      'base hook' => 'field',
+    ],
+    'field__node__field_hg_keywords' => [
+      'base hook' => 'field',
+    ],
+    'field__node__field_hg_news_room_topics' => [
+      'base hook' => 'field',
+    ],
+    'field__node__field_hg_related_files' => [
+      'base hook' => 'field',
+    ],
+    'field__node__field_hg_related_links' => [
+      'base hook' => 'field',
+    ],
+    'field__node__hg_event' => [
+      'base hook' => 'field',
+    ],
+    'field__node__hg_news' => [
+      'base hook' => 'field',
+    ],
+  ];
+}
+
+/**
+ * Group various fields into fieldsets
+ */
+function hg_reader_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  if ($form_id == 'hg_reader_importer_add_form' || $form_id == 'hg_reader_importer_edit_form') {
+    // Group key fields into basic fieldset.
+    $form['basic'] = array(
+      '#type' => 'fieldset',
+      '#title' => t('Basic settings'),
+    );
+
+    $form['basic']['user_id'] = $form['user_id'];
+    $form['basic']['name'] = $form['name'];
+    $form['basic']['fid'] = $form['fid'];
+
+    // Since we've recreated these elsewhere, we can lose the default versions...
+    unset($form['user_id']);
+    unset($form['name']);
+    unset($form['fid']);
+
+    // The hell is going on here?
+    // $form['#process'][1][0]->content[] = $form['#process'][1][0]->hidden['user_id'];
+
+    // Group everything else into details fieldset.
+    $form['details'] = array(
+      '#type' => 'details',
+      '#title' => t('Details'),
+      '#open' => FALSE,
+    );
+
+    $form['details']['note'] = array(
+      '#markup' => '<p><strong>For most sites, the defaults in this section should be acceptable.</strong> Unless you have specific reasons to change settings here, you can ignore them.</p>',
+      '#weight' => -10,
+    );
+
+    $form['details']['frequency'] = $form['frequency'];
+    $form['details']['track_deletes'] = $form['track_deletes'];
+
+    // Since we've recreated these elsewhere, we can lose the default versions...
+    unset($form['frequency']);
+    unset($form['track_deletes']); //
+  }
+}
+
+/**
+ * Implements hook_preprocess_node. Process Mercury images and event times
+ */
+function hg_reader_preprocess_node(&$vars) {
+  // set up event_start and event_end vars.
+  if (isset($vars['elements']['field_hg_event_time']['#items'])) {
+    $vars['event_start'] = $vars['elements']['field_hg_event_time']['#items']->getValue()[0]['value'];
+    $vars['event_end'] = $vars['elements']['field_hg_event_time']['#items']->getValue()[0]['end_value'];
+  }
+
+  $vars['content']['extra_media']['images'] = [];
+  $vars['content']['extra_media']['videos'] = [];
+
+  if (!isset($vars['content']['field_hg_media'])) { return; }
+
+  foreach ($vars['content']['field_hg_media'] as $key => $element) {
+    if (!is_array($element) || !isset($element['#media'])) { continue; }
+    if (is_int($key)) {
+      if ($key == 0) { $vars['content']['hero_media'] = $element; }
+      elseif (isset($element['#media'])) {
+        if ($element['#media']->hasField('field_media_hg_image')) {
+          $vars['content']['extra_media']['images'][] = $element;
+        } elseif ($element['#media']->hasField('field_media_hg_video')) {
+          $vars['content']['extra_media']['videos'][] = $element;
+        }
+      }
+    }
+  }
+}
+
+function hg_reader_modules_installed($modules) {
+  $bypass = \Drupal::state()->get('hg_reader_bypass_redirect', FALSE);
+  if (!$bypass && in_array('hg_reader', $modules)) {
+    // Tell the user what they need to do to activate the canonical URL tag.
+    \Drupal::messenger()->addWarning(t('Please select the group or groups with which this site is associated.'));
+    $response = new RedirectResponse(\Drupal\Core\Url::fromRoute('hg_reader.admin_settings')->toString());
+    $response->send();
+  }
+}

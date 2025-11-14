@@ -1,0 +1,20 @@
+common:
+  css:
+    theme:
+      css/oembed-lazyload.css: {}
+      css/oembed-lazyload-style.css: {}
+  dependencies:
+    - core/drupal
+
+onclick:
+  js:
+    js/onclick.js: {}
+  dependencies:
+    - core/drupal
+
+intersection-observer:
+  js:
+    js/intersection-observer.js: {}
+  dependencies:
+    - core/drupal
+    - core/drupalSettings

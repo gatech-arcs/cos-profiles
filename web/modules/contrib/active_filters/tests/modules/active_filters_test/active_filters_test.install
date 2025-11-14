@@ -1,0 +1,81 @@
+<?php
+
+/**
+ * @file
+ * Install and update hooks for Active Filters Test.
+ */
+
+declare(strict_types=1);
+
+/**
+ * Implements hook_install().
+ *
+ * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+ * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
+ * @throws \Drupal\Core\Entity\EntityStorageException
+ */
+function active_filters_test_install(bool $is_syncing): void {
+  if ($is_syncing) {
+    return;
+  }
+
+  $term_storage = \Drupal::entityTypeManager()->getStorage('taxonomy_term');
+  $node_storage = \Drupal::entityTypeManager()->getStorage('node');
+
+  $entities = [
+    1 => 'Alpha',
+    2 => 'Bravo',
+    3 => 'Charlie',
+    4 => 'Delta',
+    5 => 'Echo',
+    6 => 'Foxtrot',
+    7 => 'Golf',
+    8 => 'Hotel',
+    9 => 'India',
+    10 => 'Juliet',
+  ];
+
+  foreach ($entities as $id => $label) {
+    $term_storage
+      ->create([
+        'tid' => $id,
+        'vid' => 'taxonomy',
+        'name' => $label,
+      ])
+      ->save();
+
+    $values = $id % 3 === 0
+      ? array_filter($entities, fn($k) => $k % 3 === 0 && $k <= $id, ARRAY_FILTER_USE_KEY)
+      : [$id => $label];
+
+    $node_storage
+      ->create([
+        'nid' => $id,
+        'type' => 'node',
+        'title' => $label,
+        'field_boolean' => $id % 2,
+        'field_list_text' => strtolower(substr($label, 0, 1)),
+        'field_taxonomy' => array_keys($values),
+      ])
+      ->save();
+  }
+}
+
+/**
+ * Implements hook_uninstall().
+ *
+ * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+ * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
+ * @throws \Drupal\Core\Entity\EntityStorageException
+ */
+function active_filters_test_uninstall(bool $is_syncing): void {
+  if ($is_syncing) {
+    return;
+  }
+
+  $term_storage = \Drupal::entityTypeManager()->getStorage('taxonomy_term');
+  $term_storage->delete($term_storage->loadByProperties(['vid' => 'taxonomy']));
+
+  $node_storage = \Drupal::entityTypeManager()->getStorage('node');
+  $node_storage->delete($node_storage->loadByProperties(['type' => 'node']));
+}

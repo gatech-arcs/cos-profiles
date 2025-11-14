@@ -1,0 +1,69 @@
+name: 'GT Admin UI and Navigation'
+description: 'Install and configure the Gin admin theme and supporting modules'
+type: 'Site'
+
+install:
+  - coffee
+  - contextual
+  - dashboard
+  - file
+  - gin
+  - gin_login
+  - gin_toolbar
+  - navigation
+  - navigation_extra_tools
+  - sam
+  - tagify
+
+config:
+  strict: false
+  import:
+    gin:
+      - block.block.gin_breadcrumbs
+      - block.block.gin_content
+      - block.block.gin_local_actions
+      - block.block.gin_messages
+      - block.block.gin_page_title
+      - block.block.gin_primary_local_tasks
+      - block.block.gin_secondary_local_tasks
+      - gin.settings
+    navigation:
+      - system.menu.content
+      - system.menu.navigation-user-links
+    navigation_extra_tools: "*"
+    claro:
+      - block.block.claro_breadcrumbs
+      - block.block.claro_content
+      - block.block.claro_local_actions
+      - block.block.claro_messages
+      - block.block.claro_page_title
+      - block.block.claro_primary_local_tasks
+      - block.block.claro_secondary_local_tasks
+  actions:
+    gin_login.settings:
+      simpleConfigUpdate:
+        brand_image:
+          use_default: true
+          # This is placed by the file entity that ships with this recipe.
+          # path: public://login-wallpaper.png
+    navigation.block_layout:
+      # To prevent duplicated items if this recipe is applied more than once,
+      # this needs to be changed as simple config. That's okay, though, because
+      # even though Navigation treats this as a layout section, it's still just
+      # a simple config object at heart.
+      simpleConfigUpdate:
+        # Replace the Shortcuts block with the Dashboard. (The UUID is from
+        # navigation.block_layout.yml.)
+        sections.0.components.2622e40b-8786-4b8c-8883-19e49da53023.configuration:
+          id: navigation_dashboard
+          label: Dashboard
+          label_display: '0'
+          provider: dashboard
+    system.theme:
+      simpleConfigUpdate:
+        admin: gin
+    tagify.settings:
+      simpleConfigUpdate:
+        set_default_widget: true
+    user.role.authenticated:
+      grantPermission: 'access coffee'

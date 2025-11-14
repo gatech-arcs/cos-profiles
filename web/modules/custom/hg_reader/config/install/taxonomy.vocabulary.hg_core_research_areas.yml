@@ -1,0 +1,11 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - hg_reader
+name: 'Hg - Core research areas'
+vid: hg_core_research_areas
+description: 'Core research areas from Mercury'
+hierarchy: 0
+weight: 0

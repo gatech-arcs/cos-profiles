@@ -1,0 +1,22 @@
+{
+  "name": "drupal/twig_casings",
+  "description": "A Drupal module providing Twig filters for string casing conversions.",
+  "keywords": ["Drupal", "Twig"],
+  "type": "drupal-module",
+  "license": "GPL-2.0-or-later",
+  "homepage": "https://www.drupal.org/project/twig_casings",
+  "support": {
+    "issues": "https://www.drupal.org/project/issues/twig_casings",
+    "source": "https://git.drupalcode.org/project/twig_casings"
+  },
+  "require": {
+    "php": ">=8.1",
+    "drupal/core": "^10 || ^11 || ^12",
+    "twig/twig": "^3.4.3"
+  },
+  "autoload": {
+    "psr-4": {
+      "Drupal\\twig_casings\\": "src/"
+    }
+  }
+}

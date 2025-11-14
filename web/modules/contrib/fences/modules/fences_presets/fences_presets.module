@@ -1,0 +1,59 @@
+<?php
+
+/**
+ * @file
+ * Alter wrapping markup of fields.
+ */
+
+use Drupal\Core\Url;
+
+/**
+ * Implements hook_fences_field_formatter_third_party_settings_form_alter().
+ */
+function fences_presets_fences_field_formatter_third_party_settings_form_alter(array &$settingsForm) {
+  $presets = \Drupal::entityTypeManager()->getStorage('fences_preset')->loadByProperties(['status' => TRUE]);
+  $presetsArray = [];
+  $selectOptions = [];
+  foreach ($presets as $preset) {
+    $presetsArray[$preset->id()] = $preset->toArray();
+    $selectOptions[$preset->id()] = $preset->label();
+  }
+
+  $settingsForm['fences']['fences_presets'] = [
+    '#type' => 'details',
+    '#open' => TRUE,
+    '#title' => t('Fences Presets'),
+    '#weight' => -99,
+  ];
+
+  // We are rendering the ui only select through an inline template to avoid the
+  // element value getting implicitly saved. We only need this select, to
+  // apply the preset to the fields:
+  $settingsForm['fences']['fences_presets']['fences_preset_selector'] = [
+    '#type' => 'inline_template',
+    '#template' => '
+    <div class="js-form-item form-item">
+      <select class="form-select form-element form-element--type-select fences-preset-selector">
+        <option value="" selected="selected">{{ "- Select Preset -"|t }}</option>
+        {% for presetId, presetLabel in selectOptions %}
+          <option value={{ presetId|escape("html_attr") }}>{{ presetLabel|escape }}</option>
+        {% endfor %}
+      </select>
+      <div class="form-item__description">{{ description|t }}</div>
+    </div>',
+    '#context' => [
+      'selectOptions' => $selectOptions,
+      'description' => 'Select a preset to apply to the fences configuration. Note, that the selected preset is not persistent and will only modify the fences fields.',
+    ],
+  ];
+
+  $settingsForm['fences']['fences_presets']['fences_preset_link'] = [
+    '#type' => 'link',
+    '#title' => t('Manage Fences Presets'),
+    '#url' => Url::fromRoute('entity.fences_preset.collection'),
+    '#attributes' => ['target' => '_blank'],
+  ];
+
+  $settingsForm['fences']['#attached']['library'][] = 'fences_presets/fences_preset_selector';
+  $settingsForm['fences']['#attached']['drupalSettings']['fencesPresets'] = $presetsArray;
+}

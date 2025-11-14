@@ -1,0 +1,13 @@
+{
+    "name": "drupal/lb_direct_add",
+    "description": "Converts the 'Add block' link in Layout Builder into a drop-button to directly add custom block types.",
+    "type": "drupal-module",
+    "authors": [
+        {
+            "name": "Sean Adams-Hiett",
+            "email": "pyrello@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}

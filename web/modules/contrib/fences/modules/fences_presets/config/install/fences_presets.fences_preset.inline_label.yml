@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies: {  }
+id: inline_label
+label: Inline Label
+description: 'Arranges the field name next to the field value.'
+field_tag: div
+field_classes: ''
+field_items_wrapper_tag: none
+field_items_wrapper_classes: ''
+field_item_tag: span
+field_item_classes: ''
+label_tag: span
+label_classes: ''

@@ -1,0 +1,12 @@
+name: 'Fences Presets Test Presets'
+description: 'Provides test config for fences_presets module tests.'
+type: module
+package: Testing
+core_version_requirement: ^10 || ^11
+dependencies:
+  - drupal:fences_presets
+
+# Information added by Drupal.org packaging script on 2025-03-11
+version: '3.0.7'
+project: 'fences'
+datestamp: 1741683610

@@ -1,0 +1,129 @@
+<?php
+
+/**
+ * @file
+ * Installation hooks for Fences module.
+ */
+
+use Drupal\fences\TagManagerInterface;
+
+/**
+ * Implements hook_requirements().
+ */
+function fences_requirements($phase) {
+  if ($phase != 'runtime') {
+    return [];
+  }
+
+  $requirements['fences'] = [
+    'title' => t('Fences'),
+  ];
+
+  if (\Drupal::config('fences.settings')->get('fences_field_template_override_all_themes')) {
+    $requirements['fences']['description'] = NULL;
+    $requirements['fences']['value'] = t('The <em>Override the field template for all themes</em> setting is enabled. All <em>field.html.twig</em> templates are overridden.');
+    $requirements['fences']['severity'] = REQUIREMENT_OK;
+    return $requirements;
+  }
+
+  /** @var \Drupal\Core\Extension\ExtensionList $theme_extension_list */
+  $theme_extension_list = \Drupal::service('extension.list.theme');
+
+  $themes = $all_themes = $theme_extension_list->getList();
+  foreach ($themes as $theme_name => $theme) {
+    // Disregard core themes and disabled contrib themes.
+    if ($theme->origin == 'core' || !$theme->status) {
+      unset($themes[$theme_name]);
+    }
+  }
+  $theme_machine_names = array_keys($themes);
+
+  // Add any base themes for evaluation.
+  /** @var \Drupal\Core\Extension\Extension $theme */
+  foreach ($themes as $theme) {
+    $base_themes = isset($theme->base_themes) ? array_keys($theme->base_themes) : [];
+    $theme_machine_names = array_merge($theme_machine_names, $base_themes);
+  }
+  $theme_machine_names = array_unique($theme_machine_names);
+
+  $warning_list = [];
+  foreach ($theme_machine_names as $theme_name) {
+    $templates = drupal_find_theme_templates(\Drupal::service('theme.registry')->get(), '.html.twig', $theme_extension_list->getPath($theme_name));
+    foreach ($templates as $template_name => $template) {
+      if ($template_name == 'field') {
+        $warning_list[] = $theme_name;
+      }
+    }
+  }
+
+  $requirements['fences']['description'] = t('By default, the Fences module only overrides the field template (field.html.twig) for core themes. When the <em>Override the field template for all themes</em> setting is enabled, Fences will override the field template for all themes (both core and config).');
+  if (empty($warning_list)) {
+    $requirements['fences']['value'] = t('No contrib themes provide a <em>field.html.twig</em> template.');
+    $requirements['fences']['severity'] = REQUIREMENT_OK;
+  }
+  else {
+    $requirements['fences']['value'] = t('The following contrib themes provide a <em>field.html.twig</em> template: @themes.', [
+      '@themes' => implode(', ', $warning_list),
+    ]);
+    $requirements['fences']['severity'] = REQUIREMENT_WARNING;
+  }
+
+  return $requirements;
+}
+
+/**
+ * Add status field.
+ */
+function fences_update_8001() {
+  return t('New Fences permission "Edit fences formatter settings" was added, adjust your permissions accordingly.');
+}
+
+/**
+ * Add new wrapper_tag configuration to all entity_view_displays using fences.
+ *
+ * Check custom field.html.twig theme overwrites for differences.
+ */
+function fences_update_8301(&$sandbox) {
+  // See https://www.drupal.org/docs/drupal-apis/update-api/updating-entities-and-fields-in-drupal-8#s-updating-entity-view-display-configs
+  if ($view_displays = \Drupal::entityTypeManager()->getStorage('entity_view_display')->loadMultiple(NULL)) {
+    // Loop through all entity view displays:
+    foreach ($view_displays as $view_display) {
+      $components = $view_display->getComponents();
+      foreach ($components as $componentName => $component) {
+        if (!empty($component['third_party_settings']['fences'])) {
+          // Explicitly set fences_field_items_wrapper_tag to 'none' if not
+          // existing yet.
+          if (!isset($component['third_party_settings']['fences']['fences_field_items_wrapper_tag'])) {
+            $component['third_party_settings']['fences']['fences_field_items_wrapper_tag'] = TagManagerInterface::NO_MARKUP_VALUE;
+          }
+          // Explicitly set fences_field_items_wrapper_classes to 'none' if not
+          // existing yet.
+          if (!isset($component['third_party_settings']['fences']['fences_field_items_wrapper_classes'])) {
+            $component['third_party_settings']['fences']['fences_field_items_wrapper_classes'] = TagManagerInterface::NO_MARKUP_VALUE;
+          }
+          // Save changes:
+          $view_display->setComponent($componentName, $component)->save();
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Fences field.html.twig changed. See 3.x release notes!
+ */
+function fences_update_8302() {
+  // See https://www.drupal.org/project/fences/issues/3303655
+  // and https://www.drupal.org/project/fences/issues/1343578
+  return t('IMPORTANT: Fences field.html.twig changed from fences 8.x-2.x -> 3.x! If you overwrite field.html.twig in your template, you may need to compare and adopt changes! If not, everything should be fine.');
+}
+
+/**
+ * Add new fences setting 'fences_field_template_override_all_themes'.
+ */
+function fences_update_8303() {
+  \Drupal::configFactory()
+    ->getEditable('fences.settings')
+    ->set('fences_field_template_override_all_themes', FALSE)
+    ->save();
+}

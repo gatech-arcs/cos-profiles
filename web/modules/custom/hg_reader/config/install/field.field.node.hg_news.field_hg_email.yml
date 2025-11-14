@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_hg_email
+    - node.type.hg_news
+id: node.hg_news.field_hg_email
+field_name: field_hg_email
+entity_type: node
+bundle: hg_news
+label: Email
+description: 'If a reader has a question about this story, WHO can they contact to get answers?'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: email

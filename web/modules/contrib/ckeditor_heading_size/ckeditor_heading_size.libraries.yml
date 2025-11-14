@@ -1,0 +1,8 @@
+plugin:
+  js:
+    js/build/ckeditorHeadingSize.js: { }
+  css:
+    theme:
+      css/ckeditorHeadingSize.css: { }
+  dependencies:
+    - ckeditor5/ckeditor5

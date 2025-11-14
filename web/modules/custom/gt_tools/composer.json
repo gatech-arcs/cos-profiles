@@ -1,0 +1,5 @@
+{
+    "name": "gtsciences/gt_tools",
+    "description": "Provides compatibility for the campus tools",
+    "type": "drupal-custom-module"
+}

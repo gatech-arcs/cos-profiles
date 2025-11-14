@@ -1,0 +1,83 @@
+<?php
+
+use Drupal\Core\Database\Database;
+use Drupal\Core\Config\FileStorage;
+use Drupal\Core\Field\BaseFieldDefinition;
+use Drupal\Core\Field\FieldStorageDefinitionInterface;
+use Drupal\field\Entity\FieldConfig;
+use Drupal\field\Entity\FieldStorageConfig;
+use Drupal\node\Entity\Node;
+use Drupal\taxonomy\Entity\Term;
+use Drupal\taxonomy\Entity\Vocabulary;
+use Symfony\Component\Yaml\Yaml;
+use Drupal\hg_reader\Entity\HgImporter;
+use Drupal\hg_reader\Controller\HgImporterController;
+use Drupal\Core\Datetime\DrupalDateTime;
+use Drupal\datetime\Plugin\Field\FieldType\DateTimeItemInterface;
+use Drupal\Core\Datetime\DateFormatInterface;
+use Drupal\Core\KeyValueStore\KeyValueStoreInterface;
+
+/**
+ * hg_reader_install
+ *
+ * Set fresh_install flag to true.
+ */
+function hg_reader_install() {
+  $config = \Drupal::service('config.factory')->getEditable('hg_reader.settings');
+  $config->set('fresh_install', TRUE)->save();
+}
+
+/**
+ * hg_reader_uninstall
+ *
+ * Delete various hg_reader settings.
+ */
+function hg_reader_uninstall() {
+  // Delete all of the entity definitions.
+  $keys = \Drupal::keyValue('entity.definitions.installed');
+  $keys->delete('feeds_feed.entity_type');
+  $keys->delete('feeds_feed.field_storage_definitions');
+  $keys->delete('feeds_feed_type.entity_type');
+  $keys->delete('feeds_subscription.entity_type');
+  $keys->delete('feeds_subscription.field_storage_definitions');
+
+  drupal_flush_all_caches();
+}
+
+/**
+ * hg_reader_requirements
+ *
+ * @param string $phase
+ * @return array
+ */
+function hg_reader_requirements($phase) {
+	$requirements = [];
+
+	// Checking `mercury_news` specifically becuase of hg_reader_update_8002
+	if ($phase == 'runtime' && \Drupal\node\Entity\NodeType::load('mercury_news') ) {
+		$requirements['hg_reader'] = [
+			'title' => t('Mercury Reader'),
+			'severity' => REQUIREMENT_ERROR,
+			'description' => t("Mercury Reader has <a href='@url'>outdated content types</a>. Please re-install Mercury Reader to install the proper content types.", array('@url' => "https://github.gatech.edu/ICWebTeam/hg_reader/issues/21" ))
+		];
+	}
+
+	return $requirements;
+}
+
+/**
+ * Helper function for config updates.
+ *
+ */
+function _hg_reader_update_config($configsNames) {
+  $config_path    = \Drupal::service('extension.path.resolver')->getPath('module', 'hg_reader') . '/config/install';
+  $source         = new FileStorage($config_path);
+  $config_storage = \Drupal::service('config.storage');
+  $config_factory = \Drupal::configFactory();
+  $uuid_service = \Drupal::service('uuid');
+
+  foreach ($configsNames as $name) {
+    $config_storage->write($name, $source->read($name));
+    $config_factory->getEditable($name)->set('uuid', $uuid_service->generate())->save();
+  }
+}

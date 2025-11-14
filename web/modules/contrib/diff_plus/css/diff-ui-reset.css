@@ -1,0 +1,10 @@
+#diff-plus-ui,
+#diff-plus-ui::before,
+#diff-plus-ui::after,
+#diff-plus-ui *:not(svg, svg *, .dropbutton, .dropbutton *, .diff-controls *),
+#diff-plus-ui
+  *:not(svg, svg *, .dropbutton, .dropbutton *, .diff-controls *)::before,
+#diff-plus-ui
+  *:not(svg, svg *, .dropbutton, .dropbutton *, .diff-controls *)::after {
+  all: revert;
+}

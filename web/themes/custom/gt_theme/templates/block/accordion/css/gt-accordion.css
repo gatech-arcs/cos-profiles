@@ -1,0 +1,145 @@
+/* CSS Style Sheet for accordion */
+.gt-accordion .ui-widget {
+  font-family: var(--font-roboto-condensed);
+}
+
+.gt-accordion .ui-widget-content {
+  border: 1px solid transparent;
+  color: var(--gt-black);
+}
+
+.gt-accordion .ui-accordion {
+  margin: 0 0 3rem;
+}
+
+.gt-accordion .ui-accordion .ui-accordion-header {
+  padding: .75em .5em;
+  font-weight: 500;
+  font-size: 105%;
+}
+
+.gt-accordion .ui-icon-triangle-1-e {
+  background-position: 2px;
+  padding-right: 25px;
+}
+
+.gt-accordion .ui-icon-triangle-1-s {
+  background-position: 7px 0;
+  padding-right: 25px;
+}
+
+.gt-accordion .ui-state-default {
+  border: none;
+  background: var(--gt-warm-grey-light);
+  font-family: var(--font-roboto-condensed);
+  transition: all .2s ease-in-out;
+}
+
+.gt-accordion .ui-state-default:hover {
+  background: var(--gt-gold);
+  color: var(--gt-black);
+}
+
+.gt-accordion .ui-state-active {
+  border: none;
+  background: var(--gt-gold);
+  color: var(--gt-black);
+}
+
+.gt-accordion .ui-state-active a,
+.gt-accordion .ui-state-active a:link,
+.gt-accordion .ui-state-active a:visited {
+  border-bottom: none;
+  color: var(--gt-black);
+}
+
+.gt-accordion .gt-accordion.gt-accordion:last-of-type {
+  margin-bottom: 20px;
+}
+
+.gt-accordion .ui-state-default a,
+.gt-accordion .ui-state-default a:link,
+.gt-accordion .ui-state-default a:visited,
+.gt-accordion a.ui-button,
+.gt-accordion a:link.ui-button,
+.gt-accordion a:visited.ui-button,
+.gt-accordion .ui-button {
+  border-bottom: none;
+  color: var(--gt-black);
+  font-size: 1rem;
+  font-weight: bold;
+}
+/* Icons
+----------------------------------*/
+
+/* states and images */
+.gt-accordion .ui-icon {
+  background-size: contain;
+  height: .7rem;
+  width: .7rem;
+}
+
+.gt-accordion .ui-icon,
+.gt-accordion .ui-widget-content .ui-icon {
+  background-image: url('../images/gt-gold-chevron.svg');
+}
+
+.gt-accordion .ui-widget-header .ui-icon {
+  background-image: url('../images/gt-gold-chevron.svg');
+}
+
+.gt-accordion .ui-state-hover .ui-icon,
+.gt-accordion .ui-state-focus .ui-icon,
+.gt-accordion .ui-button:hover .ui-icon,
+.gt-accordion .ui-button:focus .ui-icon {
+  background-image: url('../images/gt-black-chevron.svg');
+}
+
+.gt-accordion .ui-state-active .ui-icon,
+.gt-accordion .ui-button:active .ui-icon {
+  background-image: url('../images/gt-black-chevron.svg');
+  transform: rotate(90deg);
+}
+
+.gt-accordion .ui-state-highlight .ui-icon,
+.gt-accordion .ui-button .ui-state-highlight.ui-icon {
+  background-image: url('../images/gt-gold-chevron.svg');
+}
+
+.gt-accordion .ui-state-error .ui-icon,
+.gt-accordion .ui-state-error-text .ui-icon {
+  background-image: url('../images/gt-gold-chevron.svg');
+}
+
+.gt-accordion .ui-button .ui-icon {
+  background-image: url('../images/gt-gold-chevron.svg');
+}
+
+/* Corner radius */
+.gt-accordion .ui-corner-all,
+.gt-accordion .ui-corner-top,
+.gt-accordion .ui-corner-left,
+.gt-accordion .ui-corner-tl {
+  border-top-left-radius: 0;
+}
+
+.gt-accordion .ui-corner-all,
+.gt-accordion .ui-corner-top,
+.gt-accordion .ui-corner-right,
+.gt-accordion .ui-corner-tr {
+  border-top-right-radius: 0;
+}
+
+.gt-accordion .ui-corner-all,
+.gt-accordion .ui-corner-bottom,
+.gt-accordion .ui-corner-left,
+.gt-accordion .ui-corner-bl {
+  border-bottom-left-radius: 0;
+}
+
+.gt-accordion .ui-corner-all,
+.gt-accordion .ui-corner-bottom,
+.gt-accordion .ui-corner-right,
+.gt-accordion .ui-corner-br {
+  border-bottom-right-radius: 0;
+}

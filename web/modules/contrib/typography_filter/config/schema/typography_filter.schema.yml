@@ -1,0 +1,9 @@
+filter_settings.filter_typography:
+  type: mapping
+  label: 'Improve typography'
+  mapping:
+    fixers:
+      type: sequence
+      label: 'Available fixers'
+      sequence:
+        type: string

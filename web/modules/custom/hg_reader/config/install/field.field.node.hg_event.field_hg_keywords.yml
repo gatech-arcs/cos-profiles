@@ -1,0 +1,31 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - hg_reader
+  config:
+    - field.storage.node.field_hg_keywords
+    - node.type.hg_event
+    - taxonomy.vocabulary.hg_keywords
+id: node.hg_event.field_hg_keywords
+field_name: field_hg_keywords
+entity_type: node
+bundle: hg_event
+label: Keywords
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      hg_keywords: hg_keywords
+    sort:
+      field: name
+      direction: asc
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

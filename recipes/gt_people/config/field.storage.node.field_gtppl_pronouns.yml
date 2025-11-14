@@ -1,0 +1,35 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_gtppl_pronouns
+field_name: field_gtppl_pronouns
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: he-him
+      label: 'He / Him (He, him, His, his, himself)'
+    -
+      value: she-her
+      label: 'She / Her (She, her, Her, hers, herself)'
+    -
+      value: they-them
+      label: 'They / Them (They, them, Theirs, theirs, themself)'
+    -
+      value: spivak
+      label: 'Ey (Ey, em, Eir, eirs, emself)'
+    -
+      value: ze-hir
+      label: 'Ze (zie) / Hir (Ze, hir, Hir, hirs, hirself)'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

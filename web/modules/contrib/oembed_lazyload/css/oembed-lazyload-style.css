@@ -1,0 +1,22 @@
+.oembed-lazyload__visible-label {
+  padding: 1rem;
+  background-color: buttonface;
+  color:buttontext;
+  border-radius: 1em;
+  font-weight: bold;
+  box-shadow: 0 0 10px 0 rgb(0 0 0 / 30%);
+  transition: all .2s;
+}
+
+.oembed-lazyload__button:hover .oembed-lazyload__visible-label,
+.oembed-lazyload__button:focus .oembed-lazyload__visible-label {
+  text-decoration: underline;
+  box-shadow: 0 0 10px 0 rgb(0 0 0 / 90%);
+  background-color: white;
+  color: black;
+}
+
+.oembed-lazyload__button,
+.oembed-lazyload__iframe {
+  transition: .2s opacity;
+}

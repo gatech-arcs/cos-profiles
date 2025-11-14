@@ -1,0 +1,91 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Function active_filters_theme\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: active_filters.module
+
+		-
+			message: "#^Function active_filters_theme_suggestions_alter\\(\\) has parameter \\$suggestions with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: active_filters.module
+
+		-
+			message: "#^Function active_filters_theme_suggestions_alter\\(\\) has parameter \\$variables with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: active_filters.module
+
+		-
+			message: "#^Function active_filters_views_data_alter\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: active_filters.module
+
+		-
+			message: "#^Method Drupal\\\\active_filters\\\\Plugin\\\\views\\\\area\\\\ActiveFilters\\:\\:__construct\\(\\) has parameter \\$configuration with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Plugin/views/area/ActiveFilters.php
+
+		-
+			message: "#^Method Drupal\\\\active_filters\\\\Plugin\\\\views\\\\area\\\\ActiveFilters\\:\\:buildOptionsForm\\(\\) has parameter \\$form with no type specified\\.$#"
+			count: 1
+			path: src/Plugin/views/area/ActiveFilters.php
+
+		-
+			message: "#^Method Drupal\\\\active_filters\\\\Plugin\\\\views\\\\area\\\\ActiveFilters\\:\\:create\\(\\) has parameter \\$configuration with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Plugin/views/area/ActiveFilters.php
+
+		-
+			message: "#^Method Drupal\\\\active_filters\\\\Plugin\\\\views\\\\area\\\\ActiveFilters\\:\\:defineOptions\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Plugin/views/area/ActiveFilters.php
+
+		-
+			message: "#^Method Drupal\\\\active_filters\\\\Plugin\\\\views\\\\area\\\\ActiveFilters\\:\\:render\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Plugin/views/area/ActiveFilters.php
+
+		-
+			message: "#^Method Drupal\\\\active_filters\\\\Plugin\\\\views\\\\area\\\\ActiveFilters\\:\\:submitOptionsForm\\(\\) has parameter \\$form with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Plugin/views/area/ActiveFilters.php
+
+		-
+			message: "#^Function active_filters_test_active_filters_alter\\(\\) has parameter \\$active_filters with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/modules/active_filters_test/active_filters_test.module
+
+		-
+			message: "#^Method Drupal\\\\active_filters_test\\\\Form\\\\TitleForm\\:\\:buildForm\\(\\) has parameter \\$form with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/modules/active_filters_test/src/Form/TitleForm.php
+
+		-
+			message: "#^Method Drupal\\\\active_filters_test\\\\Form\\\\TitleForm\\:\\:buildForm\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/modules/active_filters_test/src/Form/TitleForm.php
+
+		-
+			message: "#^Method Drupal\\\\active_filters_test\\\\Form\\\\TitleForm\\:\\:submitForm\\(\\) has parameter \\$form with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/modules/active_filters_test/src/Form/TitleForm.php
+
+		-
+			message: "#^Method Drupal\\\\active_filters_test\\\\Plugin\\\\Block\\\\TitleForm\\:\\:__construct\\(\\) has parameter \\$configuration with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/modules/active_filters_test/src/Plugin/Block/TitleForm.php
+
+		-
+			message: "#^Method Drupal\\\\active_filters_test\\\\Plugin\\\\Block\\\\TitleForm\\:\\:build\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/modules/active_filters_test/src/Plugin/Block/TitleForm.php
+
+		-
+			message: "#^Method Drupal\\\\active_filters_test\\\\Plugin\\\\Block\\\\TitleForm\\:\\:create\\(\\) has parameter \\$configuration with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/modules/active_filters_test/src/Plugin/Block/TitleForm.php
+
+		-
+			message: "#^Cannot call method value\\(\\) on mixed\\.$#"
+			count: 9
+			path: tests/src/Kernel/ActiveFiltersPreprocessTest.php

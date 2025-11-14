@@ -1,0 +1,157 @@
+{# HG Mercury Profile Template #}
+
+{# Attached Style Sheet #}
+{{ attach_library('hg_reader/hg_reader') }}
+
+{# Module path #}
+{% set module_path = (_self|split('/templates')) %}
+
+{# Set Div ID #}
+{% set hg_id = 'mercury' %}
+{% set hg_name_id = 'hg-name' %}
+{% set hg_contact_id = 'hg-contact' %}
+
+{# Set Content CSS Classes #}
+{% set classes = [
+    'label',
+    'content',
+    'pt-1',
+    'pb-1',
+] %}
+
+{# Set Row Class #}
+{% set classRow = 'row mb-5 clearfix' %}
+
+{# Bootstrap Col Width classes #}
+{% set colFull = "col-md-12 col-sm-12 col-xs-12" %}
+
+{# Content Start # }
+
+{# Set Div wrapper ID #}
+<div{{ attributes.setAttribute('id', hg_id) }}>
+  {# Top credentials #}
+  {% set college = content.field_hg_college_school|field_value|render|striptags|trim %}
+  {% set department = content.field_hg_department|field_value|render|striptags|trim %}
+  {% set specialty = content.field_hg_specialty|field_value %}
+  <div class="row hg-profile__credentials">
+    <div class="col-12">
+      <p class="hg-profile__college-department">
+        <span class="hg-profile__horizontal-list">
+          {% if college is not empty %}
+          <span class="hg-profile__horizontal-list-item">{{ college }}</span>
+          {% endif %}
+          {% if department is not empty %}
+          <span class="hg-profile__horizontal-list-item">{{ department }}</span>
+          {% endif %}
+        </span>
+      </p>
+      {% if areas_of_expertise is not empty %}
+      <p class="hg-profile__expertise">
+        <span class="hg-profile__label">{{ "Areas of Expertise:"|t }}</span>
+        <span class="hg-profile__horizontal-list">
+          {% for area in areas_of_expertise %}
+            <span class="hg-profile__horizontal-list-item">{{ area }}</span>
+          {% endfor %}
+        </span>
+      </p>
+      {% endif %}
+      {% if specialty is not empty %}
+        <p class="hg-profile__specialty">{{ specialty }}</p>
+      {% endif %}
+    </div>
+  </div>
+  <div class="row mb-4">
+    <div class="col-lg-8 hg-profile__biography">
+      {{ content.body }}
+    </div>
+    <div class="col-lg-4 hg-profile__contact-social">
+      {% set linkedin_url = content.field_hg_linkedin[0]['#url'] %}
+      {% set twitter_url = content.field_hg_twitter[0]['#url'] %}
+      {% if linkedin_url is not empty or twitter_url is not empty %}
+        <h2 class="hg-profile__social-title">{{ "Social Media"|t }}</h2>
+        <div class="row hg-profile__social-links">
+          {% if linkedin_url is not empty %}
+            <div class="col-12 col-sm-6 col-lg-12">
+              <a href="{{ linkedin_url }}" class="hg-profile__social-link" title="{{ "LinkedIn"|t }}" target="_blank">
+                <img src="/{{ module_path[0] }}/images/linkedin.svg" alt="LinkedIn icon"
+                     width="38px" height="38px"/>{{ "Engage with this expert on LinkedIn"|t }}
+              </a>
+            </div>
+          {% endif %}
+          {% if twitter_url is not empty %}
+            <div class="col-12 col-sm-6 col-lg-12">
+              <a href="{{ twitter_url }}" class="hg-profile__social-link" title="{{ "Twitter"|t }}" target="_blank">
+                <img src="/{{ module_path[0] }}/images/twitter.svg" alt="Twitter icon"
+                     width="38px" height="38px"/>{{ "Engage with this expert on Twitter"|t }}
+              </a>
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+      <div class="row hg-profile__contact-wrapper">
+        <div class="col-12 mt-5">
+          {{ contact_link }}
+        </div>
+      </div>
+    </div>
+  </div>
+  {% set num_websites = node.field_hg_related_links.getvalue | length %}
+  {% if num_websites > 0 and content.field_hg_related_links[0]['#url'] is not empty %}
+  <div class="row mb-4">
+    <div class="col">
+      <h2>{{ "Websites"|t }}</h2>
+      <div class="hg-profile__websites">
+        {% for website in content.field_hg_related_links %}
+          {% if website['#url'] is not empty %}
+            <div class="mb-2">
+              <a class="hg-profile__website-link" title="{{ website['#title'] }}" target="_blank" href="{{ website['#url'] }}">
+                <span class="flex-container">
+                  <img class="hg-profile__website-link--icon" src="/{{ module_path[0] }}/images/globe.svg" alt="Website link icon"
+                       width="29px" height="29px"/>
+                  <div class="hg-profile__website-link--content">
+                    {% if website['#title'] is not empty %}
+                      {{ website['#title'] }}
+                    {% else %}
+                      {{ website['#url'] }}
+                    {% endif %}
+                  </div>
+                </span>
+              </a>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  {% endif %}
+  {% set num_recent = node.field_hg_recent_appearances.getvalue | length %}
+  {% if num_recent > 0 %}
+    <div class="row mb-5">
+      <div class="col">
+        <h2>{{ "News and Recent Appearances"|t }}</h2>
+        <div class="hg-profile__recent_appearances masonry-columns">
+          {{ content.field_hg_recent_appearances }}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+  {% set num_media = node.field_hg_media.getvalue | length %}
+  {% set media_kit_url = content.field_hg_related_files|field_value %}
+  {% if num_media > 0 or media_kit_url %}
+    <div class="row">
+      <div class="col{% if media_kit_url %} d-flex justify-content-between{% endif %}">
+        <h2>{{ "Media"|t }}</h2>
+        {% if media_kit_url %}
+        <a class="hg-profile__media-kit" href="{{ media_kit_url }}" download>
+          <img src="{{ base_path }}/{{ directory }}/images/download-dark.svg" alt="{{ "Download Media Kit"|t }}" width="29px" height="29px"
+          />{{ "Download Media Kit"|t }}
+        </a>
+        {% endif %}
+      </div>
+    </div>
+    {{ content.field_hg_media }}
+  {% endif %}
+</div>
+{# End Div Wrapper ID #}
+
+{# End Mercury Profile Template #}

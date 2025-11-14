@@ -1,0 +1,42 @@
+{# HG Event Video Template #}
+
+{# Attached Style Sheet #}
+{{ attach_library('hg_reader/hg_reader') }}
+
+{# Set Content CSS Classes #}
+{% set classes = [
+    'hg-video',
+    'py-2',
+    'mb-5',
+    'clearfix',
+] %}
+
+{# Content #}
+<div{{ attributes.setAttribute('id', 'mercury').addClass(classes) }}>
+    <div class="row">
+        <div class="col">
+            {# YouTube #}
+            {% if content.field_hg_youtube_id is not empty %}
+                <div class="hg-video-container">
+                    <iframe width="560" height="315" src="{{ content.field_hg_youtube_id }}" title="Video"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                </div>
+            {% endif %}
+            {# Image #}
+            {% if content.field_hg_images is not empty %}
+                <div class="hg-image">
+                    <picture>
+                        {{ content.field_hg_images }}
+                    </picture>
+                </div>
+            {% endif %}
+            {# Description #}
+            {% if content.body|render is not empty %}
+                <div class="description">
+                    <p>{{ content.body[0] }}</p>
+                </div>
+            {% endif %}
+        </div>{# End Main Container #}
+    </div> {# End Event Template  #}
+</div>

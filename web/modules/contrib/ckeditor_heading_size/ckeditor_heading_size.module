@@ -1,0 +1,107 @@
+<?php
+
+/**
+ * @file
+ * CKEditor Heading Size module.
+ */
+
+use Drupal\ckeditor5\Plugin\CKEditor5PluginDefinition;
+
+define('HEADING_SIZE_CLASS', 'heading-size');
+
+/**
+ * Implements hook_ckeditor5_plugin_info_alter().
+ */
+function ckeditor_heading_size_ckeditor5_plugin_info_alter(array &$plugin_definitions) {
+  // Turn our heading size settings into ckeditor config.
+  assert($plugin_definitions['ckeditor_heading_size_plugin'] instanceof CKEditor5PluginDefinition);
+  $plugin_definition = $plugin_definitions['ckeditor_heading_size_plugin']->toArray();
+  $config = \Drupal::config('ckeditor_heading_size.settings');
+  $size_options = $config->get('size_options');
+  $type = $config->get('type');
+  foreach ($size_options as $size_option) {
+    if ($type === 'sizes') {
+      $label = $size_option;
+    }
+    else {
+      [$label, $_] = explode('|', $size_option);
+    }
+    $plugin_definition['ckeditor5']['config']['headingSizes'][$label] = _get_size_class_name($size_option);
+  }
+  $plugin_definitions['ckeditor_heading_size_plugin'] = new CKEditor5PluginDefinition($plugin_definition);
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function ckeditor_heading_size_preprocess_html(&$variables) {
+  $config = \Drupal::config('ckeditor_heading_size.settings');
+  if ($config->get('type') !== 'sizes') {
+    return;
+  }
+
+
+  // Add css classes for each enabled heading tag and size.
+  $style = '';
+  $size_options = $config->get('size_options');
+  $important = $config->get('important') ? ' !important' : '';
+  $extra_specificity = $config->get('extra_specificity');
+  foreach ($size_options as $size_option) {
+    foreach (_get_enabled_heading_tags() as $tag) {
+      $selector = "$tag." . HEADING_SIZE_CLASS . "-$size_option";
+      if (!empty($extra_specificity)) {
+        $selector .= ",\n$extra_specificity $tag." . HEADING_SIZE_CLASS . "-$size_option";
+      }
+
+      $style .= "$selector {\n  font-size: $size_option$important;\n}\n";
+    }
+  }
+  $variables['page']['#attached']['html_head'][] = [
+    [
+      '#tag' => 'style',
+      '#value' => $style,
+    ],
+    'ckeditor_heading_size',
+  ];
+}
+
+/**
+ * Get size class name.
+ *
+ * @param string $size_option
+ *   A font size option like 14px or 1em.
+ *
+ * @return string
+ *   The css class name that's generated in ckeditor_heading_size_preprocess_html().
+ */
+function _get_size_class_name(string $size_option): string {
+  $config = \Drupal::config('ckeditor_heading_size.settings');
+  if ($config->get('type') === 'classes') {
+    [$label, $value] = explode('|', $size_option);
+    return $value;
+  }
+  return HEADING_SIZE_CLASS . "-$size_option";
+}
+
+/**
+ * Get enabled heading tags.
+ *
+ * @return array
+ *   An array of heading tags enabled in ckeditor.
+ */
+function _get_enabled_heading_tags(): array {
+  $enabled_heading_tags = &drupal_static(__FUNCTION__);
+
+  if (!isset($enabled_heading_tags)) {
+    // Build a list of enabled heading tags.
+    $heading_config = \Drupal::service('plugin.manager.ckeditor5.plugin')->getDefinition('ckeditor5_heading')->getCKEditor5Config()['heading']['options'];
+    $enabled_heading_tags = [];
+    foreach ($heading_config as $tag_details) {
+      if (str_contains($tag_details['model'], 'heading')) {
+        $enabled_heading_tags[] = $tag_details['view'];
+      }
+    }
+  }
+
+  return $enabled_heading_tags;
+}

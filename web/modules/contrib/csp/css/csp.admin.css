@@ -1,0 +1,27 @@
+form.csp-settings {
+  .csp-directive-auto {
+    opacity: 0.8;
+    font-size: 75%;
+    font-style: italic;
+
+    &::before {
+      content: "*";
+    }
+  }
+
+  [data-drupal-selector$="-directives"],
+  [data-drupal-selector$="-reporting-handler"] {
+    [data-drupal-selector$="-options"] {
+      margin-left: 2.5ex;
+    }
+    .form-radios,
+    .form-checkboxes {
+      display: flex;
+      flex-wrap: wrap;
+
+      .form-item {
+        margin-right: 3ex;
+      }
+    }
+  }
+}

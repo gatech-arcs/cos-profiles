@@ -1,0 +1,12 @@
+name: GT Tools
+description: Miscellaneous functionality for GT sites
+package: GT
+type: module
+core_version_requirement: ^10 || ^11
+version: "4.0.6"
+project: "gt_tools"
+project status url: https://comm.gatech.edu/release_histories/gt_tools/4.x
+dependencies:
+  - block:block
+  - field_group:field_group
+  - node:node

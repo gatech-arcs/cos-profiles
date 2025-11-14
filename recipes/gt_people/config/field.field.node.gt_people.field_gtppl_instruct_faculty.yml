@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_gtppl_instruct_faculty
+    - node.type.gt_people
+id: node.gt_people.field_gtppl_instruct_faculty
+field_name: field_gtppl_instruct_faculty
+entity_type: node
+bundle: gt_people
+label: 'Instructional Faculty'
+description: 'Check this box if this person is Instructional Faculty.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

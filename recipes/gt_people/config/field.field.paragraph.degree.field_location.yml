@@ -1,0 +1,19 @@
+uuid: 94594e69-065b-463e-8e96-0713b0f2a9c0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_location
+    - paragraphs.paragraphs_type.degree
+id: paragraph.degree.field_location
+field_name: field_location
+entity_type: paragraph
+bundle: degree
+label: Location
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

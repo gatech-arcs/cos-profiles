@@ -1,0 +1,12 @@
+name: 'CSP Test pages'
+type: module
+description: 'Provides test pages for CSP automated tests.'
+core_version_requirement: ^10 || ^11
+package: Testing
+dependencies:
+  - csp:csp
+
+# Information added by Drupal.org packaging script on 2025-03-12
+version: '2.2.2'
+project: 'csp'
+datestamp: 1741822238

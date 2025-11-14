@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_hg_state
+    - node.type.hg_profile
+  module:
+    - options
+id: node.hg_profile.field_hg_state
+field_name: field_hg_state
+entity_type: node
+bundle: hg_profile
+label: State
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

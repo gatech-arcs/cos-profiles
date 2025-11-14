@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_hg_location
+    - node.type.hg_event
+id: node.hg_event.field_hg_location
+field_name: field_hg_location
+entity_type: node
+bundle: hg_event
+label: Location
+description: 'Enter at least a Building and Room number for this event. If this event is for the public, also add a full mailing or physical address they can use in their GPS system.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_gtppl_url_researcherid
+    - node.type.gt_people
+id: node.gt_people.field_gtppl_url_researcherid
+field_name: field_gtppl_url_researcherid
+entity_type: node
+bundle: gt_people
+label: 'Publications URL - ResearcherID'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

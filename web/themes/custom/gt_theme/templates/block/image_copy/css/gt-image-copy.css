@@ -1,0 +1,254 @@
+/* CSS Style Sheet for image over copy  */
+.superblock .text-left,
+.superblock .text-left p {
+  text-align: left;
+}
+
+.superblock .text-center,
+.superblock .text-center p {
+  text-align: center;
+}
+
+.superblock .text-right,
+.superblock .text-right p {
+  text-align: right;
+}
+
+.superblock .card-img,
+.superblock .card-img-top {
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
+}
+
+.superblock img.img-fluid {
+  width: 100%;
+  height: auto;
+}
+
+.superblock img.original {
+  height: auto;
+}
+
+.superblock .card-transparent {
+  position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-clip: border-box;
+}
+
+.superblock .card-deck {
+  margin: 0;
+  width: fit-content;
+}
+
+.superblock .card-footer {
+  background-color: transparent;
+  border: 0;
+  margin: 0 0 0 10px;
+  padding: 0;
+}
+
+/* black */
+.superblock.gt-black {
+  background-color: var(--gt-black) !important;
+}
+
+.superblock.gt-black .btn.btn-gold {
+  background: var(--gt-gold) !important;
+  color: var(--gt-black) !important;
+}
+
+.superblock.gt-black .btn.btn-gold:hover {
+  background: var(--gt-white) !important;
+  color: var(--gt-black) !important;
+}
+
+.superblock .gt-black .card-body h2,
+.superblock .gt-black .card-body h3,
+.superblock .gt-black .card-body h4,
+.superblock .gt-black .card-body h5,
+.superblock .gt-black .card-body h6 {
+  color: var(--gt-gold);
+}
+
+.superblock .gt-text-black h2,
+.superblock .gt-text-black h3,
+.superblock .gt-text-black h4,
+.superblock .gt-text-black h5,
+.superblock .gt-text-black h6,
+.superblock .gt-text-black dl,
+.superblock .gt-text-black ol,
+.superblock .gt-text-black ul,
+.superblock .gt-text-black p,
+.superblock .gt-text-black .p {
+  color: var(--gt-black);
+}
+
+/* white */
+.superblock.gt-white {
+  background-color: var(--gt-white) !important;
+}
+
+.superblock.gt-white .btn.btn-black {
+  background: var(--gt-gold) !important;
+  color: var(--gt-black) !important;
+}
+
+.superblock.gt-white .btn.btn-black:hover {
+  background: var(--gt-black) !important;
+  color: var(--gt-white) !important;
+}
+
+.superblock .gt-white img {
+  position: relative;
+  z-index: 99;
+}
+
+.superblock .gt-white .card-body h2,
+.superblock .gt-white .card-body h3,
+.superblock .gt-white .card-body h4,
+.superblock .gt-white .card-body h5,
+.superblock .gt-white .card-body h6 {
+  color: var(--gt-md-gold);
+}
+
+.superblock .gt-text-white h2,
+.superblock .gt-text-white h3,
+.superblock .gt-text-white h4,
+.superblock .gt-text-white h5,
+.superblock .gt-text-white h6,
+.superblock .gt-text-white dl,
+.superblock .gt-text-white ol,
+.superblock .gt-text-white ul,
+.superblock .gt-text-white p,
+.superblock .gt-text-white .p,
+.superblock .gt-text-white {
+  color: var(--gt-white);
+}
+
+/* blue */
+.superblock.gt-blue {
+  background-color: var(--gt-navy) !important;
+}
+
+.superblock.gt-blue .btn.btn-gold {
+  background: var(--gt-gold) !important;
+  color: var(--gt-black) !important;
+}
+
+.superblock.gt-blue .btn.btn-gold:hover {
+  background: var(--gt-white) !important;
+  color: var(--gt-black) !important;
+}
+
+.superblock .gt-text-blue h2,
+.superblock .gt-text-blue h3,
+.superblock .gt-text-blue h4,
+.superblock .gt-text-blue h5,
+.superblock .gt-text-blue h6,
+.superblock .gt-text-blue dl,
+.superblock .gt-text-blue ol,
+.superblock .gt-text-blue ul,
+.superblock .gt-text-blue p,
+.superblock .gt-text-blue .p {
+  color: var(--gt-white);
+}
+
+/* gold */
+.superblock.gt-gold {
+  background-color: var(--gt-gold) !important;
+}
+
+.superblock.gt-gold .btn.btn-black {
+  background: var(--gt-black) !important;
+  color: var(--gt-white) !important;
+}
+
+.superblock.gt-gold .btn.btn-black:hover {
+  background: var(--gt-white) !important;
+  color: var(--gt-black) !important;
+}
+
+.superblock .gt-text-gold h2,
+.superblock .gt-text-gold h3,
+.superblock .gt-text-gold h4,
+.superblock .gt-text-gold h5,
+.superblock .gt-text-gold h6,
+.superblock .gt-text-gold dl,
+.superblock .gt-text-gold ol,
+.superblock .gt-text-gold ul,
+.superblock .gt-text-gold p,
+.superblock .gt-text-gold .p {
+  color: var(--gt-gold);
+}
+
+/* gray */
+.superblock.gt-warm-gray {
+  background-color: var(--gt-warm-gray-medium) !important;
+}
+
+.superblock.gt-warm-gray .btn.btn-black {
+  background: var(--gt-gold) !important;
+  color: var(--gt-black) !important;
+}
+
+.superblock.gt-warm-gray .btn.btn-black:hover {
+  background: var(--gt-black) !important;
+  color: var(--gt-white) !important;
+}
+
+.superblock .gt-text-warm-gray h2,
+.superblock .gt-text-warm-gray h3,
+.superblock .gt-text-warm-gray h4,
+.superblock .gt-text-warm-gray h5,
+.superblock .gt-text-warm-gray h6,
+.superblock .gt-text-warm-gray dl,
+.superblock .gt-text-warm-gray ol,
+.superblock .gt-text-warm-gray ul,
+.superblock .gt-text-warm-gray p,
+.superblock .gt-text-warm-gray .p {
+  color: var(--gt-warm-gray);
+}
+
+/* transparent */
+.superblock .gt-transparent .card-body {
+  padding: 0;
+}
+
+.superblock .gt-transparent .card-body h2,
+.superblock .gt-transparent .card-body h3,
+.superblock .gt-transparent .card-body h4,
+.superblock .gt-transparent .card-body h5,
+.superblock .gt-transparent .card-body h6 {
+  color: var(--gt-md-gold);
+}
+
+/* banner region specific styling */
+#gt-banner .superblock .gt-transparent .card-body {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.superblock .gt-black .btn {
+  color: var(--gt-black) !important;
+}
+
+.superblock .gt-gold .btn {
+  background: var(--gt-black) !important;
+  color: var(--gt-white) !important;
+  text-decoration: none !important;
+}
+
+.superblock .gt-gold .btn:hover {
+  background: var(--gt-white) !important;
+  color: var(--gt-black) !important;
+}
+
+.superblock .gt-blue .card-body.gt-text-blue {
+  color: var(--gt-white) !important;
+}
+

@@ -1,0 +1,6 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Missing cache backend declaration for performance\\.$#"
+			count: 1
+			path: src/Queue/QueueWorkerManager.php

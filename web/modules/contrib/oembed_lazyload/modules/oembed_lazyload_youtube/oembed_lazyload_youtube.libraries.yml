@@ -1,0 +1,11 @@
+formatter-third-party-settings:
+  version: 1.0.0
+  css:
+    theme:
+      css/formatter-third-party-settings.css: {}
+
+youtube:
+  version: 1.0.0
+  css:
+    theme:
+      css/youtube.css: {}

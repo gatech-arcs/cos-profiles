@@ -1,0 +1,7 @@
+ckeditor_responsive_table.form:
+  path: '/admin/config/content/ckeditor-responsive-table'
+  defaults:
+    _form: '\Drupal\ckeditor_responsive_table\Form\CkeditorResponsiveTableForm'
+    _title: 'CKEditor Responsive Table settings'
+  requirements:
+    _permission: 'administer site configuration'

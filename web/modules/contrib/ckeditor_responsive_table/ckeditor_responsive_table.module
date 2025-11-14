@@ -1,0 +1,36 @@
+<?php
+
+/**
+ * Implements hook_element_page_attachments().
+ */
+function ckeditor_responsive_table_page_attachments(array &$page) {
+  if (\Drupal::service('router.admin_context')->isAdminRoute() == FALSE) {
+    $page['#attached']['library'][] = 'ckeditor_responsive_table/responsive_table_display';
+    $config = \Drupal::config('ckeditor_responsive_table.settings');
+    $table_selector = $config->get('table_selector');
+    if (empty($table_selector)) {
+      $table_selector = $config->get('default_table_selector');
+    }
+    $fail_class = $config->get('fail_class');
+    if (empty($fail_class)) {
+      $fail_class = $config->get('default_fail_class');
+    }
+    $caption_side = $config->get('caption_side');
+    if (empty($caption_side)) {
+      $caption_side = $config->get('default_caption_side');
+    }
+    $large_character_threshold = $config->get('large_character_threshold');
+    if (empty($large_character_threshold)) {
+      $large_character_threshold = $config->get('default_large_character_threshold');
+    }
+    $small_character_threshold = $config->get('small_character_threshold');
+    if (empty($small_character_threshold)) {
+      $small_character_threshold = $config->get('default_small_character_threshold');
+    }
+    $page['#attached']['drupalSettings']['ckeditorResponsiveTable']['tableSelector'] = $table_selector;
+    $page['#attached']['drupalSettings']['ckeditorResponsiveTable']['failClass'] = $fail_class;
+    $page['#attached']['drupalSettings']['ckeditorResponsiveTable']['captionSide'] = $caption_side;
+    $page['#attached']['drupalSettings']['ckeditorResponsiveTable']['largeCharacterThreshold'] = $large_character_threshold;
+    $page['#attached']['drupalSettings']['ckeditorResponsiveTable']['smallCharacterThreshold'] = $small_character_threshold;
+  }
+}

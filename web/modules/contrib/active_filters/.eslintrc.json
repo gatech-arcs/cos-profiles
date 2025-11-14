@@ -1,0 +1,20 @@
+{
+  "extends": "../../../core/.eslintrc.passing.json",
+  "ignorePatterns": [
+    "**/node_modules",
+    "**/js/dist",
+    "*.yml"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 2022
+  },
+  "rules": {
+    "max-nested-callbacks": ["warn", 4],
+    "strict": ["off"],
+    "valid-jsdoc": ["warn", {
+      "requireParamDescription": false,
+      "requireReturn": false,
+      "requireReturnDescription": false
+    }]
+  }
+}

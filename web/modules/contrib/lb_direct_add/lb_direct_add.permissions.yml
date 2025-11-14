@@ -1,0 +1,6 @@
+administer layout builder direct add settings:
+  title: 'Access layout builder direct add configuration page'
+  description: 'Access and edit the configuration for layout builder direct add module.'
+access layout builder direct add more options:
+  title: 'Access layout builder direct add "More options" link'
+  description: 'Access the "More options" link in the Layout builder direct add widget.'

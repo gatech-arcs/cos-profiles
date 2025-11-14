@@ -1,0 +1,126 @@
+name: 'GT Standard'
+description: 'Provides a standard site with commonly used features pre-configured'
+type: 'Site'
+
+recipes:
+  - core/recipes/basic_block_type
+  - core/recipes/basic_shortcuts
+  - core/recipes/page_content_type
+  - core/recipes/full_html_format_editor
+  - core/recipes/basic_html_format_editor
+  - core/recipes/restricted_html_format
+  - core/recipes/content_search
+  - core/recipes/core_recommended_performance
+  - core/recipes/core_recommended_maintenance
+  - core/recipes/administrator_role
+  - core/recipes/content_editor_role
+  - core/recipes/tags_taxonomy
+  - core/recipes/standard_responsive_images
+  - core/recipes/audio_media_type
+  - core/recipes/document_media_type
+  - core/recipes/image_media_type
+  - core/recipes/local_video_media_type
+  - core/recipes/remote_video_media_type
+
+install:
+  - help
+  - history
+  - config
+  - contextual
+  - menu_link_content
+  - datetime
+  - media
+  - media_library
+  - menu_ui
+  - options
+  - field_ui
+  - views_ui
+  - shortcut
+
+  - active_filters
+  - address
+  - allowed_formats
+  - auto_anchors
+  - better_exposed_filters
+  - config_ignore
+  - config_inspector
+  - ctools
+  - dotenv
+  - entity_browser
+  - field_group
+  - filter_perms
+  - fullcalendar_view
+  - group
+  - json_field
+  - key
+  - manage_display
+  - masquerade
+  - maxlength
+  - menu_link_attributes
+  - module_filter
+  - quick_node_clone
+  - security_review
+  - smart_date
+  - smart_trim
+  - token
+  - token_or
+  - twig_field_value
+  - twig_tweak
+  - views_data_export
+  - views_bulk_edit
+  - views_bulk_operations
+
+config:
+  import:
+    help:
+      - search.page.help_search
+    image:
+      - image.style.large
+      - image.style.thumbnail
+    node:
+      - views.view.archive
+      - views.view.content
+      - views.view.content_recent
+      - views.view.frontpage
+      - views.view.glossary
+    user:
+      - core.entity_view_mode.user.compact
+      - search.page.user_search
+      - views.view.user_admin_people
+
+  actions:
+    node.settings:
+      simpleConfigUpdate:
+        use_admin_theme: false
+    system.site:
+      simpleConfigUpdate:
+        page.front: /node
+    user.role.anonymous:
+      grantPermission: 'access content'
+    user.role.authenticated:
+      grantPermissions:
+        - 'access content'
+    user.role.content_editor:
+      grantPermissions:
+        - 'access content overview'
+        - 'access contextual links'
+        - 'access files overview'
+        - 'access toolbar'
+        - 'create terms in tags'
+        - 'create url aliases'
+        - 'edit own comments'
+        - 'edit terms in tags'
+        - 'delete own files'
+        - 'revert all revisions'
+        - 'view all revisions'
+        - 'view the administration theme'
+      grantPermissionsForEachNodeType:
+        - 'create %bundle content'
+        - 'delete %bundle revisions'
+        - 'delete own %bundle content'
+        - 'edit own %bundle content'
+    user.settings:
+      simpleConfigUpdate:
+        verify_mail: true
+        register: admin_only
+        cancel_method: user_cancel_block

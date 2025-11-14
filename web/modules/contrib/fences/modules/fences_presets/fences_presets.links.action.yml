@@ -1,0 +1,5 @@
+fences_preset.add:
+  route_name: 'entity.fences_preset.add_form'
+  title: 'Add Fences Preset'
+  appears_on:
+    - entity.fences_preset.collection

@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_hg_location_url
+    - node.type.hg_event
+  module:
+    - link
+id: node.hg_event.field_hg_location_url
+field_name: field_hg_location_url
+entity_type: node
+bundle: hg_event
+label: 'Location URL'
+description: 'If your location has directions or parking information, this is a great place to link to the page with those instructions.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 1
+field_type: link

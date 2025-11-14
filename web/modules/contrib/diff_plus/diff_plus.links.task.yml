@@ -1,0 +1,9 @@
+diff_plus.user_settings:
+  route_name: diff_plus.user_settings
+  base_route: diff_plus.user_settings
+  title: Personalized Settings
+
+diff_plus.default_settings:
+  route_name: diff_plus.default_settings
+  base_route: diff_plus.user_settings
+  title: Default Settings

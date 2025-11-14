@@ -1,0 +1,7 @@
+ckeditor_responsive_table.settings:
+  type: config_object
+  label: 'CKEditor Responsive Table settings'
+  mapping:
+    table_selector:
+      type: text
+      label: 'Table selector'

@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+id: gt-footer-02
+label: 'GT official links: column 2 (optional)'
+description: 'GT official links: column two (optional)'
+locked: true

@@ -1,0 +1,15 @@
+gt_tools.gt_tools:
+  path: '/admin/config/gt-tools'
+  defaults:
+    _controller: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
+    _title: 'GT tools'
+  requirements:
+    _permission: 'access administration pages'
+
+gt_tools.admin_settings:
+  path: '/admin/config/gt-tools/settings'
+  defaults:
+    _form: '\Drupal\gt_tools\Form\GTToolsSettingsForm'
+    _title: 'GT Tools settings'
+  requirements:
+    _permission: 'access administration pages'

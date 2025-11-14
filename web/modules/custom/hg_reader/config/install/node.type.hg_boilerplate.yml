@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - hg_reader
+name: 'Mercury boilerplate'
+type: hg_boilerplate
+description: 'A chunk of standard text that can be included in other pieces of content.'
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: false

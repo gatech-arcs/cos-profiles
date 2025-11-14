@@ -1,0 +1,44 @@
+{#
+/**
+ * @file
+ * Default template implementation for grouped active filters.
+ *
+ * Available variables:
+ * @var array<int, array{label: array, active_filters: array}> active_filters
+ *   All active filter render arrays.
+ * @var \Drupal\Core\Template\Attribute attributes
+ *   HTML attributes for the container element.
+ * @var Drupal\Component\Render\MarkupInterface|string title
+ *   The title text.
+ * @var \Drupal\Core\Template\Attribute title_attributes
+ *   HTML attributes for the title element.
+ * @var Drupal\Component\Render\MarkupInterface|string clear_text
+ *   The clear all button text.
+ * @var \Drupal\Core\Template\Attribute clear_attributes
+ *   HTML attributes for the clear button.
+ * @var array<string, bool|string|array> configuration
+ *   The active filter configuration.
+ * @var \Drupal\views\ViewExecutable view
+ *   The view object for the active filters.
+ *
+ * @see template_preprocess_active_filters_grouped()
+ *
+ * @ingroup themeable
+ */
+#}
+{% extends 'active-filters.html.twig' %}
+
+{% block before_list %}
+  <h2{{ title_attributes.addClass('active-filters__title') }}>{{ title }}</h2>
+{% endblock %}
+
+{% block list %}
+  {% for group in active_filters %}
+    {% if group.active_filters|length %}
+      <div class="active-filters__group">
+        {{ group.label }}
+        {{ group.active_filters }}
+      </div>
+    {% endif %}
+  {% endfor %}
+{% endblock %}

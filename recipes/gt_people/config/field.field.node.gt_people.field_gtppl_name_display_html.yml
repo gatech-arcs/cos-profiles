@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_gtppl_name_display_html
+    - node.type.gt_people
+  module:
+    - text
+id: node.gt_people.field_gtppl_name_display_html
+field_name: field_gtppl_name_display_html
+entity_type: node
+bundle: gt_people
+label: 'Name - Display (html encoded, long)'
+description: 'Longer, full display name with HTML entities for proper display'
+required: false
+translatable: false
+default_value: {}
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - basic_html
+field_type: text

@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - hg_reader
+name: 'Mercury image'
+type: hg_image
+description: 'A photo or graphic file, uploaded so it can be attached to other content. Images are the <strong>main type of media in Mercury</strong> that accompany News stories and Events.'
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: false

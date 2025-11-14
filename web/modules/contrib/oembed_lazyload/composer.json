@@ -1,0 +1,12 @@
+{
+    "name": "drupal/oembed_lazyload",
+    "description": "Facilitates the lazy loading of oembed resources.",
+    "type": "drupal-module",
+    "authors": [
+        {
+            "name": "Luke Leber",
+            "email": "lukeleber@gmail.com"
+        }
+    ],
+    "require": {}
+}

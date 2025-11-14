@@ -1,0 +1,46 @@
+<?php
+
+/**
+ * @file
+ * Contains auto_anchors.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_page_attachments().
+ */
+function auto_anchors_page_attachments(array &$page) {
+
+  $config = \Drupal::config('auto_anchors.settings');
+  $settings = [
+    'show_automatic_anchor_links' => \Drupal::currentUser()->hasPermission('show automatic anchor links'),
+    'root_elements' => $config->get('root_elements'),
+    'anchor_elements' => $config->get('anchor_elements'),
+    'link_content' => $config->get('link_content'),
+    'exclude_admin_pages' => $config->get('exclude_admin_pages'),
+  ];
+
+  if ($settings['exclude_admin_pages'] and \Drupal::service('router.admin_context')->isAdminRoute()) {
+    return;
+  }
+
+  $page['#attached']['library'][] = 'auto_anchors/auto_anchors';
+  $page['#attached']['drupalSettings']['auto_anchors'] = $settings;
+}
+
+/**
+ * Implements hook_help().
+ */
+function auto_anchors_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the auto_anchors module.
+    case 'help.page.auto_anchors':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Automatically generates HTML ids for use as anchors on specified elements.') . '</p>';
+      return $output;
+
+    default:
+  }
+}

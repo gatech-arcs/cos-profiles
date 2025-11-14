@@ -1,0 +1,23 @@
+{#
+/**
+ * @file
+ * Default template implementation for an active filter group label.
+ *
+ * Available variables:
+ * @var Drupal\Component\Render\MarkupInterface|string label
+ *   The active filter value label.
+ * @var \Drupal\Core\Template\Attribute attributes
+ *   HTML attributes for the active filter.
+ * @var \Drupal\Core\Template\Attribute wrapper_attributes
+ *   HTML attributes for the container element.
+ * @var \Drupal\active_filters\ActiveFilter\ActiveFilter group
+ *   The active filter group value object.
+ *
+ * @see template_preprocess_active_filter_group()
+ *
+ * @ingroup themeable
+ */
+#}
+<dt{{ wrapper_attributes.addClass('active-filters__group-title') }}>
+  <span{{ attributes.addClass('active-filters__group-label') }}>{{ label }}</span>
+</dt>

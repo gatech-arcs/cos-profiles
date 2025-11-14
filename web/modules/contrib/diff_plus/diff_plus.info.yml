@@ -1,0 +1,11 @@
+name: Diff Plus
+type: module
+description: Provides fairly opinionated expanded functionality for the diff module
+core_version_requirement: ^10.1 || ^11
+dependencies:
+  - diff:diff
+
+# Information added by Drupal.org packaging script on 2024-07-20
+version: '1.1.0'
+project: 'diff_plus'
+datestamp: 1721508338

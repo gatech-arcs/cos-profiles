@@ -1,0 +1,9 @@
+services:
+  queue_order.plugin.manager.queue_worker.decorator:
+    class: Drupal\queue_order\Queue\QueueWorkerManager
+    public: false
+    decorates: plugin.manager.queue_worker
+    decoration_priority: 1
+    arguments:
+      - '@queue_order.plugin.manager.queue_worker.decorator.inner'
+      - '@config.factory'

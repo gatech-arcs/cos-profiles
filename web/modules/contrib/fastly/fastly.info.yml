@@ -1,0 +1,11 @@
+name: Fastly
+description: 'Integration with the Fastly service.'
+package: Reports
+core_version_requirement: ^9.3 || ^10 || ^11
+configure: fastly.settings
+type: module
+
+# Information added by Drupal.org packaging script on 2025-06-11
+version: '4.0.4'
+project: 'fastly'
+datestamp: 1749618550

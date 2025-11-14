@@ -1,0 +1,64 @@
+fastly.settings:
+  path: '/admin/config/services/fastly'
+  defaults:
+    _form: '\Drupal\fastly\Form\FastlySettingsForm'
+    _title: 'Fastly'
+  requirements:
+    _permission: 'administer fastly'
+fastly.edge_modules:
+  path: '/admin/config/services/fastly/edge-modules'
+  defaults:
+    _controller: '\Drupal\fastly\Controller\FastlyEdgeModulesController::getEdgeModulesJson'
+    _title: 'Fastly Edge Modules'
+  requirements:
+    _permission: 'administer fastly'
+fastly.edge_modules_submit_form:
+  path: '/admin/config/services/fastly/submit-edge-module'
+  defaults:
+    _controller: '\Drupal\fastly\Controller\FastlyEdgeModulesController::processEdgeModuleFormSubmission'
+    _title: 'Fastly Edge Modules'
+  requirements:
+    _permission: 'administer fastly'
+fastly.edge_modules_disable_form:
+  path: '/admin/config/services/fastly/disable-edge-module'
+  defaults:
+    _controller: '\Drupal\fastly\Controller\FastlyEdgeModulesController::disableEdgeModuleFormSubmission'
+    _title: 'Fastly Edge Modules'
+  requirements:
+    _permission: 'administer fastly'
+fastly.get_module_form_json:
+  path: '/admin/config/services/fastly/edge-module-form/{module}'
+  defaults:
+    _controller: '\Drupal\fastly\Controller\FastlyEdgeModulesController::edgeModuleForm'
+    _title_callback: '\Drupal\fastly\Controller\FastlyEdgeModulesController::titleCallback'
+  requirements:
+    _permission: 'administer fastly'
+
+fastly.settings.webhook:
+  path: '/admin/config/services/fastly/webhook'
+  defaults:
+    _form: '\Drupal\fastly\Form\WebhookForm'
+    _title: 'Webhooks'
+  requirements:
+    _permission: 'administer fastly'
+fastly.settings.stale_content_options:
+  path: '/admin/config/services/fastly/stale-content-options'
+  defaults:
+    _form: '\Drupal\fastly\Form\StaleContentOptionsForm'
+    _title: 'Stale Content Options'
+  requirements:
+    _permission: 'administer fastly'
+fastly.settings.image_optimizer:
+  path: '/admin/config/services/fastly/image-optimizer'
+  defaults:
+    _form: '\Drupal\fastly\Form\ImageOptimizerForm'
+    _title: 'Image Optimizer'
+  requirements:
+    _permission: 'administer fastly'
+fastly.settings.purge_options:
+  path: '/admin/config/services/fastly/purge-options'
+  defaults:
+    _form: '\Drupal\fastly\Form\PurgeOptionsForm'
+    _title: 'Purge Options'
+  requirements:
+    _permission: 'administer fastly'

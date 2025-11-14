@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_hg_related_links
+    - node.type.hg_news
+  module:
+    - link
+id: node.hg_news.field_hg_related_links
+field_name: field_hg_related_links
+entity_type: node
+bundle: hg_news
+label: 'Related links'
+description: 'Any standalone links associated with your story. These will be displayed in a list at the end of the story.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 1
+field_type: link

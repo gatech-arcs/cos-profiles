@@ -1,0 +1,33 @@
+diff_plus.settings:
+  type: config_object
+  mapping:
+    enhance_diff_ui:
+      type: boolean
+      label: "Enhance the diff UI with a fresh look and feel"
+    raw_html_highlight_style:
+      type: string
+      label: "Raw HTML highlight style"
+    raw_html_indent_size:
+      type: integer
+      label: "Raw HTML indentation size"
+    raw_html_wrap_line_length:
+      type: integer
+      label: "Raw HTML wrap line length"
+    raw_html_preserve_newlines:
+      type: boolean
+      label: "Raw HTML preserve newlines"
+    raw_html_render_anonymously:
+      type: boolean
+      label: "Raw HTML render anonymously"
+    raw_html_strip_contextual_links:
+      type: boolean
+      label: "Raw HTML strip contextual links"
+    raw_html_strip_js_view_dom_id:
+      type: boolean
+      label: "Raw HTML strip js view dom id"
+    raw_html_strip_comments:
+      type: boolean
+      label: "Raw HTML strip comments"
+    visual_html5_preserve_inline_styles:
+      type: boolean
+      label: "Visual Inline HTML5 preserve inline styles"

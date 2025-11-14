@@ -1,0 +1,155 @@
+<?php
+
+/**
+ * @file
+ * Contains hooks for the oembed_lazyload module.
+ */
+
+use Drupal\Core\Field\FieldDefinitionInterface;
+use Drupal\Core\Field\FormatterInterface;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\StringTranslation\TranslatableMarkup;
+use Drupal\editor\EditorInterface;
+
+/**
+ * Implements hook_theme().
+ */
+function oembed_lazyload_youtube_theme() {
+  $theme = [];
+  $theme['oembed_lazyload_youtube_field_formatter_settings_summary'] = [
+    'template' => 'oembed-lazyload-youtube-field-formatter-settings-summary',
+    'variables' => [
+      'autoplay' => FALSE,
+      'modestbranding' => FALSE,
+      'enablejsapi' => FALSE,
+      'origin' => TRUE,
+      'hideinfo' => FALSE,
+      'rel' => FALSE,
+    ],
+  ];
+  $theme['oembed_lazyload_placeholder__youtube'] = [
+    'base hook' => 'oembed_lazyload_placeholder',
+  ];
+  return $theme;
+}
+
+/**
+ * Implements hook_field_formatter_third_party_settings_form().
+ */
+function oembed_lazyload_youtube_field_formatter_third_party_settings_form(FormatterInterface $plugin, FieldDefinitionInterface $field_definition, $view_mode, array $form, FormStateInterface $form_state) {
+  $element = [];
+  if ($plugin->getPluginId() === 'lazyload_oembed') {
+    $element['settings'] = [
+      '#type' => 'details',
+      '#title' => new TranslatableMarkup('YouTube settings'),
+    ];
+
+    $parents = [
+      'fields',
+      $field_definition->getName(),
+      'settings_edit_form',
+      'third_party_settings',
+      'oembed_lazyload_youtube',
+    ];
+
+    $element['settings']['autoplay'] = [
+      '#type' => 'checkbox',
+      '#title' => new TranslatableMarkup('Attempt to auto-play the video'),
+      '#default_value' => $plugin->getThirdPartySetting('oembed_lazyload_youtube', 'autoplay'),
+      '#parents' => array_merge($parents, ['autoplay']),
+    ];
+
+    $element['settings']['modestbranding'] = [
+      '#type' => 'checkbox',
+      '#title' => new TranslatableMarkup('Hide YouTube branding on player interface'),
+      '#default_value' => $plugin->getThirdPartySetting('oembed_lazyload_youtube', 'modestbranding'),
+      '#parents' => array_merge($parents, ['modestbranding']),
+    ];
+
+    $element['settings']['enablejsapi'] = [
+      '#type' => 'checkbox',
+      '#title' => new TranslatableMarkup('Allow video to be controlled via the YouTube IFrame API'),
+      '#default_value' => $plugin->getThirdPartySetting('oembed_lazyload_youtube', 'enablejsapi'),
+      '#parents' => array_merge($parents, ['enablejsapi']),
+    ];
+
+    $element['settings']['origin'] = [
+      '#type' => 'checkbox',
+      '#title' => new TranslatableMarkup('Only allow the oembed iframe domain to control the IFrame API (recommended)'),
+      '#default_value' => $plugin->getThirdPartySetting('oembed_lazyload_youtube', 'origin'),
+      '#parents' => array_merge($parents, ['origin']),
+      '#states' => [
+        'visible' => [
+          ':input[name="fields[' . $field_definition->getName() . '][settings_edit_form][third_party_settings][oembed_lazyload_youtube][enablejsapi]"]' => ['checked' => TRUE],
+        ],
+      ],
+    ];
+
+    $element['settings']['hideinfo'] = [
+      '#type' => 'checkbox',
+      '#title' => new TranslatableMarkup('Hide the video title and uploader before the video starts playing'),
+      '#description' => new TranslatableMarkup('This option was <a href="@link">deprecated in 2018</a> and while it may work in some certain legacy configurations, it may stop working at any time!  If this is necessary for branding reasons, prepare an alternative solution immediately.', [
+        '@link' => 'https://developers.google.com/youtube/player_parameters#august-23,-2018',
+      ]),
+      '#default_value' => $plugin->getThirdPartySetting('oembed_lazyload_youtube', 'hideinfo'),
+      '#parents' => array_merge($parents, ['hideinfo']),
+    ];
+
+    $element['settings']['rel'] = [
+      '#type' => 'checkbox',
+      '#title' => new TranslatableMarkup('Only show related videos from the same channel as the current video'),
+      '#default_value' => $plugin->getThirdPartySetting('oembed_lazyload_youtube', 'rel'),
+      '#parents' => array_merge($parents, ['rel']),
+    ];
+  }
+  return $element;
+}
+
+/**
+ * Implements hook_field_formatter_settings_summary_alter().
+ */
+function oembed_lazyload_youtube_field_formatter_settings_summary_alter(array &$summary, array $context) {
+  if (!isset($context['formatter'])) {
+    return;
+  }
+
+  $formatter = $context['formatter'];
+  if (!$formatter instanceof FormatterInterface) {
+    return;
+  }
+
+  if ($formatter->getPluginId() !== 'lazyload_oembed') {
+    return;
+  }
+
+  $summary[] = [
+    '#theme' => 'oembed_lazyload_youtube_field_formatter_settings_summary',
+    '#autoplay' => $formatter->getThirdPartySetting('oembed_lazyload_youtube', 'autoplay', FALSE),
+    '#modestbranding' => $formatter->getThirdPartySetting('oembed_lazyload_youtube', 'modestbranding', FALSE),
+    '#enablejsapi' => $formatter->getThirdPartySetting('oembed_lazyload_youtube', 'enablejsapi', FALSE),
+    '#origin' => $formatter->getThirdPartySetting('oembed_lazyload_youtube', 'origin', FALSE),
+    '#hideinfo' => $formatter->getThirdPartySetting('oembed_lazyload_youtube', 'hideinfo', FALSE),
+    '#rel' => $formatter->getThirdPartySetting('oembed_lazyload_youtube', 'rel', FALSE),
+    '#attached' => [
+      'library' => [
+        'oembed_lazyload_youtube/formatter-third-party-settings',
+      ],
+    ],
+  ];
+}
+
+/**
+ * Implements hook_ckeditor_css_alter().
+ */
+function oembed_lazyload_youtube_ckeditor_css_alter(array &$css, EditorInterface $editor) {
+  $css[] = \Drupal::service('extension.list.module')->getPath('oembed_lazyload_youtube') . '/css/youtube.css';
+}
+
+/**
+ * Implements hook_library_info_alter().
+ */
+function oembed_lazyload_youtube_library_info_alter(array &$libraries, $extension) {
+  if ($extension === 'ckeditor5' && isset($libraries['internal.drupal.ckeditor5.media'])) {
+    $libraries['internal.drupal.ckeditor5.media']['dependencies'][] = 'oembed_lazyload_youtube/youtube';
+  }
+}

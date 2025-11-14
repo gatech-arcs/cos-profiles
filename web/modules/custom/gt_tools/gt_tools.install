@@ -1,0 +1,24 @@
+<?php
+
+use Drupal\Core\Utility\UpdateException;
+
+function gt_tools_install() {
+  $messages = [];
+  gt_tools_create_footer_blocks('install');
+  drupal_flush_all_caches();
+}
+
+function gt_tools_create_footer_blocks($op) {
+  $module_path = \Drupal::service('module_handler')->getModule('gt_tools')->getPath();
+  $config_dir = $module_path . '/config/' . $op;
+
+  // Post-install configuration
+  $files = glob($config_dir . '/*.yml');
+  $source = new \Drupal\Core\Config\FileStorage($config_dir);
+  $config_storage = \Drupal::service('config.storage');
+  foreach ($files as $file) {
+    $components = explode('/', $file);
+    $config_name = str_replace('.yml', '', end($components));
+    $config_storage->write($config_name, $source->read($config_name));
+  }
+}

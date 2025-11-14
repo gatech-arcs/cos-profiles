@@ -1,0 +1,28 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_gtppl_img_headshot
+    - media.type.gtppl_image
+    - node.type.gt_people
+id: node.gt_people.field_gtppl_img_headshot
+field_name: field_gtppl_img_headshot
+entity_type: node
+bundle: gt_people
+label: 'Image Headshot'
+description: 'Professional photograph of the head and shoulders'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      gtppl_image: gtppl_image
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: gtppl_image
+field_type: entity_reference

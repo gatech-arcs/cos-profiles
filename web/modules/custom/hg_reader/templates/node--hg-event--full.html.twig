@@ -1,0 +1,352 @@
+{# HG Mercury Event Template #}
+{% set classes = [
+  'mercury-event',
+  'clearfix',
+] %}
+
+{% set cc = [
+    'evt-bg',
+    'evt',
+    'event-borders'
+]%}
+{# Attached Style Sheet #}
+{{ attach_library('hg_reader/hg_reader') }}
+
+{# Content Start #}
+<article{{ attributes.setAttribute('id', 'mercury').addClass(classes) }}>
+  <div class="row">
+    {# Left Column = Column 1 of 2 #}
+    <div class="col-md-3 col-sm-12 left-sidebar">
+      {# Time Wrapper #}
+      <div class="time-day-wrapper">
+        <time datetime='{{ node.field_hg_event_time.start_date|date('c') }}'>
+          <div class="day-wrapper">
+            {# Day #}
+            {% set day_start = node.field_hg_event_time.start_date|date('l') %}
+            {% set day_end = node.field_hg_event_time.end_date|date('l') %}
+            <h3>
+              {% if day_start is not empty and day_start is same as(day_end) %}
+                {{ day_start }}
+              {% else %}
+                {# Multi #}
+                {{ day_start }}
+              {% endif %}
+            </h3>
+          </div>
+          <div class="full-date-wrapper">
+            {# Month #}
+            {% set month_start = node.field_hg_event_time.start_date|date('F') %}
+            {% set month_end = node.field_hg_event_time.end_date|date('F') %}
+            <h3>
+              {% if month_start is not empty and month_start is same as(month_end) %}
+                {{ month_start }}
+              {% else %}
+                {# Multi #}
+                {{ month_start ~ ' - ' ~ month_end }}
+              {% endif %}
+              {# Date #}
+              {% set date_start = node.field_hg_event_time.start_date|date('j') %}
+              {% set date_end = node.field_hg_event_time.end_date|date('j') %}
+              {% if date_start is not empty and date_start is same as(date_end) %}
+                {{ date_start }}{{ ", "|t }}
+              {% else %}
+                {# Multi #}
+                {{ date_start ~ ' - ' ~ date_end }}{{ ", "|t }}
+              {% endif %}
+              {# Year #}
+              {% set year_start = node.field_hg_event_time.start_date|date('Y') %}
+              {% set year_end = node.field_hg_event_time.end_date|date('Y') %}
+              {% if year_start is not empty and year_start is same as(year_end) %}
+                {{ year_start }}
+              {% else %}
+                {# Multi #}
+                {{ year_start }}
+              {% endif %}
+            </h3>
+          </div>
+          {# Time #}
+          <div class="time-wrapper">
+            {% set allday_start = node.field_hg_event_time.start_date|date('g:iA', 'America/New_York')|join|replace({' ':'', ' - ':'',':':''})|lower %}
+            {% set allday_end = node.field_hg_event_time.end_date|date('g:iA', 'America/New_York')|join|replace({' ':'', ' - ':'',':':''})|lower %}
+            {% set time_start = node.field_hg_event_time.start_date|date('g:iA', 'America/New_York') %}
+            {% set time_end = node.field_hg_event_time.end_date|date('g:iA', 'America/New_York') %}
+            {# All Day #}
+            {% if allday_start ~ allday_end == '1200am1159pm' %}
+              <h5>{{ 'All Day'|t }}</h5>
+              {# Start and End time same #}
+            {% elseif time_start is not empty and time_start is same as(time_end) %}
+              <time>{{ time_start }}</time>
+              {# Start and End time #}
+            {% elseif time_start is not empty and time_end is not empty %}
+              <time>{{ time_start }}</time>
+              <bdi class="mx-1">{{ '-'|t }}</bdi>
+              <time>{{ time_end }}</time>
+            {% else %}
+            {% endif %}
+          </div>
+        </time>
+      </div>
+      {# /Time Wrapper #}
+
+      {# Event Information Wrapper #}
+      <div class="event-info">
+        {# Contact #}
+        {% if content.field_hg_contact|render is not empty %}
+          <div class="contact w-100">
+            <label class="h5 w-100">
+              {{ 'Contact'|t }}
+            </label>
+              {{ content.field_hg_contact.0 }}
+          </div>
+        {% endif %}
+
+        {# Location Phone #}
+        {% if content.field_hg_location_phone|render is not empty %}
+          <div class="location-phone mb-4">
+            <label class="h5 w-100">
+              {{ 'Phone'|t }}
+            </label>
+            <div class="phone">{{ content.field_hg_location_phone.0 }}</div>
+          </div>
+        {% endif %}
+
+        {# Location Email #}
+        {% if content.field_hg_location_email|render is not empty %}
+          <div class="location-email mb-4">
+            <label class="h5 w-100">
+              {{ 'Email'|t }}
+            </label>
+            <a href="mailto:{{ content.field_hg_location_email.0|raw }}">{{ 'Send Email'|t }}</a>
+          </div>
+        {% endif %}
+
+        {# Location #}
+        {% if content.field_hg_location is not empty %}
+        <div class="location evt-black">
+          <label class="h5 w-100">{{ 'Location'|t}}</label>
+          {% if content.field_hg_location|render is not empty and content.field_hg_location_url|render is empty %}
+            {{ content.field_hg_location }}
+          {% else %}
+            {% if node.field_hg_location_url.0.url.external %}
+              <a href="{{ node.field_hg_location_url.uri }}" aria-label="{{ node.field_hg_location.0.value }}" target="_blank">
+                {{ node.field_hg_location.0.value }}
+              </a>
+            {% elseif node.field_hg_location_url.0.url.routeName %}
+              <a href="{{ node.field_hg_location_url.uri }}" aria-label="{{ node.field_hg_location.0.value }}">
+                {{ node.field_hg_location.0.value }}
+              </a>
+            {% endif %}
+          {% endif %}
+        </div>
+        {% endif %}
+
+        {# Fee and Extra #}
+        {% if content.field_hg_fee|render is not empty and content.field_hg_extras|render is empty %}
+          {# Fee #}
+          <div class="fee-wrapper evt-black">
+            <div class="fee">
+              <label class="h5 w-100">
+                {{ 'Fee'|t }}
+              </label>
+              <p>{{ content.field_hg_fee.0 }}</p>
+            </div>
+          </div>
+        {% else %}
+          {# Fee and Extras #}
+          {% if content.field_hg_fee|render is not empty and content.field_hg_extras|render is not empty %}
+            <div class="fee-wrapper-extras mb-4">
+              <div class="fee">
+                <label class="h5 w-100">
+                  {{ 'Fee'|t }}
+                </label>
+                <p>{{ content.field_hg_fee.0 }}</p>
+              </div>
+              <div class="extras">
+                <label class="h5 w-100">
+                  {{ 'Extras'|t }}
+                </label>
+                <p>{{ content.field_hg_extras.0 }}</p>
+              </div>
+            </div>
+          {% endif %}
+        {% endif %}
+      </div>
+
+      {# Sidebar Extra Content #}
+      {% if content.field_hg_sidebar|render is not empty %}
+        <div {{attributes.addClass(cc, "extra-sidebar", "my-3").removeClass('related-links', 'event-remaining', "related-files",  "event-categories", "invited-audience")}}>
+          <label class="h4">{{ content.field_hg_sidebar['#title'] }} </label>
+          <div class="extra-sidebar-content">
+            {{ content.field_hg_sidebar.0 }}
+          </div>
+        </div>
+      {% endif %}
+
+    {# /Event Information Wrapper #}
+    </div>
+    {# /Event Extras Wrapper #}
+    {# /End Left Column #}
+
+    {# Right Column = Column 2 of 2 #}
+    <div class="col-md-9 col-sm-12 main-content-wrapper">
+      {# Media Images #}
+      {% if (node.field_hg_media.getvalue | length) > 0 %}
+        {% if node.field_hg_media.entity.field_media_hg_image is not empty %}
+          <figure class="hg-media hg-media-hero">
+            <picture>
+              <a href="{{ file_url(node.field_hg_media[0].entity.field_media_hg_image.entity.uri.value) }}">
+                {{ drupal_image(node.field_hg_media[0].entity.field_media_hg_image.entity.uri.value, 'large') }}
+              </a>
+            </picture>
+            <figcaption class="hg-media-details">
+              {{ node.field_hg_media.0.entity.field_hg_media_description.value | raw }}
+            </figcaption>
+          </figure>
+        {% endif %}
+      {# Images (for backward compatibility) #}
+      {% elseif content.field_hg_images|render is not empty %}
+        <figure class="hg-media hg-media-hero">
+          <picture>
+            {{ content.field_hg_images[0] }}
+          </picture>
+        </figure>
+      {% endif %}
+
+      {% if (node.field_hg_media | length) > 0 %}
+        {% for video in node.field_hg_media %}
+          {# {% if loop.index > 1 %} #}
+            {% if video.entity.field_media_hg_video is not empty %}
+             <div class="youtube mb-4 p-3">
+                <div class="hg-video-container">
+                  <iframe width="560" height="315" src="{{ video.entity.field_media_hg_video.value }}?autoplay=0&start=0&rel=0" title="Video"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+              </div>
+            {% endif %}
+          {# {% endif %} #}
+        {% endfor %}
+    {% endif %}
+
+
+      {# Body #}
+      {% if content.body|render is not empty %}
+        <div class="description event-borders">
+          {{ content.body[0] }}
+        </div>
+      {% endif %}
+
+      {# Render remaining Images #}
+      {% if (node.field_hg_media.getvalue | length) > 1 %}
+        <div {{attributes.addClass(cc, "row", "event-remaining").removeClass('related-files', 'invited-audience', 'event-categories', 'bg-light', "extra-sidebar", "my-3")}}>
+          {% for image in node.field_hg_media %}
+            {% if loop.index > 1 %}
+              <figure class="row col col-sm-5 event-image-remaining">
+                <picture>
+                  <a href="{{ file_url(image.entity.field_media_hg_image.entity.uri.value) }}">
+                    {{ drupal_image(image.entity.field_media_hg_image.entity.uri.value, 'medium') }}
+                  </a>
+                </picture>
+                <figcaption class="row hg-media-details">
+                  {{ image.entity.field_hg_media_description.0.value | raw }}
+                </figcaption>
+              </figure>
+            {% endif %}
+          {% endfor %}
+        </div>
+      {% elseif content.field_hg_images|render is not empty %}
+        <div {{attributes.addClass(cc, "event-remaining").removeClass('related-files', 'invited-audience', 'event-categories', 'bg-light', "extra-sidebar", "my-3")}}>
+          {% for key, item in content.field_hg_images  %}
+            {% if key > 0 %}
+              <figure class="col col-sm-5 event-image-remaining">
+                <picture>
+                  {{ item }}
+                </picture>
+              </figure>
+            {% endif %}
+          {% endfor %}
+        </div>
+      {% endif %}
+
+      {# // Event Extras Wrapper #}
+      <div class="event-info-extra">
+        {# Related Links #}
+        {% if content.field_hg_related_links|render is not empty %}
+          <div {{attributes.addClass(cc, "related-links").removeClass('related-files', 'event-remaining', "extra-sidebar")}}>
+            <label class="h5 w-100">
+              {% if content.field_hg_related_links['#items']|length == '1' %}
+                {{ 'Related Link'|t }}
+              {% else %}
+                {{ 'Related Links'|t }}
+              {% endif %}
+            </label>
+            <div class="related-links-items">
+            {% for item in content.field_hg_related_links %}
+              {% if item['#title'] %}
+                <a href="{{ item['#url'] }}" class="hg-link" aria-label="{{ 'Related Link'|t ~ ' ' ~ item['#title'] }}" role="button">{{ item['#title'] }}</a>
+              {% endif %}
+            {% endfor %}
+            </div>
+          </div>
+        {% endif %}
+
+        {# Related Files #}
+        {% if content.field_hg_related_files|render is not empty %}
+          <div {{attributes.addClass(cc, "related-files").removeClass('related-links', 'event-remaining', "extra-sidebar", "my-3")}}>
+            <label class="h5 w-100">
+              {{ content.field_hg_related_files['#title'] }}
+            </label>
+            {% for key, item in content.field_hg_related_files %}
+              {% if key >= 0 %}
+                <div class="related-files-items">
+                  {{ item }}
+                </div>
+              {% endif %}
+            </div>
+          {% endfor %}
+        {% endif %}
+
+        {# Event Categories #}
+        {% if content.field_hg_event_categories|render is not empty %}
+          <div {{attributes.addClass(cc, "event-categories", "evt-black").removeClass('related-links', 'event-remaining', "related-files")}}>
+            <label class="h5 w-100">
+              {% if content.field_hg_event_categories['#items']|length == '1' %}
+                {{ 'Event Category'|t }}
+              {% else %}
+                {{ 'Event Categories'|t }}
+              {% endif %}
+            </label>
+            <div class="event-categories-items">
+              {% for item in content.field_hg_event_categories %}
+                {% if item['#title'] %}
+                  <a href="{{ item['#url'] }}" class="hg-link" aria-label="{{ 'Event Category'|t ~ ' ' ~ item['#title'] }}" role="button">{{ item['#title'] }}</a>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+        {% endif %}
+
+        {# Invited Audience #}
+        {% if content.field_hg_invited_audience|render is not empty %}
+          <div {{attributes.addClass(cc, "invited-audience", "evt-black").removeClass('related-links', 'event-remaining', "event-categories", "related-files")}}>
+            <label class="h5 w-100">
+              {% if content.field_hg_invited_audience['#items']|length == '1' %}
+                {{ 'Invited Audience'|t }}
+              {% else %}
+                {{ 'Invited Audiences'|t }}
+              {% endif %}
+            </label>
+            <div class="invited-audience-items">
+            {% for item in content.field_hg_invited_audience %}
+              {% if item['#title'] %}
+                <a href="{{ item['#url'] }}" class="hg-link" aria-label="{{ 'Invited Audience'|t ~ ' ' ~ item['#title'] }}"role="button">{{ item['#title'] }}</a>
+              {% endif %}
+            {% endfor %}
+            </div>
+          </div>
+        {% endif %}
+
+      </div>
+    </div>
+    {# /Right Column #}
+  </div>{# /Row #}
+</article>{# /Article #}

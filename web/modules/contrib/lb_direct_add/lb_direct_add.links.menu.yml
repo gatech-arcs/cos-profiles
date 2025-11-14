@@ -1,0 +1,6 @@
+lb_direct_add.admin_config:
+  title: 'Layout Builder Direct Add'
+  route_name: lb_direct_add.settings_form
+  parent: system.admin_config_content
+  description: 'Manage settings for Layout Builder Direct Add.'
+  weight: 10

@@ -1,0 +1,11 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - hg_reader
+name: 'Hg - Event categories'
+vid: hg_event_categories
+description: 'Event categories from Mercury'
+hierarchy: 0
+weight: 0

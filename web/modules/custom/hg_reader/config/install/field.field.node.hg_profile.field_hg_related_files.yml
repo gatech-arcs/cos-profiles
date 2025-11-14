@@ -1,0 +1,26 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_hg_related_files
+    - node.type.hg_profile
+  module:
+    - file
+id: node.hg_profile.field_hg_related_files
+field_name: field_hg_related_files
+entity_type: node
+bundle: hg_profile
+label: 'Related files'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: 'hg_attachments/[date:custom:Y]-[date:custom:m]'
+  file_extensions: 'doc docx jpg jpeg gif odp ods odt pdf png pps ppt svg txt xls'
+  max_filesize: '8 MB'
+  description_field: false
+field_type: file

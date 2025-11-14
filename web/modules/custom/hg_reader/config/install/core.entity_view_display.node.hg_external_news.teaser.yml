@@ -1,0 +1,35 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.hg_external_news.body
+    - field.field.node.hg_external_news.field_hg_article_url
+    - field.field.node.hg_external_news.field_hg_dateline
+    - field.field.node.hg_external_news.field_hg_publication
+    - field.field.node.hg_external_news.field_hg_related_files
+    - node.type.hg_external_news
+  module:
+    - text
+    - user
+id: node.hg_external_news.teaser
+targetEntityType: node
+bundle: hg_external_news
+mode: teaser
+content:
+  body:
+    label: hidden
+    type: text_summary_or_trimmed
+    weight: 101
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    region: content
+hidden:
+  field_hg_article_url: true
+  field_hg_dateline: true
+  field_hg_publication: true
+  field_hg_related_files: true

@@ -1,0 +1,89 @@
+hg_reader.hg_reader:
+  path: '/admin/config/hg-reader'
+  defaults:
+    _controller: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
+    _title: 'Mercury Reader'
+  requirements:
+    _permission: 'access administration pages'
+
+hg_reader.admin_settings:
+  path: '/admin/config/hg-reader/settings'
+  defaults:
+    _form: '\Drupal\hg_reader\Form\HgReaderSettingsForm'
+    _title: 'Mercury Reader settings'
+  requirements:
+    _permission: 'access administration pages'
+
+############
+
+entity.hg_reader_importer:
+  path: '/admin/structure/hg_reader_importer'
+  defaults:
+    _controller: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
+    _title: 'Mercury importers'
+  requirements:
+    _permission: 'administer importers'
+
+entity.hg_reader_importer.canonical:
+  path: '/admin/structure/hg_reader_importer/{hg_reader_importer}'
+  defaults:
+    _entity_view: 'hg_reader_importer'
+    _title: 'Mercury importer'
+  requirements:
+    _permission: 'administer importers'
+
+entity.hg_reader_importer.collection:
+  path: '/admin/structure/hg_reader_importer/list'
+  defaults:
+    _entity_list: 'hg_reader_importer'
+    _title: 'Mercury importers'
+  requirements:
+    _permission: 'administer importers'
+
+entity.hg_reader_importer.add:
+  path: '/admin/structure/hg_reader_importer/add'
+  defaults:
+    _entity_form: hg_reader_importer.add
+    _title: 'Add importer'
+  requirements:
+    _permission: 'administer importers'
+
+entity.hg_reader_importer.edit_form:
+  path: '/admin/structure/hg_reader_importer/{hg_reader_importer}/edit'
+  defaults:
+    _entity_form: hg_reader_importer.edit
+    _title: 'Edit importer'
+  requirements:
+    _permission: 'administer importers'
+
+entity.hg_reader_importer.delete_form:
+  path: '/admin/structure/hg_reader_importer/{hg_reader_importer}/delete'
+  defaults:
+    _entity_form: hg_reader_importer.delete
+    _title: 'Delete importer'
+  requirements:
+    _permission: 'administer importers'
+
+entity.hg_reader_importer.delete_nodes_form:
+  path: '/admin/structure/hg_reader_importer/{hg_reader_importer}/delete-nodes'
+  defaults:
+    _entity_form: hg_reader_importer.delete_nodes
+    _title: 'Delete importer'
+  requirements:
+    _permission: 'administer importers'
+
+entity.hg_reader_importer.process_importer:
+  path: '/admin/structure/hg_reader_importer/{hg_reader_importer}/process-importer'
+  defaults:
+    _controller: Drupal\hg_reader\Controller\HgImporterController::process_importer
+    _title: 'Process importer'
+  requirements:
+    _permission: 'administer importers'
+
+entity.hg_reader_importer.settings:
+  path: '/admin/config/hg-reader/settings'
+  defaults:
+    _form: '\Drupal\hg_reader\Form\HgReaderSettingsForm'
+    _title: 'Mercury Reader settings'
+  requirements:
+    _permission: 'access administration pages'

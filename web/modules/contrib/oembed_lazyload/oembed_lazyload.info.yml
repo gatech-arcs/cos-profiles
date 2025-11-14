@@ -1,0 +1,12 @@
+name: oEmbed lazy load
+description: Facilitates the lazy loading of oembed resources.
+type: module
+core_version_requirement: ^10.3 || ^11.0
+package: Media
+dependencies:
+  - drupal:media
+
+# Information added by Drupal.org packaging script on 2024-09-13
+version: '2.0.5'
+project: 'oembed_lazyload'
+datestamp: 1726188376

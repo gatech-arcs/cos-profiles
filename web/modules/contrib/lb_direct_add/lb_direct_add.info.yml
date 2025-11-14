@@ -1,0 +1,13 @@
+name: "Layout Builder Direct Add"
+description: Converts the 'Add block' link in Layout Builder into a drop-button to directly add custom block types.
+type: module
+core_version_requirement: ^9.2 || ^10 || ^11
+configure: lb_direct_add.settings
+dependencies:
+  - drupal:layout_builder
+  - drupal:block
+
+# Information added by Drupal.org packaging script on 2025-06-05
+version: '2.0.1'
+project: 'lb_direct_add'
+datestamp: 1749144011

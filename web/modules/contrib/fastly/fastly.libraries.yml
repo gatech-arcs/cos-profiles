@@ -1,0 +1,17 @@
+fastly:
+  version: 1.5
+  js:
+    js/fastly.js: {}
+  dependencies:
+    - core/jquery
+
+handlebars:
+  js:
+    js/handlebars-v4.0.12.js: {}
+
+handlebars_forms:
+  js:
+    js/handlebars-form.js: { }
+    js/jquery.serializejson.min.js : {}
+  dependencies:
+    - fastly/handlebars

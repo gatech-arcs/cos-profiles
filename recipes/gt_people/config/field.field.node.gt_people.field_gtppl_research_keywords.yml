@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_gtppl_research_keywords
+    - node.type.gt_people
+id: node.gt_people.field_gtppl_research_keywords
+field_name: field_gtppl_research_keywords
+entity_type: node
+bundle: gt_people
+label: 'Research Keywords'
+description: '255 char limit list of comma separated, pertinent research terms'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

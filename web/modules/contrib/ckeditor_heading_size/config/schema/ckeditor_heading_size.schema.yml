@@ -1,0 +1,11 @@
+# Schema for the configuration files of the CKEditor Heading Size module.
+ckeditor_heading_size.settings:
+  type: config_object
+  label: 'CKEditor Heading Size settings'
+  mapping:
+    size_options:
+      type: sequence
+      label: 'Options'
+      sequence:
+        type: string
+        label: 'Size'

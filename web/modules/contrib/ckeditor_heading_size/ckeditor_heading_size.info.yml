@@ -1,0 +1,12 @@
+name: CKEditor Heading Size
+type: module
+description: Provides a context menu for heading tags so you can specify a font size.
+package: Custom
+core_version_requirement: ^9 || ^10 || ^11
+dependencies:
+  - drupal:ckeditor5
+
+# Information added by Drupal.org packaging script on 2025-02-13
+version: '1.0.5'
+project: 'ckeditor_heading_size'
+datestamp: 1739481648

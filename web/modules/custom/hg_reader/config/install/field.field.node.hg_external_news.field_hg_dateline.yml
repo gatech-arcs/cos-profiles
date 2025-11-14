@@ -1,0 +1,23 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_hg_dateline
+    - node.type.hg_external_news
+  module:
+    - datetime
+id: node.hg_external_news.field_hg_dateline
+field_name: field_hg_dateline
+entity_type: node
+bundle: hg_external_news
+label: Dateline
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    default_date_type: now
+    default_date: now
+default_value_callback: ''
+settings: {  }
+field_type: datetime

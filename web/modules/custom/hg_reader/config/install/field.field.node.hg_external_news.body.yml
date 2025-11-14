@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.hg_external_news
+  module:
+    - text
+id: node.hg_external_news.body
+field_name: body
+entity_type: node
+bundle: hg_external_news
+label: Description
+description: 'A few sentences highlighting key points about this article, as relevant to Georgia Tech.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+field_type: text_with_summary

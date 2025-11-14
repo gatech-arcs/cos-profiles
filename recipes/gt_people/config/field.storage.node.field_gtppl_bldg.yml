@@ -1,0 +1,407 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_gtppl_bldg
+field_name: field_gtppl_bldg
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: '002'
+      label: 'Skiles, William Vernon Classroom Building'
+    -
+      value: '003'
+      label: 'Robert, L.W. Alumni House'
+    -
+      value: '018'
+      label: 'Edge, Arthur B. Intercollegiate Athletic Center'
+    -
+      value: '022'
+      label: 'Daniel, J.L. Laboratory'
+    -
+      value: '024'
+      label: 'Smith, David M.'
+    -
+      value: '025'
+      label: 'Chapin, Lloyd W.'
+    -
+      value: '030'
+      label: 'French, Aaron'
+    -
+      value: '031'
+      label: 'Moore, Bill Student Success Center'
+    -
+      value: '032'
+      label: 'ACC Network Production Center'
+    -
+      value: '033'
+      label: 'O''Keefe, Daniel C.'
+    -
+      value: '035'
+      label: 'Evans, Lettie Pate Whitehead Administration'
+    -
+      value: '036'
+      label: 'Carnegie, Andrew'
+    -
+      value: '038'
+      label: 'Savant, Domenico P.'
+    -
+      value: '039'
+      label: 'Swann, Janie Austell'
+    -
+      value: '040'
+      label: 'Guggenheim, Daniel F.'
+    -
+      value: '041'
+      label: 'Engineering Science and Mechanics'
+    -
+      value: '045'
+      label: 'Coon, John Saylor'
+    -
+      value: '047'
+      label: 'Wardlaw, William C. Jr. Center'
+    -
+      value: '050'
+      label: 'Computing (COC)'
+    -
+      value: '051'
+      label: 'Hinman, Thomas P. Research'
+    -
+      value: '055'
+      label: 'Instructional Center'
+    -
+      value: '056'
+      label: 'Groseclose, Colonel Frank F.'
+    -
+      value: '057'
+      label: 'ISyE Main'
+    -
+      value: '058'
+      label: 'Civil Engineering (Old)'
+    -
+      value: '059'
+      label: 'Hall, Stephen C.'
+    -
+      value: '061'
+      label: '430 Tenth Street (North)'
+    -
+      value: '066'
+      label: 'Emerson, Cherry L.'
+    -
+      value: '073'
+      label: 'McCamish Pavilion'
+    -
+      value: '074'
+      label: 'Bradley, W.C. & Sarah'
+    -
+      value: '075'
+      label: 'Architecture (West)'
+    -
+      value: '076'
+      label: 'Architecture (East)'
+    -
+      value: '077'
+      label: 'Gilbert, Judge S. Price Memorial Library'
+    -
+      value: '081'
+      label: 'Howey, Joseph H.'
+    -
+      value: '084'
+      label: 'Weber, Paul Space Science & Technology (SST1)'
+    -
+      value: '085'
+      label: 'Van Leer, Blake R.'
+    -
+      value: '086'
+      label: Bunger-Henry
+    -
+      value: '095'
+      label: 'Pettit, Joseph M. Microelectronics Research'
+    -
+      value: '098'
+      label: 'Weber, Paul Space Science & Technology (SST3)'
+    -
+      value: '099'
+      label: 'Baker, Harry L.'
+    -
+      value: '100'
+      label: 'Crosland, Dorothy M. Tower'
+    -
+      value: '101'
+      label: 'Knight, Montgomery Aerospace Engineering (SST2)'
+    -
+      value: '103'
+      label: 'Boggs, Gilbert Hillhouse'
+    -
+      value: '104'
+      label: 'Wenn, Fred B. Student Center'
+    -
+      value: '105'
+      label: 'Commander, Robert C. Commons'
+    -
+      value: '111'
+      label: 'Mason, Jesse'
+    -
+      value: '114'
+      label: 'Stamps, Penny & Roe Student Center Commons'
+    -
+      value: '115'
+      label: 'Couch, J. Allen'
+    -
+      value: '123'
+      label: 'Smithgall, Charles A. Jr. Student Services'
+    -
+      value: '124'
+      label: 'Ferst, Robert Center for The Arts'
+    -
+      value: '125'
+      label: 'Southern Regional Education Board'
+    -
+      value: '126'
+      label: 'Callaway, Fuller E. Jr. Manufacturing Research Center'
+    -
+      value: '129'
+      label: 'Paper Tricentennial'
+    -
+      value: '133'
+      label: 'Tenth Street Chiller Plant'
+    -
+      value: '135'
+      label: 'Manufacturing Related Disciplines Complex'
+    -
+      value: '136'
+      label: 'Tech Way Building'
+    -
+      value: '137'
+      label: '781 Marietta Street N.W.'
+    -
+      value: '138'
+      label: '811 Marietta Street N.W.'
+    -
+      value: '140'
+      label: 'Aquatic Center'
+    -
+      value: '141'
+      label: 'Georgia Tech Research Institute Headquarters'
+    -
+      value: '142'
+      label: 'Human Resources'
+    -
+      value: '144'
+      label: 'Love, J. Erskine Jr.  Manufacturing'
+    -
+      value: '145'
+      label: 'Allen, Lamar Sustainable Education'
+    -
+      value: '146'
+      label: 'Petit, Parker H. Biotechnology'
+    -
+      value: '147'
+      label: 'Ford Environmental Sciences and Technology'
+    -
+      value: '149'
+      label: 'Structural Engineering & Materials Research Lab'
+    -
+      value: '151'
+      label: 'Zinn, Ben T. Laboratory'
+    -
+      value: '153'
+      label: 'Klaus, Christopher W. Advanced Computing'
+    -
+      value: '155'
+      label: '505 Tenth St'
+    -
+      value: '156'
+      label: '845 Marietta Street N.W.'
+    -
+      value: '158'
+      label: 'Digital Fabrication Lab'
+    -
+      value: '159'
+      label: 'Food Processing Technology Research'
+    -
+      value: '163'
+      label: '645 Northside Drive'
+    -
+      value: '164'
+      label: 'Business Services'
+    -
+      value: '165'
+      label: 'Whitaker, U.A.'
+    -
+      value: '166'
+      label: 'Clough Undergraduate Learning Commons'
+    -
+      value: '167'
+      label: 'Molecular Science and Engineering'
+    -
+      value: '170'
+      label: 'Global Learning Center'
+    -
+      value: '172'
+      label: 'College of Business'
+    -
+      value: '173'
+      label: '760 Spring Street'
+    -
+      value: '175'
+      label: 'Technology Square Research'
+    -
+      value: '176'
+      label: 'Centergy One'
+    -
+      value: '177'
+      label: 'Whitehead, Joseph B. Student Health Center'
+    -
+      value: '178'
+      label: '828 West Peachtree Street'
+    -
+      value: '179'
+      label: '830 West Peachtree Street'
+    -
+      value: '180'
+      label: 'Family Apartments'
+    -
+      value: '181'
+      label: 'Marcus Nanotechnology'
+    -
+      value: '184'
+      label: '831 Marietta Street N.W.'
+    -
+      value: '185'
+      label: 'Strong Street Gatehouse'
+    -
+      value: '186'
+      label: '755 Marietta Street N.W.'
+    -
+      value: '187'
+      label: '793 Marietta Street N.W.'
+    -
+      value: '195'
+      label: 'Krone, Roger A. and Helen B. Engineered Biosystems'
+    -
+      value: '198'
+      label: 'Academy of Medicine'
+    -
+      value: '199'
+      label: 'Carbon-Neutral Energy Solutions Laboratory'
+    -
+      value: '204'
+      label: 'Dalney Street Office Building'
+    -
+      value: '207'
+      label: Coda
+    -
+      value: '210'
+      label: 'Kendeda Building for Innovative Sustainable Design'
+    -
+      value: '211'
+      label: 'Georgia Tech Police Department'
+    -
+      value: '212'
+      label: 'CRC Storage Building'
+    -
+      value: '709'
+      label: '162 Fourth Street'
+    -
+      value: '720'
+      label: 'Heffernan, Paul H. House'
+    -
+      value: '785'
+      label: 'Technology Enterprise Park #1'
+    -
+      value: '790'
+      label: 'Centennial Research Building'
+    -
+      value: '791'
+      label: 'Landon, R. Kirk Learning Center'
+    -
+      value: '832'
+      label: '56 Marietta Street N.W.'
+    -
+      value: '850'
+      label: '575 Fourteenth Street Engineering Ctr'
+    -
+      value: '855'
+      label: 'Atlanta Technology Center'
+    -
+      value: '865'
+      label: '512 Means St.'
+    -
+      value: '876'
+      label: Biltmore
+    -
+      value: '882'
+      label: '818 Joseph Lowery Blvd.'
+    -
+      value: 016A
+      label: 'GT Connector'
+    -
+      value: 018A
+      label: 'Rice, Homer Center for Sports Performance'
+    -
+      value: 022A
+      label: 'Daniel Lab Addition'
+    -
+      value: 023A
+      label: '220 Bobby Dodd Way'
+    -
+      value: 029A
+      label: 'Hall, Lyman'
+    -
+      value: 029B
+      label: 'Emerson, William Henry'
+    -
+      value: 029C
+      label: 'Lyman/Emerson Addition'
+    -
+      value: 051A
+      label: 'Hinman, Thomas P. Addition'
+    -
+      value: 051B
+      label: Calculator
+    -
+      value: 051C
+      label: 'Rich (Old)'
+    -
+      value: 051D
+      label: 'Rich Computer Center'
+    -
+      value: 060A
+      label: 'Caddell, Joyce K. & John A. Architecture Annex'
+    -
+      value: 061A
+      label: '430 Tenth Street (South)'
+    -
+      value: 066A
+      label: 'Emerson Addition'
+    -
+      value: 073A
+      label: 'Luck, James K. Jr.'
+    -
+      value: 114A
+      label: 'Stamps Addition'
+    -
+      value: 133A
+      label: 'Tenth Street Chiller Plant Addition'
+    -
+      value: 141A
+      label: 'Georgia Public Broadcasting'
+    -
+      value: 155B
+      label: '505 Tenth St Addition'
+    -
+      value: 158A
+      label: 'GTRI Machine Services'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

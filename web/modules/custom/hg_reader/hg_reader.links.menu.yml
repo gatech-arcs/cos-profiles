@@ -1,0 +1,43 @@
+hg_reader.hg_reader:
+  title: 'Mercury Reader'
+  parent: system.admin_config
+  description: 'Configure Mercury Reader.'
+  route_name: hg_reader.hg_reader
+  weight: -1
+
+hg_reader.admin_settings:
+  title: 'Mercury Reader settings'
+  parent: hg_reader.hg_reader
+  description: 'Configure Mercury Reader.'
+  route_name: hg_reader.admin_settings
+  weight: 0
+
+###########
+
+entity.hg_reader_importer:
+  title: 'Mercury importers'
+  parent: system.admin_structure
+  description: 'Create and manage Mercury feeds to import content from the Georgia Tech Mercury syndication service.'
+  route_name: entity.hg_reader_importer
+  weight: 0
+
+entity.hg_reader_importer.collection:
+  title: 'Mercury importers'
+  route_name: entity.hg_reader_importer.collection
+  description: 'Manage Mercury importers'
+  parent: entity.hg_reader_importer
+  weight: 1
+
+entity.hg_reader_importer.settings:
+  title: Mercury importer settings
+  description: 'Configure Mercury importers'
+  route_name: entity.hg_reader_importer.settings
+  parent: entity.hg_reader_importer
+  weight: 10
+
+# entity.hg_reader_importer.importer_add:
+#   route_name: entity.hg_reader_importer.importer_add
+#   title: 'Add Importer'
+#   appears_on:
+#     - entity.hg_reader_importer.collection
+#     - entity.hg_reader_importer.canonical

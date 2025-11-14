@@ -1,0 +1,8 @@
+<?php
+
+/**
+ * Implements hook_page_attachments().
+ */
+function oembed_lazyload_test_page_attachments(array &$attachments) {
+  $attachments['#attached']['library'][] = 'oembed_lazyload_test/styles';
+}

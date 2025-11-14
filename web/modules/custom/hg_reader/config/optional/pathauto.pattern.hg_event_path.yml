@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: hg_event_path
+label: hg_event_path
+type: 'canonical_entities:node'
+pattern: '/hg/event/[node:field_hg_event_time:start_date:html_year]/[node:field_hg_event_time:start_date:custom:m]/[node:field_hg_event_time:start_date:custom:d]/[node:title]'
+selection_criteria:
+  7a8333a5-1536-45e4-b9b6-5066a0d6ee2a:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: 7a8333a5-1536-45e4-b9b6-5066a0d6ee2a
+    context_mapping:
+      node: node
+    bundles:
+      hg_event: hg_event
+selection_logic: and
+weight: -5
+relationships: {  }

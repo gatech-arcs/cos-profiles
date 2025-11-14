@@ -1,0 +1,68 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - hg_reader
+  module:
+    - node
+    - options
+id: node.field_hg_classification
+field_name: field_hg_classification
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: faculty
+      label: Faculty
+    -
+      value: staff
+      label: Staff
+    -
+      value: student
+      label: Student
+    -
+      value: alumni
+      label: Alumni
+    -
+      value: administration
+      label: Administration
+    -
+      value: emeritus
+      label: Emeritus
+    -
+      value: researcher
+      label: Researcher
+    -
+      value: board_member
+      label: 'Board member'
+    -
+      value: committee_member
+      label: 'Committee member'
+    -
+      value: executive_committee_member
+      label: 'Executive committee member'
+    -
+      value: steering_committee_member
+      label: 'Steering committee member'
+    -
+      value: guest_speaker
+      label: 'Guest speaker'
+    -
+      value: arts_affiliate/partner
+      label: 'Arts affiliate/partner'
+    -
+      value: arts_community_member
+      label: 'Arts community member'
+    -
+      value: artist_in_residence
+      label: 'Artist in residence'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

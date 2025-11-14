@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies: {  }
+id: default
+label: Default
+description: 'The default fences field values.'
+field_tag: div
+field_classes: ''
+field_items_wrapper_tag: none
+field_items_wrapper_classes: ''
+field_item_tag: div
+field_item_classes: ''
+label_tag: div
+label_classes: ''

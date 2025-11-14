@@ -1,0 +1,44 @@
+{#
+/**
+ * @file
+ * A specialized placeholder for the YouTube provider.
+ *
+ * Available variables:
+ * - title: The oembed resource title.
+ * - url: The oembed resource url.
+ * - provider: The provider of the oembed content.
+ * - settings: The configured formatter settings.
+ * - third_party_settings: Any third party settings passed on by a specific provider.
+ *  - embed_code: The embed code of the current video.
+ *
+ * @see template_preprocess_oembed_lazyload_placeholder()
+ *
+ * @ingroup themeable
+ */
+#}
+{% macro overlay(title, width, height, embed_code) %}
+  <picture class="oembed-lazyload__picture">
+    <source srcset="//i.ytimg.com/vi_webp/{{ embed_code }}/sddefault.webp, //i.ytimg.com/vi_webp/{{ embed_code }}/maxresdefault.webp 2x" type="image/webp">
+    <source srcset="//i.ytimg.com/vi/{{ embed_code }}/sddefault.jpg, //i.ytimg.com/vi/{{ embed_code }}/maxresdefault.jpg 2x" type="image/jpeg">
+    <img class="oembed-lazyload__img" width="{{ width }}" height="{{ height }}" src="//i.ytimg.com/vi/{{ embed_code }}/sddefault.jpg" alt="{% trans %}Watch {{ title }} on YouTube.{% endtrans %}">
+  </picture>
+  <svg class="oembed-lazyload__yt-icon" height="100%" viewBox="0 0 68 48" width="100%">
+    <path class="oembed_lazyload__yt-icon-fill" d="M66.52,7.74c-0.78-2.93-2.49-5.41-5.42-6.19C55.79,.13,34,0,34,0S12.21,.13,6.9,1.55 C3.97,2.33,2.27,4.81,1.48,7.74C0.06,13.05,0,24,0,24s0.06,10.95,1.48,16.26c0.78,2.93,2.49,5.41,5.42,6.19 C12.21,47.87,34,48,34,48s21.79-0.13,27.1-1.55c2.93-0.78,4.64-3.26,5.42-6.19C67.94,34.95,68,24,68,24S67.94,13.05,66.52,7.74z" fill="#f00"></path>
+    <path d="M 45,24 27,14 27,34" fill="#fff"></path>
+  </svg>
+  <svg class="oembed-lazyload__yt-spinner" viewBox="0 0 100 100">
+    <circle cx="50" cy="50" r="32"/>
+  </svg>
+{% endmacro %}
+
+{% apply spaceless %}
+  {% if settings['strategy'] == 'onclick' %}
+    <button class="oembed-lazyload__button">
+      {{ _self.overlay(title, settings['max_width'], settings['max_height'], third_party_settings['embed_code']) }}
+    </button>
+  {% else %}
+    <a class="oembed-lazyload__button" href="{{ url }}" title="{% trans %}Watch {{ title }} on YouTube.{% endtrans %}">
+      {{ _self.overlay(title, settings['max_width'], settings['max_height'], third_party_settings['embed_code']) }}
+    </a>
+  {% endif %}
+{% endapply %}

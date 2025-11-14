@@ -1,0 +1,101 @@
+<?php
+
+/**
+ * @file
+ * Contains hooks for the oembed_lazyload module.
+ */
+
+use Drupal\editor\EditorInterface;
+
+/**
+ * Implements hook_help().
+ */
+function oembed_lazyload_help($route_name) {
+  $output = [];
+  if ($route_name === 'help.page.oembed_lazyload') {
+    $output['#theme'] = 'oembed_lazyload_help';
+  }
+  return $output;
+}
+
+/**
+ * Implements hook_theme().
+ */
+function oembed_lazyload_theme() {
+  return [
+    'oembed_lazyload' => [
+      'variables' => [
+        'strategy' => NULL,
+        'provider' => NULL,
+        'placeholder' => NULL,
+        'iframe' => NULL,
+      ],
+    ],
+    'oembed_lazyload_placeholder' => [
+      'variables' => [
+        'url' => NULL,
+        'thumbnail' => NULL,
+        'title' => NULL,
+        'provider' => NULL,
+        'settings' => [],
+        'third_party_settings' => [],
+      ],
+    ],
+    'oembed_lazyload_help' => [
+      'variables' => [],
+    ],
+  ];
+}
+
+/**
+ * Implements hook_theme_suggestions() for oembed_lazyload.
+ */
+function oembed_lazyload_theme_suggestions_oembed_lazyload(array $variables) {
+  return [
+    'oembed_lazyload__' . strtolower($variables['provider']),
+  ];
+}
+
+/**
+ * Implements hook_theme_suggestions() for oembed_lazyload_placeholder.
+ */
+function oembed_lazyload_theme_suggestions_oembed_lazyload_placeholder(array $variables) {
+  return [
+    'oembed_lazyload_placeholder__' . strtolower($variables['provider']),
+  ];
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for media_oembed_iframe.
+ */
+function oembed_lazyload_preprocess_media_oembed_iframe(&$variables) {
+  $query = \Drupal::request()->query;
+  if ($query->get('oembed_lazyload')) {
+
+    $provider = $query->get('provider');
+    if ($provider) {
+      /** @var \Drupal\oembed_lazyload\ProviderEnhancerManager $enhancer_manager */
+      $enhancer_manager = \Drupal::service('oembed_lazyload');
+      $enhancer = $enhancer_manager->getEnhancerForProvider($provider);
+      $options = $query->all('options');
+      $variables['media'] = $enhancer->alterOembedResponse($variables['media'], $options);
+    }
+  }
+}
+
+/**
+ * Implements hook_ckeditor_css_alter().
+ */
+function oembed_lazyload_ckeditor_css_alter(array &$css, EditorInterface $editor) {
+  $css[] = \Drupal::service('extension.list.module')->getPath('oembed_lazyload') . '/css/oembed-lazyload.css';
+  $css[] = \Drupal::service('extension.list.module')->getPath('oembed_lazyload') . '/css/oembed-lazyload-style.css';
+}
+
+/**
+ * Implements hook_library_info_alter().
+ */
+function oembed_lazyload_library_info_alter(array &$libraries, $extension) {
+  if ($extension === 'ckeditor5' && isset($libraries['internal.drupal.ckeditor5.media'])) {
+    $libraries['internal.drupal.ckeditor5.media']['dependencies'][] = 'oembed_lazyload/common';
+  }
+}

@@ -1,0 +1,12 @@
+name: 'Fences Presets'
+type: module
+configure: entity.fences_preset.collection
+description: 'Allows defining commonly used presets for the Fences field display settings. These can then be applied on fenced fields.'
+core_version_requirement: ^10 || ^11
+dependencies:
+  - fences:fences
+
+# Information added by Drupal.org packaging script on 2025-03-11
+version: '3.0.7'
+project: 'fences'
+datestamp: 1741683610

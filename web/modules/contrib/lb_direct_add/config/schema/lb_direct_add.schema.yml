@@ -1,0 +1,9 @@
+lb_direct_add.settings:
+  type: config_object
+  mapping:
+    use_label:
+      type: integer
+      label: "How to display the blocks to be added"
+    label:
+      type: string
+      label: "Label to be used to trigger display the list of blocks"

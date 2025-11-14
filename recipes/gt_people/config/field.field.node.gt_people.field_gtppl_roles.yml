@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_gtppl_roles
+    - node.type.gt_people
+  module:
+    - options
+id: node.gt_people.field_gtppl_roles
+field_name: field_gtppl_roles
+entity_type: node
+bundle: gt_people
+label: Roles
+description: 'Primary role only is suggested, but multiple allowed where necessary'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

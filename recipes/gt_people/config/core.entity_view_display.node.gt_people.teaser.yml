@@ -1,0 +1,95 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.gt_people.field_gtppl_awards
+    - field.field.node.gt_people.field_gtppl_bio_summary
+    - field.field.node.gt_people.field_gtppl_biography
+    - field.field.node.gt_people.field_gtppl_bldg
+    - field.field.node.gt_people.field_gtppl_bldg_room
+    - field.field.node.gt_people.field_gtppl_bldg_url_map
+    - field.field.node.gt_people.field_gtppl_education
+    - field.field.node.gt_people.field_gtppl_email
+    - field.field.node.gt_people.field_gtppl_fax
+    - field.field.node.gt_people.field_gtppl_gtaccount
+    - field.field.node.gt_people.field_gtppl_image
+    - field.field.node.gt_people.field_gtppl_image_local
+    - field.field.node.gt_people.field_gtppl_image_url
+    - field.field.node.gt_people.field_gtppl_phone
+    - field.field.node.gt_people.field_gtppl_pronouns
+    - field.field.node.gt_people.field_gtppl_publications
+    - field.field.node.gt_people.field_gtppl_research_group
+    - field.field.node.gt_people.field_gtppl_research_group_url
+    - field.field.node.gt_people.field_gtppl_research_history
+    - field.field.node.gt_people.field_gtppl_research_keywords
+    - field.field.node.gt_people.field_gtppl_research_summary
+    - field.field.node.gt_people.field_gtppl_roles
+    - field.field.node.gt_people.field_gtppl_salutation
+    - field.field.node.gt_people.field_gtppl_title_custom
+    - field.field.node.gt_people.field_gtppl_title_custom_html
+    - field.field.node.gt_people.field_gtppl_title_custom_short
+    - field.field.node.gt_people.field_gtppl_title_official
+    - field.field.node.gt_people.field_gtppl_url_cv_resume
+    - field.field.node.gt_people.field_gtppl_url_gscholar
+    - field.field.node.gt_people.field_gtppl_url_orcid
+    - field.field.node.gt_people.field_gtppl_url_personal
+    - field.field.node.gt_people.field_gtppl_url_publons
+    - field.field.node.gt_people.field_gtppl_url_pubmed
+    - field.field.node.gt_people.field_gtppl_url_researcherid
+    - field.field.node.gt_people.field_gtppl_url_researchgate
+    - field.field.node.gt_people.field_gtppl_url_scopus
+    - field.field.node.gt_people.field_testing_formatted
+    - field.field.node.gt_people.field_testing_formatted_long
+    - node.type.gt_people
+  module:
+    - user
+id: node.gt_people.teaser
+targetEntityType: node
+bundle: gt_people
+mode: teaser
+content:
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_gtppl_awards: true
+  field_gtppl_bio_summary: true
+  field_gtppl_biography: true
+  field_gtppl_bldg: true
+  field_gtppl_bldg_room: true
+  field_gtppl_bldg_url_map: true
+  field_gtppl_education: true
+  field_gtppl_email: true
+  field_gtppl_fax: true
+  field_gtppl_gtaccount: true
+  field_gtppl_image: true
+  field_gtppl_image_local: true
+  field_gtppl_image_url: true
+  field_gtppl_phone: true
+  field_gtppl_pronouns: true
+  field_gtppl_publications: true
+  field_gtppl_research_group: true
+  field_gtppl_research_group_url: true
+  field_gtppl_research_history: true
+  field_gtppl_research_keywords: true
+  field_gtppl_research_summary: true
+  field_gtppl_roles: true
+  field_gtppl_salutation: true
+  field_gtppl_title_custom: true
+  field_gtppl_title_custom_html: true
+  field_gtppl_title_custom_short: true
+  field_gtppl_title_official: true
+  field_gtppl_url_cv_resume: true
+  field_gtppl_url_gscholar: true
+  field_gtppl_url_orcid: true
+  field_gtppl_url_personal: true
+  field_gtppl_url_publons: true
+  field_gtppl_url_pubmed: true
+  field_gtppl_url_researcherid: true
+  field_gtppl_url_researchgate: true
+  field_gtppl_url_scopus: true
+  field_testing_formatted: true
+  field_testing_formatted_long: true

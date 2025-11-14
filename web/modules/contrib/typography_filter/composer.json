@@ -1,0 +1,10 @@
+{
+    "name": "drupal/typography_filter",
+    "description": "A text filter to improve typography.",
+    "type": "drupal-module",
+    "license": "GPL-2.0+",
+    "require": {
+        "php": ">=8.1",
+        "jolicode/jolitypo": "~1.0"
+    }
+}

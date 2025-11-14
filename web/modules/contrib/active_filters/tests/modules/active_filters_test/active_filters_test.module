@@ -1,0 +1,44 @@
+<?php
+
+/**
+ * @file
+ * Provides test configuration for Active Filters.
+ */
+
+declare(strict_types=1);
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\views\ViewExecutable;
+
+/**
+ * Implements hook_help().
+ */
+function active_filters_test_help(
+  string $route_name,
+  RouteMatchInterface $route_match,
+): string {
+  $output = '';
+  if ($route_name === 'help.page.active_filters_test') {
+    $output .= '<h3>' . t('About') . '</h3>';
+    $output .= '<p>' . t('Provides test configuration for Active Filters.') . '</p>';
+    // phpcs:ignore Drupal.Arrays.Array.LongLineDeclaration
+    $output .= '<p>' . t('For a full description of the module and configuration instructions visit the <a href=":project" target="_blank">project page</a> or consult the <a href=":readme" target="_blank">README.md</a> in the module directory.', [':project' => 'https://www.drupal.org/project/active_filters', ':readme' => 'https://git.drupalcode.org/project/active_filters/-/blob/1.0.x/README.md']) . '</p>';
+    $output .= '<p>' . t('Submit bug reports, feature suggestions or track changes in the <a href=":queue" target="_blank">issue queue</a>.', [':queue' => 'https://www.drupal.org/project/issues/active_filters']) . '</p>';
+  }
+  return $output;
+}
+
+/**
+ * Implements hook_active_filters_alter().
+ */
+function active_filters_test_active_filters_alter(
+  array &$active_filters,
+  ViewExecutable $view,
+): void {
+  $state = \Drupal::state();
+  if ($state->get('active_filters_test.count_hook_invocations', FALSE)) {
+    /** @var int $count */
+    $count = $state->get('active_filters_test.active_filters_alter', 0);
+    $state->set('active_filters_test.active_filters_alter', $count + 1);
+  }
+}

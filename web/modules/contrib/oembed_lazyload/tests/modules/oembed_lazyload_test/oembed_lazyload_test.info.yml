@@ -1,0 +1,13 @@
+name: oEmbed lazy load test
+description: An internal test support module.
+type: module
+core_version_requirement: ^10.3 || ^11
+package: Media
+hidden: true
+dependencies:
+  - oembed_lazyload:oembed_lazyload
+
+# Information added by Drupal.org packaging script on 2024-09-13
+version: '2.0.5'
+project: 'oembed_lazyload'
+datestamp: 1726188376

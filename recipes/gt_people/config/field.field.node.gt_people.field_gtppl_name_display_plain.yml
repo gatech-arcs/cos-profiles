@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_gtppl_name_display_plain
+    - node.type.gt_people
+id: node.gt_people.field_gtppl_name_display_plain
+field_name: field_gtppl_name_display_plain
+entity_type: node
+bundle: gt_people
+label: 'Name - Display (plain text)'
+description: 'Simplified, plain text display name'
+required: false
+translatable: false
+default_value: {}
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - basic_html
+field_type: string

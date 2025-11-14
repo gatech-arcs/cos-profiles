@@ -1,0 +1,3 @@
+administer importers:
+  title: 'Administer Importers'
+  restrict access: TRUE

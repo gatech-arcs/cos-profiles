@@ -1,0 +1,11 @@
+diff_plus.default_settings:
+  title: "Diff Plus"
+  parent: diff_plus.user_settings
+  description: "Configure how diff plus behaves for all users."
+  route_name: diff_plus.default_settings
+
+diff_plus.user_settings:
+  title: "Personalize Diff Plus"
+  parent: system.admin_config_content
+  description: "Personalize how diff plus behaves for only me."
+  route_name: diff_plus.user_settings

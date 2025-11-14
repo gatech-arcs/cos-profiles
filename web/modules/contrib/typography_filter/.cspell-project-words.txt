@@ -1,0 +1,5 @@
+Joli
+curlyquote
+frenchnobreakspace
+nospacebeforecomma
+smartquotes

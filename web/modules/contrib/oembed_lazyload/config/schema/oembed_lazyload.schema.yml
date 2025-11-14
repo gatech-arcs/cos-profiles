@@ -1,0 +1,16 @@
+field.formatter.settings.lazyload_oembed:
+  type: mapping
+  label: 'Lazyload oEmbed display format settings'
+  mapping:
+    max_width:
+      type: integer
+      label: 'Maximum width'
+    max_height:
+      type: integer
+      label: 'Maximum height'
+    strategy:
+      type: string
+      label: 'Lazy load strategy'
+    intersection_observer_margin:
+      type: string
+      label: 'The distance from the viewport that content should start to load'

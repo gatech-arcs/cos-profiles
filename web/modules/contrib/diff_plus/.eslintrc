@@ -1,0 +1,7 @@
+{
+  "globals": {
+    "html_beautify",
+    "Diff",
+    "Diff2HtmlUI"
+  }
+}

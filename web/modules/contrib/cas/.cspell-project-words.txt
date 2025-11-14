@@ -1,0 +1,33 @@
+Blackfire
+caslogin
+caslogout
+casproxycallback
+casservice
+PGTIOU
+plainsid
+Redirector
+redirector
+testpgt
+Webform
+xhprof
+
+# Coming from External Authentication module
+Authmap
+authmap
+authname
+externalauth
+
+# Used in tests
+Beavis
+beavis
+Cornholio
+fakecasserver
+firstname
+foobarbaz
+lastname
+needtp
+proxytest
+
+# For some reason are not resolved by core
+varchar
+varchar_ascii

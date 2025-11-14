@@ -1,0 +1,57 @@
+highlightjs:
+  js:
+    https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js:
+      { type: external, minified: true }
+
+jsbeautify:
+  js:
+    https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.14.7/beautify.min.js:
+      { type: external, minified: true }
+    https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.14.7/beautify-css.min.js:
+      { type: external, minified: true }
+    https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.14.7/beautify-html.min.js:
+      { type: external, minified: true }
+
+diffjs:
+  js:
+    https://cdnjs.cloudflare.com/ajax/libs/jsdiff/5.1.0/diff.min.js:
+      { type: external, minified: true }
+
+diff2html:
+  js:
+    https://cdn.jsdelivr.net/npm/diff2html/bundles/js/diff2html.min.js:
+      { type: external, minified: true }
+    https://cdn.jsdelivr.net/npm/diff2html@3.4.29/bundles/js/diff2html-ui.min.js:
+      { type: external, minified: true }
+  css:
+    component:
+      https://cdn.jsdelivr.net/npm/diff2html/bundles/css/diff2html.min.css:
+        { type: external, minified: true }
+
+raw-html-reset:
+  css:
+    base:
+      css/raw-html-reset.css: {}
+
+raw-html:
+  css:
+    theme:
+      css/raw-html.css: {}
+  js:
+    js/raw-html.js: {}
+  dependencies:
+    - core/drupal
+    - core/drupalSettings
+    - diff_plus/raw-html-reset
+    - diff_plus/highlightjs
+    - diff_plus/jsbeautify
+    - diff_plus/diffjs
+    - diff_plus/diff2html
+
+diff-ui:
+  css:
+    base:
+      css/diff-ui-reset.css: {}
+      css/diff-ui.css: {}
+  js:
+    js/diff-ui.js: {}

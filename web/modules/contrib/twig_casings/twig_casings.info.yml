@@ -1,0 +1,11 @@
+name: Twig Casings
+type: module
+description: 'Provides Twig filters for converting strings to camelCase, kebab-case, MACRO_CASE, PascalCase, snake_case, and Train-Case.'
+core_version_requirement: '>=10'
+dependencies:
+  - drupal:system (>=10.0)
+
+# Information added by Drupal.org packaging script on 2025-03-11
+version: '1.0.5'
+project: 'twig_casings'
+datestamp: 1741698553

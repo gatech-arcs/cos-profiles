@@ -1,0 +1,7 @@
+ckeditor_heading_size.settings_form:
+  path: '/admin/config/content/ckeditor-heading-size'
+  defaults:
+    _title: 'CKEditor Heading Size settings'
+    _form: 'Drupal\ckeditor_heading_size\Form\SettingsForm'
+  requirements:
+    _permission: 'administer filters'

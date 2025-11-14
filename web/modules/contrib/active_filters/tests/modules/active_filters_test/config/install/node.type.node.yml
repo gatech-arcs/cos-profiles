@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - active_filters_test
+third_party_settings: {  }
+name: Node
+type: node
+description: ''
+help: ''
+new_revision: false
+preview_mode: 0
+display_submitted: false

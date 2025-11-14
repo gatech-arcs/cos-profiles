@@ -1,0 +1,33 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the typography_filter module.
+ */
+
+use Drupal\filter\FilterFormatInterface;
+use Drupal\typography_filter\Services\TypographyFilterManagerInterface;
+
+/**
+ * Implements hook_update_N().
+ *
+ * Set the default configuration.
+ */
+function typography_filter_update_10201() {
+  $filter_formats = \Drupal::entityTypeManager()->getStorage('filter_format')->loadMultiple();
+  foreach ($filter_formats as $filter_format) {
+    if ($filter_format instanceof FilterFormatInterface) {
+      $filter_typography = $filter_format->filters()->get('filter_typography');
+      $configuration = $filter_typography->getConfiguration();
+      if ($configuration['status'] && empty($configuration['settings'])) {
+        $filter_typography->setConfiguration([
+          'settings' =>
+            [
+              'fixers' => array_keys(TypographyFilterManagerInterface::class::DEFAULT_RULES),
+            ],
+        ]);
+        $filter_format->save();
+      }
+    }
+  }
+}

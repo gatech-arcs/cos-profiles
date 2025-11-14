@@ -1,0 +1,39 @@
+.oembed-lazyload {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+}
+
+.oembed-lazyload__button,
+.oembed-lazyload__thumbnail,
+.oembed-lazyload__iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.oembed-lazyload__thumbnail {
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  z-index: -1;
+}
+
+.oembed-lazyload__button {
+  background-color: transparent;
+  cursor: pointer;
+  z-index: 0;
+}
+
+.oembed-lazyload__iframe--hidden {
+  opacity: 0;
+  visibility: hidden;
+  z-index: -1;
+}
+
+.oembed-lazyload__button--hidden {
+  opacity: 0;
+  visibility: hidden;
+}

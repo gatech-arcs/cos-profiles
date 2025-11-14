@@ -1,0 +1,31 @@
+/**
+ * @file
+ * Base styles for Active Filters.
+ */
+.active-filters__list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.active-filters__group {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 0.5em;
+}
+
+.active-filters__group-label::after {
+  content: ':';
+}
+
+[data-active-filters-clear-all],
+[data-active-filter-removable] {
+  cursor: pointer;
+}
+
+[data-active-filter-removable]::after {
+  margin-left: 1ch;
+  content: '\2715';
+}

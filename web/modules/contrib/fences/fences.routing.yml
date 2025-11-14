@@ -1,0 +1,15 @@
+fences.overview:
+  path: '/admin/config/user-interface/fences'
+  defaults:
+    _controller: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
+    _title: 'Fences'
+  requirements:
+    _permission: 'access administration pages'
+
+fences.settings:
+  path: '/admin/config/user-interface/fences/settings'
+  defaults:
+    _form: '\Drupal\fences\Form\FencesConfigForm'
+    _title: 'Settings'
+  requirements:
+    _permission: 'administer fences settings'

@@ -1,0 +1,44 @@
+fences_presets.fences_preset.*:
+  type: config_entity
+  label: 'Fences Preset'
+  mapping:
+    id:
+      type: string
+      label: ID
+    # Warning: status is handled differently internally, we can't define it here
+    # otherwise we can not load entities by status (Root cause unclear).
+    # status:
+    #   type: boolean
+    #   label: Status
+    label:
+      type: label
+      label: Label
+    uuid:
+      type: string
+    description:
+      type: string
+      label: Description
+    field_tag:
+      type: string
+      label: Field Tag Value
+    field_classes:
+      type: string
+      label: Field Classes Value
+    field_items_wrapper_tag:
+      type: string
+      label: Field Items Wrapper Tag Value
+    field_items_wrapper_classes:
+      type: string
+      label: Field Items Wrapper Classes Value
+    field_item_tag:
+      type: string
+      label: Field Item Tag Value
+    field_item_classes:
+      type: string
+      label: Field Item Classes Value
+    label_tag:
+      type: string
+      label: Label Tag Value
+    label_classes:
+      type: string
+      label: Label Classes Value

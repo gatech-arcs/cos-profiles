@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_gtppl_pronouns
+    - node.type.gt_people
+  module:
+    - options
+id: node.gt_people.field_gtppl_pronouns
+field_name: field_gtppl_pronouns
+entity_type: node
+bundle: gt_people
+label: Pronouns
+description: 'Based on the <a href="https://lgbtqia.gatech.edu/sites/default/files/images/pronoun_guide_orig.pdf">Pronoun Guide</a> from the <a href="https://lgbtqia.gatech.edu/">LGBTQIA Resource Center</a>'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

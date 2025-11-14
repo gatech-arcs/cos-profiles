@@ -1,0 +1,75 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.hg_event.body
+    - field.field.node.hg_event.field_hg_contact
+    - field.field.node.hg_event.field_hg_event_categories
+    - field.field.node.hg_event.field_hg_event_time
+    - field.field.node.hg_event.field_hg_extras
+    - field.field.node.hg_event.field_hg_fee
+    - field.field.node.hg_event.field_hg_groups
+    - field.field.node.hg_event.field_hg_id
+    - field.field.node.hg_event.field_hg_images
+    - field.field.node.hg_event.field_hg_importer
+    - field.field.node.hg_event.field_hg_invited_audience
+    - field.field.node.hg_event.field_hg_keywords
+    - field.field.node.hg_event.field_hg_location
+    - field.field.node.hg_event.field_hg_location_email
+    - field.field.node.hg_event.field_hg_location_phone
+    - field.field.node.hg_event.field_hg_location_url
+    - field.field.node.hg_event.field_hg_media
+    - field.field.node.hg_event.field_hg_related_files
+    - field.field.node.hg_event.field_hg_related_links
+    - field.field.node.hg_event.field_hg_sidebar
+    - field.field.node.hg_event.field_hg_source_updated
+    - field.field.node.hg_event.field_hg_summary
+    - field.field.node.hg_event.field_hg_summary_sentence
+    - node.type.hg_event
+  module:
+    - datetime_range
+    - user
+id: node.hg_event.teaser
+targetEntityType: node
+bundle: hg_event
+mode: teaser
+content:
+  field_hg_event_time:
+    type: daterange_default
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: medium
+      separator: '-'
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  body: true
+  field_hg_contact: true
+  field_hg_event_categories: true
+  field_hg_extras: true
+  field_hg_fee: true
+  field_hg_groups: true
+  field_hg_id: true
+  field_hg_images: true
+  field_hg_importer: true
+  field_hg_invited_audience: true
+  field_hg_keywords: true
+  field_hg_location: true
+  field_hg_location_email: true
+  field_hg_location_phone: true
+  field_hg_location_url: true
+  field_hg_media: true
+  field_hg_related_files: true
+  field_hg_related_links: true
+  field_hg_sidebar: true
+  field_hg_source_updated: true
+  field_hg_summary: true
+  field_hg_summary_sentence: true

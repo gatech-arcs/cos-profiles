@@ -1,0 +1,46 @@
+{#
+/**
+ * @file
+ * Default template implementation for active filters.
+ *
+ * Available variables:
+ * @var array<int, array<string, string|array>> active_filters
+ *   All active filter render arrays.
+ * @var \Drupal\Core\Template\Attribute attributes
+ *   HTML attributes for the container element.
+ * @var Drupal\Component\Render\MarkupInterface|string title
+ *   The title text.
+ * @var \Drupal\Core\Template\Attribute title_attributes
+ *   HTML attributes for the title element.
+ * @var Drupal\Component\Render\MarkupInterface|string clear_text
+ *   The clear all button text.
+ * @var \Drupal\Core\Template\Attribute clear_attributes
+ *   HTML attributes for the clear button.
+ * @var array<string, bool|string|array> configuration
+ *   The active filter configuration.
+ * @var \Drupal\views\ViewExecutable view
+ *   The view object for the active filters.
+ *
+ * @see template_preprocess_active_filters()
+ *
+ * @ingroup themeable
+ */
+#}
+{% if active_filters|length %}
+  <div{{ attributes.addClass('active-filters') }}>
+    {% block before_list %}{% endblock %}
+
+    <dl class="active-filters__list">
+      {% block list %}
+        <dt{{ title_attributes.addClass('active-filters__title') }}><h2>{{ title }}</h2></dt>
+        {{ active_filters }}
+      {% endblock %}
+    </dl>
+
+    {% block after_list %}
+      {% if clear_text %}
+        <button{{ clear_attributes.addClass('active-filters__clear') }}>{{ clear_text }}</button>
+      {% endif %}
+    {% endblock %}
+  </div>
+{% endif %}

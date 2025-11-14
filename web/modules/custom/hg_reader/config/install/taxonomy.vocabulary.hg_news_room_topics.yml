@@ -1,0 +1,11 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - hg_reader
+name: 'Hg - News room topics'
+vid: hg_news_room_topics
+description: 'Topics pertaining to the top-level newsroom (news.gatech.edu)'
+hierarchy: 0
+weight: 0

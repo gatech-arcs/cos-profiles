@@ -1,0 +1,7 @@
+services:
+  _defaults:
+    autoconfigure: true
+    autowire: true
+  cas_test.test_subscriber:
+    autowire: true
+    class: Drupal\cas_test\CasTestSubscriber
