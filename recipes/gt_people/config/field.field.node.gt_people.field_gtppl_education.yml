@@ -11,7 +11,7 @@ id: node.gt_people.field_gtppl_education
 field_name: field_gtppl_education
 entity_type: node
 bundle: gt_people
-label: Additional Education
+label: 'Additional Education'
 description: '512 char limit; degrees and educational history, links are allowed'
 required: false
 translatable: false

@@ -3,13 +3,14 @@ status: true
 dependencies:
   module:
     - node
-    - text
-id: node.field_gtppl_biography
-field_name: field_gtppl_biography
+    - user
+id: node.field_linked_drupal_account
+field_name: field_linked_drupal_account
 entity_type: node
-type: text_long
-settings: {  }
-module: text
+type: entity_reference
+settings:
+  target_type: user
+module: core
 locked: false
 cardinality: 1
 translatable: true

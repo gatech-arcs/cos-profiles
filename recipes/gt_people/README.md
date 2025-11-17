@@ -17,3 +17,15 @@ Incoming...
 [![Coding Style: Drupal](https://flat.badgen.net/badge/code%20style/Drupal/f2a)](https://www.drupal.org/docs/develop/standards/php/php-coding-standards)
 [![GitHub Super-Linter](https://github.com/gatech-arcs/drupal-people/workflows/Lint%20Code%20Base/badge.svg)](https://github.com/marketplace/actions/super-linter)
 ![Dependabot Status](https://flat.badgen.net/github/dependabot/ubuntu/yaru)
+
+# Kickstart Spinup with ddev
+ddev config --project-type=drupal11 --docroot=web  
+ddev start  
+ddev composer create-project gtsciences/gt_kickoff --stability dev  
+ddev composer require drush/drush  
+ddev drush site:install --account-name=admin --account-pass=admin -y  
+ddev launch $(ddev drush uli)  
+ddev composer require gtsciences/gt_people:"dev-adding-degree-component"  
+ddev drush recipe ../recipes/gt_people
+
+

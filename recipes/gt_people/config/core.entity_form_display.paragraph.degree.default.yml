@@ -7,8 +7,8 @@ dependencies:
     - field.field.paragraph.degree.field_honors
     - field.field.paragraph.degree.field_institution
     - field.field.paragraph.degree.field_location
-    - field.field.paragraph.degree.field_year
     - field.field.paragraph.degree.field_with_honors
+    - field.field.paragraph.degree.field_year
     - paragraphs.paragraphs_type.degree
 id: paragraph.degree.default
 targetEntityType: paragraph
@@ -23,17 +23,16 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  field_honorary:
+    type: boolean_checkbox
+    weight: 4
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
   field_institution:
     type: string_textfield
     weight: 1
-    region: content
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-  field_year:
-    type: string_textfield
-    weight: 2
     region: content
     settings:
       size: 60
@@ -47,13 +46,6 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-  field_honorary:
-    type: boolean_checkbox
-    weight: 4
-    region: content
-    settings:
-      display_label: true
-    third_party_settings: {  }
   field_with_honors:
     type: boolean_checkbox
     weight: 5
@@ -61,7 +53,15 @@ content:
     settings:
       display_label: true
     third_party_settings: {  }
+  field_year:
+    type: string_textfield
+    weight: 2
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
 hidden:
   created: true
-  status: true
   field_honors: true
+  status: true

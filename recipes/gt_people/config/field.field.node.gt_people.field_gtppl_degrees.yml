@@ -12,7 +12,7 @@ field_name: field_gtppl_degrees
 entity_type: node
 bundle: gt_people
 label: Degrees
-description: 'List of academic degrees.'
+description: "List of academic degrees.\r\nThese field are required for Instructional Faculty"
 required: false
 translatable: false
 default_value: {  }
@@ -25,6 +25,6 @@ settings:
     negate: 0
     target_bundles_drag_drop:
       degree:
-        enabled: true
         weight: 2
+        enabled: true
 field_type: entity_reference_revisions

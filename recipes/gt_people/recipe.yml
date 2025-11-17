@@ -21,6 +21,10 @@ install:
   - paragraphs
   - inline_entity_form
   - entity_reference_revisions
+  # New modules from form display
+  - conditional_fields
+  - path
+  - text
 
 config:
   strict:
@@ -32,6 +36,8 @@ config:
     - field.storage.node.field_gtppl_bldg
     - field.storage.node.field_gtppl_bldg_room
     - field.storage.node.field_gtppl_bldg_url_map
+    - field.storage.node.field_gtppl_degrees
+    - field.storage.node.field_gtppl_display_contact_info # NEW
     - field.storage.node.field_gtppl_education
     - field.storage.node.field_gtppl_email
     - field.storage.node.field_gtppl_fax
@@ -42,6 +48,10 @@ config:
     - field.storage.node.field_gtppl_img_headshot
     - field.storage.node.field_gtppl_img_portrait
     - field.storage.node.field_gtppl_instruct_faculty
+    - field.storage.node.field_gtppl_name_display_html # NEW
+    - field.storage.node.field_gtppl_name_display_plain # NEW
+    - field.storage.node.field_gtppl_name_first # NEW
+    - field.storage.node.field_gtppl_name_last # NEW
     - field.storage.node.field_gtppl_phone
     - field.storage.node.field_gtppl_pronouns
     - field.storage.node.field_gtppl_publications
@@ -65,15 +75,16 @@ config:
     - field.storage.node.field_gtppl_url_researcherid
     - field.storage.node.field_gtppl_url_researchgate
     - field.storage.node.field_gtppl_url_scopus
-    - field.storage.node.field_gtppl_degrees
+    - field.storage.node.field_linked_drupal_account # NEW
 
+    # Storages from Degree Paragraph
     - field.storage.paragraph.field_degree
     - field.storage.paragraph.field_honorary
     - field.storage.paragraph.field_honors
     - field.storage.paragraph.field_institution
     - field.storage.paragraph.field_location
-    - field.storage.paragraph.field_year
     - field.storage.paragraph.field_with_honors
+    - field.storage.paragraph.field_year
 
   import:
     address: '*'

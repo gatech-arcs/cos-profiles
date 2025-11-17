@@ -14,9 +14,13 @@ dependencies:
     - field.field.node.gt_people.field_gtppl_email
     - field.field.node.gt_people.field_gtppl_fax
     - field.field.node.gt_people.field_gtppl_gtaccount
-    - field.field.node.gt_people.field_gtppl_image
-    - field.field.node.gt_people.field_gtppl_image_local
-    - field.field.node.gt_people.field_gtppl_image_url
+    - field.field.node.gt_people.field_gtppl_img_headshot
+    - field.field.node.gt_people.field_gtppl_img_portrait
+    - field.field.node.gt_people.field_gtppl_instruct_faculty
+    - field.field.node.gt_people.field_gtppl_name_display_html
+    - field.field.node.gt_people.field_gtppl_name_display_plain
+    - field.field.node.gt_people.field_gtppl_name_first
+    - field.field.node.gt_people.field_gtppl_name_last
     - field.field.node.gt_people.field_gtppl_phone
     - field.field.node.gt_people.field_gtppl_pronouns
     - field.field.node.gt_people.field_gtppl_publications
@@ -40,12 +44,10 @@ dependencies:
     - field.field.node.gt_people.field_gtppl_url_researcherid
     - field.field.node.gt_people.field_gtppl_url_researchgate
     - field.field.node.gt_people.field_gtppl_url_scopus
-    - field.field.node.gt_people.field_testing_formatted
-    - field.field.node.gt_people.field_testing_formatted_long
+    - field.field.node.gt_people.field_linked_drupal_account
     - node.type.gt_people
   module:
     - entity_reference_revisions
-    - image
     - options
     - text
     - user
@@ -75,6 +77,29 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 103
+    region: content
+  field_gtppl_bldg:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 141
+    region: content
+  field_gtppl_bldg_room:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 142
+    region: content
+  field_gtppl_bldg_url_map:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 140
     region: content
   field_gtppl_degrees:
     type: entity_reference_revisions_entity_view
@@ -317,6 +342,14 @@ content:
     third_party_settings: {  }
     weight: 130
     region: content
+  field_linked_drupal_account:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 149
+    region: content
   field_testing_formatted:
     type: text_default
     label: above
@@ -336,28 +369,12 @@ content:
     third_party_settings: {  }
     weight: 100
     region: content
-  field_gtppl_bldg:
-    type: list_default
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    weight: 141
-    region: content
-  field_gtppl_bldg_room:
-    type: string
-    label: above
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    weight: 142
-    region: content
-  field_gtppl_bldg_url_map:
-    type: string
-    label: above
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    weight: 140
-    region: content
 hidden:
   field_gtppl_display_contact_info: true
+  field_gtppl_img_headshot: true
+  field_gtppl_img_portrait: true
+  field_gtppl_instruct_faculty: true
+  field_gtppl_name_display_html: true
+  field_gtppl_name_display_plain: true
+  field_gtppl_name_first: true
+  field_gtppl_name_last: true

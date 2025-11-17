@@ -8,8 +8,7 @@ id: node.field_gtppl_education
 field_name: field_gtppl_education
 entity_type: node
 type: text_long
-settings:
-  max_length: 1024
+settings: {  }
 module: text
 locked: false
 cardinality: 1

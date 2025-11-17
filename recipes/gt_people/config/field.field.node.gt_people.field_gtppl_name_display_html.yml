@@ -3,6 +3,7 @@ status: true
 dependencies:
   config:
     - field.storage.node.field_gtppl_name_display_html
+    - filter.format.basic_html
     - node.type.gt_people
   module:
     - text
@@ -14,7 +15,7 @@ label: 'Name - Display (html encoded, long)'
 description: 'Longer, full display name with HTML entities for proper display'
 required: false
 translatable: false
-default_value: {}
+default_value: {  }
 default_value_callback: ''
 settings:
   allowed_formats:

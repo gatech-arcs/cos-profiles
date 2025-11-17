@@ -23,6 +23,7 @@
 
         "drupal/paragraphs": "^1.17",
         "drupal/inline_entity_form": "^3.0",
-        "drupal/entity_reference_revisions": "^1.10"
+        "drupal/entity_reference_revisions": "^1.10",
+        "drupal/conditional_fields": "^4.0@alpha"
     }
 }
