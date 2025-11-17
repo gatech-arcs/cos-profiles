@@ -121,7 +121,8 @@
             "php-tuf/composer-integration": true,
             "phpstan/*": true,
             "tbachert/spi": true,
-            "wikimedia/composer-merge-plugin": true
+            "wikimedia/composer-merge-plugin": true,
+            "drupal/core-recipe-unpack": true
         },
         "optimize-autoloader": true,
         "sort-packages": true
