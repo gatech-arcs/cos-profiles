@@ -1,0 +1,8 @@
+name: 'Create Profile on Login'
+type: module
+description: 'Automatically creates a Person profile node when a user logs in via CAS and redirects them to the edit form.'
+core_version_requirement: ^10 || ^11
+package: Custom
+dependencies:
+  - drupal:node
+  - drupal:user

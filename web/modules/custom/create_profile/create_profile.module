@@ -1,0 +1,90 @@
+<?php
+
+use Drupal\Core\Url;
+use Drupal\node\Entity\Node;
+use Drupal\user\Entity\User;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+
+/**
+ * Implements hook_user_login().
+ */
+function create_profile_user_login($account) {
+
+  // ======================================================
+  // CONFIGURATION
+  // ======================================================
+  $profile_machine_name    = 'gt_people';
+  $user_profile_link_field = 'field_field_profile_node_ref';
+  // ======================================================
+
+  // 1. SAFETY CHECK: Ignore Super Admin
+  if ((int) $account->id() === 1) {
+    return;
+  }
+
+  $user_entity = User::load($account->id());
+  $gt_id = $account->getAccountName();
+  $nid = NULL;
+
+  // 2. CHECK FOR EXISTING PROFILE LINK
+  if (!$user_entity->get($user_profile_link_field)->isEmpty()) {
+    $nid = $user_entity->get($user_profile_link_field)->target_id;
+  }
+
+  // 3. CREATE PROFILE IF MISSING
+  if (!$nid) {
+    $node_data = [
+      'type'   => $profile_machine_name,
+      'uid'    => $account->id(),
+      'status' => 1,
+      'title'  => $gt_id,
+      'field_linked_drupal_account'      => ['target_id' => $account->id()],
+      'field_gtppl_gtaccount'            => $gt_id,
+      'field_gtppl_display_contact_info' => 1,
+    ];
+
+    try {
+      $node = Node::create($node_data);
+      $node->save();
+      $nid = $node->id();
+
+      // Link user to the new node
+      $user_entity->set($user_profile_link_field, $nid);
+      $user_entity->save();
+
+      \Drupal::logger('create_profile')->info('Created profile ' . $nid . ' for ' . $gt_id);
+    }
+    catch (\Exception $e) {
+      \Drupal::logger('create_profile')->error('Profile creation failed: ' . $e->getMessage());
+      return; 
+    }
+  }
+
+  // 4. PERFORM PHP REDIRECT
+  if ($nid) {
+    // Generate the URL to the edit form
+    $url = Url::fromRoute('entity.node.edit_form', ['node' => $nid])
+      ->setOptions(['absolute' => TRUE])
+      ->toString();
+
+    // CLEAR DESTINATIONS
+    $request = \Drupal::request();
+    if ($request->query->has('destination')) {
+      $request->query->remove('destination');
+    }
+    if (isset($_GET['destination'])) {
+      unset($_GET['destination']);
+    }
+    // Wipe session destinations often set by CAS
+    if (isset($_SESSION['destination'])) { unset($_SESSION['destination']); }
+    if (isset($_SESSION['cas_destination'])) { unset($_SESSION['cas_destination']); }
+
+    // SAVE SESSION
+    \Drupal::service('session_manager')->save();
+
+    // EXECUTE REDIRECT
+    $response = new RedirectResponse($url);
+    $response->send();
+    exit;
+  }
+}
