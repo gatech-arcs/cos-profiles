@@ -11,7 +11,7 @@
   },
   "devDependencies": {
     "@ckeditor/ckeditor5-dev-utils": "^50.1.0",
-    "ckeditor5": "^45.2.2",
+    "ckeditor5": "^47.6.0",
     "css-loader": "^6.7.1",
     "raw-loader": "^4.0.2",
     "style-loader": "^3.3.1",
