@@ -15,7 +15,7 @@
     "@ckeditor/ckeditor5-dev-utils": "^30.5.0",
     "@ckeditor/ckeditor5-theme-lark": "^44.0.0",
     "babel-loader": "^9.2.1",
-    "ckeditor5": "~44.0.0",
+    "ckeditor5": "~47.6.1",
     "css-loader": "^6.11.0",
     "postcss": "^8.5.2",
     "postcss-loader": "^7.3.4",
