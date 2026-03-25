@@ -124,21 +124,6 @@
             "time": "2025-05-16T17:04:33+00:00"
         },
         {
-            "name": "cdubz/ckeditor5-source-editing-codemirror",
-            "version": "35.1.0",
-            "dist": {
-                "type": "tar",
-                "url": "https://registry.npmjs.org/@cdubz/ckeditor5-source-editing-codemirror/-/ckeditor5-source-editing-codemirror-35.1.0.tgz"
-            },
-            "require": {
-                "composer/installers": "^1.0 || ^2.0"
-            },
-            "type": "drupal-library",
-            "extra": {
-                "installer-name": "ckeditor5-source-editing-codemirror"
-            }
-        },
-        {
             "name": "chi-teck/drupal-code-generator",
             "version": "4.2.0",
             "source": {
@@ -264,21 +249,6 @@
                 }
             ],
             "time": "2023-12-20T15:40:13+00:00"
-        },
-        {
-            "name": "codemirror/codemirror",
-            "version": "5.65.8",
-            "dist": {
-                "type": "tar",
-                "url": "https://registry.npmjs.org/codemirror/-/codemirror-5.65.8.tgz"
-            },
-            "require": {
-                "composer/installers": "^1.0 || ^2.0"
-            },
-            "type": "drupal-library",
-            "extra": {
-                "installer-name": "codemirror"
-            }
         },
         {
             "name": "commerceguys/addressing",
@@ -10840,21 +10810,6 @@
             "time": "2025-01-17T21:19:20+00:00"
         },
         {
-            "name": "fontawesome/fontawesome",
-            "version": "6.4.2",
-            "dist": {
-                "type": "zip",
-                "url": "https://use.fontawesome.com/releases/v6.4.2/fontawesome-free-6.4.2-web.zip"
-            },
-            "require": {
-                "composer/installers": "^1.2.0||^2.0"
-            },
-            "type": "drupal-library",
-            "extra": {
-                "installer-name": "fontawesome"
-            }
-        },
-        {
             "name": "goalgorilla/rtseo.js",
             "version": "2.1.0",
             "source": {
@@ -11788,30 +11743,6 @@
             "time": "2025-04-25T15:04:13+00:00"
         },
         {
-            "name": "js-cookie/js-cookie",
-            "version": "3.0.5",
-            "dist": {
-                "type": "tar",
-                "url": "https://registry.npmjs.org/js-cookie/-/js-cookie-3.0.5.tgz"
-            },
-            "type": "drupal-library",
-            "extra": {
-                "installer-name": "js-cookie"
-            },
-            "license": [
-                "MIT"
-            ]
-        },
-        {
-            "name": "klarohq/klaro-js",
-            "version": "0.7.22",
-            "dist": {
-                "type": "zip",
-                "url": "https://github.com/KlaroHQ/klaro-js/archive/refs/tags/v0.7.22.zip"
-            },
-            "type": "drupal-library"
-        },
-        {
             "name": "laravel/prompts",
             "version": "v0.3.7",
             "source": {
@@ -12231,21 +12162,6 @@
                 }
             ],
             "time": "2025-10-25T08:35:20+00:00"
-        },
-        {
-            "name": "leongersen/nouislider",
-            "version": "15.5.1",
-            "dist": {
-                "type": "tar",
-                "url": "https://github.com/leongersen/noUiSlider/archive/refs/tags/15.5.1.tar.gz"
-            },
-            "type": "drupal-library",
-            "extra": {
-                "installer-name": "nouislider"
-            },
-            "license": [
-                "MIT"
-            ]
         },
         {
             "name": "masterminds/html5",
@@ -17564,15 +17480,6 @@
                 "source": "https://github.com/geocoder-php/php-common/tree/5.0.0"
             },
             "time": "2025-01-01T15:52:42+00:00"
-        },
-        {
-            "name": "yaireo/tagify",
-            "version": "4.35.4",
-            "dist": {
-                "type": "zip",
-                "url": "https://github.com/yaireo/tagify/archive/refs/tags/v4.35.4.zip"
-            },
-            "type": "drupal-library"
         }
     ],
     "packages-dev": [
@@ -19295,23 +19202,23 @@
         },
         {
             "name": "google/protobuf",
-            "version": "v4.33.0",
+            "version": "v4.33.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/protocolbuffers/protobuf-php.git",
-                "reference": "b50269e23204e5ae859a326ec3d90f09efe3047d"
+                "reference": "84b008c23915ed94536737eae46f41ba3bccfe67"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/protocolbuffers/protobuf-php/zipball/b50269e23204e5ae859a326ec3d90f09efe3047d",
-                "reference": "b50269e23204e5ae859a326ec3d90f09efe3047d",
+                "url": "https://api.github.com/repos/protocolbuffers/protobuf-php/zipball/84b008c23915ed94536737eae46f41ba3bccfe67",
+                "reference": "84b008c23915ed94536737eae46f41ba3bccfe67",
                 "shasum": ""
             },
             "require": {
                 "php": ">=8.1.0"
             },
             "require-dev": {
-                "phpunit/phpunit": ">=5.0.0 <8.5.27"
+                "phpunit/phpunit": ">=10.5.62 <11.0.0"
             },
             "suggest": {
                 "ext-bcmath": "Need to support JSON deserialization"
@@ -19333,9 +19240,9 @@
                 "proto"
             ],
             "support": {
-                "source": "https://github.com/protocolbuffers/protobuf-php/tree/v4.33.0"
+                "source": "https://github.com/protocolbuffers/protobuf-php/tree/v4.33.6"
             },
-            "time": "2025-10-15T20:10:28+00:00"
+            "time": "2026-03-18T17:32:05+00:00"
         },
         {
             "name": "justinrainbow/json-schema",
@@ -23926,5 +23833,5 @@
         "php": "^8.3"
     },
     "platform-dev": {},
-    "plugin-api-version": "2.6.0"
+    "plugin-api-version": "2.9.0"
 }
